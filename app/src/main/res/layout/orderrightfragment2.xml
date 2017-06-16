@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@mipmap/tag_dock" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="3.0">
+            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+                <ImageView android:id="@id/iv_orderright_head" android:layout_width="40.0px" android:layout_height="40.0px" android:src="@mipmap/user_head" />
+                <TextView android:textSize="18.0px" android:id="@id/tv_orderright_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+                <TextView android:textSize="18.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="   电话 :  " />
+                <TextView android:textSize="18.0px" android:id="@id/tv_orderright_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="2.0">
+            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <TextView android:textSize="18.0px" android:id="@id/tv_orderright_ordertime" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="下单时间:" android:layout_weight="1.0" />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/iv_orderright_merchant" android:layout_width="35.0px" android:layout_height="35.0px" android:layout_marginRight="@dimen/x5" android:src="@mipmap/waimai_baidu" />
+                    <LinearLayout android:gravity="center_horizontal" android:id="@id/ll_yuyue" android:background="@mipmap/quantity_tag" android:visibility="invisible" android:layout_width="42.0px" android:layout_height="44.0px" android:layout_marginRight="15.0px">
+                        <TextView android:textSize="18.0px" android:id="@id/tv_orderright_orderstate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0px" android:text="预约" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <TextView android:textSize="18.0px" android:id="@id/tv_orderright_delivery" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="期望送达时间:" android:layout_weight="1.0" />
+                <TextView android:textSize="18.0px" android:id="@id/tv_orderright_state" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0px" android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/x3">
+        <TextView android:textSize="18.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="   地址 :  " />
+        <TextView android:textSize="18.0px" android:gravity="center" android:id="@id/tv_orderright_site" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+    <LinearLayout android:background="@color/white" android:paddingTop="@dimen/y5" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:background="@color/gray" android:paddingLeft="10.0px" android:paddingRight="10.0px" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+            <ImageView android:id="@id/iv_orderright_head1" android:layout_width="40.0px" android:layout_height="40.0px" android:src="@mipmap/horseman" />
+            <TextView android:textSize="18.0px" android:textColor="@color/black" android:id="@id/tv_orderright_knight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 骑士：" />
+            <TextView android:textSize="18.0px" android:textColor="@color/black" android:id="@id/tv_orderright_name1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="     " />
+            <TextView android:textSize="18.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tv_orderright_number1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+            <TextView android:textSize="18.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="接单时间：" />
+            <TextView android:textSize="18.0px" android:textColor="@color/black" android:id="@id/tv_orderright_ordertime1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="2.0" />
+            <TextView android:textSize="18.0px" android:textColor="@color/black" android:id="@id/tv_orderright_orderstate1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:background="@color/gray" android:paddingLeft="@dimen/x5" android:paddingRight="@dimen/x5" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+        <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="菜品" android:layout_weight="2.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="数量" android:layout_weight="1.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="金额" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.baoyz.swipemenulistview.SwipeMenuListView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <View android:background="@color/gray" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:paddingTop="@dimen/y5" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/x10" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="支付方式 :" />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_pay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/x10" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="备注 :" />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_remark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:paddingLeft="@dimen/x8" android:paddingTop="@dimen/y5" android:paddingRight="@dimen/x10" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="合计：" />
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:id="@id/tv_order_waimai_nape" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" />
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="项    预计收入: ￥" />
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:id="@id/tv_order_waimai_money" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="0" android:layout_weight="1.0" />
+        <TextView android:textColor="@color/red" android:id="@id/tv_refund" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        <TextView android:id="@id/tv_order_add" android:background="@drawable/corner_blue" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="接单" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_order_return" android:background="@drawable/corner_blue" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="退单" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_order_refund" android:background="@drawable/corner_blue" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="退款" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_order_norefund" android:background="@drawable/corner_gray" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="驳回" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_order_print" android:background="@drawable/corner_blue" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="打印" style="@style/corner_textView_bg2" />
+    </LinearLayout>
+</LinearLayout>

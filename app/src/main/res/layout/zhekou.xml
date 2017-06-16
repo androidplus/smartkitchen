@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_width="@dimen/x130" android:layout_height="fill_parent">
+        <View android:background="@color/gray" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/x10" android:paddingTop="@dimen/x10" android:paddingRight="@dimen/x10" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@id/tv_zhekou" android:background="@drawable/corner_blue" android:layout_height="@dimen/x15" android:text="折扣" style="@style/corner_textView_bg2" />
+                <TextView android:id="@id/tv_favorable" android:background="@drawable/corner_gray" android:layout_height="@dimen/x15" android:text="优惠券" style="@style/corner_textView_bg2" />
+                <TextView android:id="@id/tv_vip" android:background="@drawable/corner_gray" android:clickable="true" android:layout_height="@dimen/x15" android:text="会员" style="@style/corner_textView_bg2" />
+            </LinearLayout>
+            <RelativeLayout android:orientation="vertical" android:id="@id/ll_vip_search" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_zhekou1" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                    <EditText android:textSize="18.0px" android:gravity="center" android:id="@id/et_vip_info" android:layout_width="@dimen/x90" android:layout_height="wrap_content" android:hint="请输入会员信息" style="@style/input_style2" />
+                    <ImageView android:id="@id/iv_vip_search" android:padding="@dimen/x2" android:layout_width="@dimen/x12" android:layout_height="@dimen/x12" android:src="@mipmap/search" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/ll_favorable_select" android:background="@mipmap/shade_input" android:layout_width="@dimen/x103" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10" android:layout_below="@id/ll_zhekou1">
+                    <TextView android:textColor="@color/gray" android:gravity="center" android:id="@id/tv_favorable_show" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="请选择优惠" android:layout_weight="1.0" />
+                    <ImageView android:clickable="false" android:layout_width="30.0px" android:layout_height="30.0px" android:src="@mipmap/down_icon" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/ll_ck" android:layout_width="@dimen/x103" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y5" android:layout_below="@id/ll_favorable_select">
+                    <TextView android:textColor="@color/black" android:id="@id/tv_integral" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="可用0积分,是否使用积分" android:layout_weight="1.0" />
+                    <CheckBox android:id="@id/ck_integral" android:layout_marginLeft="@dimen/x4" style="@style/custom_checkbox" />
+                </LinearLayout>
+                <TextView android:enabled="false" android:textSize="12.0sp" android:textColor="@color/black" android:gravity="start" android:id="@id/et_favorable_vip" android:background="@mipmap/beizhu_bg" android:padding="@dimen/x2" android:layout_width="@dimen/x103" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y5" android:text="优惠信息 :" android:layout_below="@id/ll_ck" />
+                <TextView android:textColor="@color/red" android:gravity="center" android:id="@id/tv_tip_isnot" android:visibility="gone" android:layout_width="@dimen/x100" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10" android:text="该账号不是会员" android:layout_below="@id/et_favorable_vip" />
+                <ListView android:layout_gravity="right" android:id="@id/lv_favorable_select" android:visibility="gone" android:layout_width="@dimen/x103" android:layout_height="@dimen/x30" android:layout_below="@id/ll_favorable_select" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_favorable" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@mipmap/shade_input" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                    <ImageView android:id="@id/iv_favorable_number" android:padding="@dimen/x2" android:layout_width="@dimen/x12" android:layout_height="@dimen/x12" android:layout_marginLeft="@dimen/x1" android:src="@mipmap/saoyisao" />
+                    <EditText android:textSize="18.0px" android:gravity="center" android:id="@id/et_favorable_number" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="请输入优惠券号码" android:layout_weight="1.0" style="@style/input_style2" />
+                    <ImageView android:id="@id/iv_favorable_search" android:padding="@dimen/x2" android:layout_width="@dimen/x12" android:layout_height="@dimen/x12" android:src="@mipmap/search" />
+                </LinearLayout>
+                <EditText android:enabled="false" android:textSize="12.0sp" android:textColor="@color/black" android:gravity="start" android:id="@id/et_favorable_particulars" android:background="@mipmap/beizhu_bg" android:padding="@dimen/x2" android:layout_width="@dimen/x100" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10" android:text="优惠信息 :" />
+                <TextView android:textColor="@color/red" android:id="@id/tv_favorable_ok" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/y5" android:text="该优惠券不可用" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_zhekou" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x10">
+                <EditText android:textSize="18.0px" android:gravity="center" android:id="@id/et_zhekou_pay" android:background="@mipmap/shade_input" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="请输入百分比的数字" style="@style/input_style2" />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x10">
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou1" android:tag="1" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="1折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou2" android:tag="2" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="2折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou3" android:tag="3" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="3折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou4" android:tag="4" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="4折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou5" android:tag="5" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:text="5折" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x3">
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou6" android:tag="6" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="6折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou7" android:tag="7" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="7折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou8" android:tag="8" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="8折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou9" android:tag="9" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x2" android:text="9折" />
+                    <TextView android:gravity="center" android:id="@id/tv_zhekou10" android:tag="10" android:background="@drawable/selector_zhekou" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:text="10折" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <LinearLayout android:id="@id/ll_ck_zhekou" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="折扣" />
+                    <CheckBox android:id="@id/ck_zhekou" android:layout_marginLeft="@dimen/x4" style="@style/custom_checkbox" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/ll_ck_favorable" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="优惠卷" />
+                    <CheckBox android:id="@id/ck_favorable" android:layout_marginLeft="@dimen/x4" style="@style/custom_checkbox" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/ll_ck_vip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="会员" />
+                    <CheckBox android:id="@id/ck_vip" android:layout_marginLeft="@dimen/x4" style="@style/custom_checkbox" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y5">
+                <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textColor="@color/red" android:id="@id/tv_discount_record" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已使用折扣" />
+                    <TextView android:textColor="@color/red" android:id="@id/tv_coupon_record" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已使用优惠卷" />
+                    <TextView android:textColor="@color/red" android:id="@id/tv_member_record" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已使用会员优惠" />
+                </LinearLayout>
+                <TextView android:id="@id/tv_query" android:background="@drawable/corner_gray" android:layout_height="@dimen/x13" android:layout_marginRight="@dimen/x5" android:text="计算金额" style="@style/corner_textView_bg2" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

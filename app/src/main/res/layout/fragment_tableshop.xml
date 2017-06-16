@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:padding="@dimen/x2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@mipmap/tag_dock" android:padding="@dimen/x5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/corner_white" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <LinearLayout android:background="@drawable/top_corner_bg_gray" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include layout="@layout/item_shop" />
+            </LinearLayout>
+            <ListView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <RelativeLayout android:background="@color/red" android:padding="@dimen/x5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:id="@id/totalCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="合计：" android:layout_centerVertical="true" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:id="@id/totalMoney" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="总额：" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:padding="@dimen/x2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:background="@drawable/circle_white" android:paddingTop="10.0px" android:layout_width="46.0px" android:layout_height="46.0px" android:src="@mipmap/vip_icon" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x2" android:text="会员" />
+                <LinearLayout android:gravity="center|right" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="余额:" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="积分:" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:background="@mipmap/tag_dock" android:layout_width="fill_parent" android:layout_height="@dimen/x30" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

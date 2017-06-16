@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.smart.kitchen.smartkitchen">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.feature.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.usb.accessory" />
+
+    <application
+        android:name="com.smart.kitchen.smartkitchen.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Design.NoActionBar">
+        <activity android:name="com.smart.kitchen.smartkitchen.activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.MainActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.SearchActivity"
+            android:windowSoftInputMode="adjustResize|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.OrderActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.TableActivity"
+            android:windowSoftInputMode="adjustResize|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.JiaoJieActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.PayActivity"
+            android:windowSoftInputMode="adjustResize|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.SalesReturnActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.AddToActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.LocalSettingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.HistoryOrderActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.CheckActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.BreakageActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.NewsParticularsActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+
+        <service android:name="com.smart.kitchen.smartkitchen.service.ClientSocketService" />
+        <service android:name="com.smart.kitchen.smartkitchen.service.UpdateAppService" />
+
+        <activity
+            android:name="com.smart.kitchen.smartkitchen.activity.RepeatActivity"
+            android:windowSoftInputMode="adjustPan|stateUnchanged" />
+    </application>
+</manifest>

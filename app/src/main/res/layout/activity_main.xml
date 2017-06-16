@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:id="@id/activity_main" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:background="@mipmap/tag_dock" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0px" android:layout_weight="1.0">
+                <com.smart.kitchen.smartkitchen.view.MyGridView android:id="@id/gridView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:numColumns="5" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/ll_menu_right" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="10.0px">
+                <TextView android:textSize="18.0px" android:id="@id/tv_before" android:text="上一页" style="@style/before_or_next" />
+                <TextView android:textSize="18.0px" android:id="@id/tv_next" android:text="下一页" style="@style/before_or_next" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:id="@id/ll_top_right" android:layout_width="@dimen/top_right_width1" android:layout_height="@dimen/top_height1" android:layout_marginLeft="10.0px" android:layout_marginRight="5.0px">
+                <RelativeLayout android:id="@id/ll_search" android:background="@drawable/corner_white" android:clickable="true" android:layout_width="0.0dip" android:layout_height="24.0px" android:layout_weight="1.0">
+                    <ImageView android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="3.0px" android:layout_marginRight="10.0px" android:src="@mipmap/search" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <LinearLayout android:gravity="center" android:id="@id/menu_controller" android:background="@mipmap/tag_dock" android:clickable="true" android:layout_width="100.0px" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/iv_menu_controller" android:clickable="false" android:layout_width="22.0px" android:layout_height="wrap_content" android:src="@mipmap/burger_menu" />
+                </LinearLayout>
+                <RelativeLayout android:layout_width="50.0px" android:layout_height="50.0px" android:layout_marginRight="@dimen/x5">
+                    <LinearLayout android:gravity="center" android:id="@id/iv_msg" android:background="@drawable/circle_white" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="4.0px" android:layout_marginTop="2.0px">
+                        <ImageView android:clickable="false" android:layout_width="30.0px" android:layout_height="30.0px" android:src="@mipmap/clock" />
+                    </LinearLayout>
+                    <TextView android:textSize="12.0px" android:gravity="center" android:id="@id/msg_count" android:background="@drawable/circle_red" android:layout_width="25.0px" android:layout_height="25.0px" android:text="6" android:layout_alignParentRight="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:id="@id/main_frag" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <FrameLayout android:layout_width="@dimen/top_right_width" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:id="@id/main_frag_right" android:layout_width="@dimen/top_right_width" android:layout_height="fill_parent" android:layout_marginTop="@dimen/top_height1" android:layout_alignParentRight="true" />
+    <FrameLayout android:id="@id/menu_frag" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_margin="20.0dip" android:layout_weight="3.0">
+        <LinearLayout android:orientation="horizontal" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="厨房打印启用" android:layout_weight="1.0" />
+            <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_kitchen_print" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="打印规格" android:layout_weight="1.0" />
+            <RadioGroup android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/rg_print_kitchen" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin">
+                <RadioButton android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center" android:id="@id/rg_print_kitchen_58" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@null" android:text="58mm" android:drawableRight="@drawable/round_checked_state_selector" />
+                <RadioButton android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center" android:id="@id/rg_print_kitchen_80" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:button="@null" android:text="80mm" android:drawableRight="@drawable/round_checked_state_selector" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_gravity="center_vertical" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/port_type" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_gravity="center_vertical" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/internet_access" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_gravity="center_vertical" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/port_id" android:layout_weight="1.0" />
+            <EditText android:textSize="20.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/et_port_k" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="30.0dip" android:text="9100" android:lines="1" android:inputType="number" android:textCursorDrawable="@null" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin">
+            <EditText android:textSize="20.0sp" android:textColor="@color/black" android:textColorHint="@color/gray" android:gravity="center" android:id="@id/et_connect_k" android:background="@mipmap/shade_input" android:layout_width="0.0dip" android:layout_height="40.0dip" android:hint="打印机IP" android:lines="1" android:digits="0123456789." android:layout_weight="1.0" android:textCursorDrawable="@null" />
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/white" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/tv_connect_k" android:background="@drawable/corner_blue" android:paddingLeft="8.0dip" android:paddingTop="4.0dip" android:paddingRight="8.0dip" android:paddingBottom="4.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/connect" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/red" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/tv_connect_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x15" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_margin="20.0dip" android:layout_weight="2.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/textView7" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="整单合并" android:layout_weight="1.0" />
+            <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_merge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/textView8" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="间歇时间" android:layout_weight="1.0" />
+            <EditText android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center" android:id="@id/edit_print_time_kitchen" android:background="@drawable/shape_edit_bg" android:layout_width="60.0px" android:layout_height="50.0px" android:text="500" android:lines="1" android:inputType="time" android:textCursorDrawable="@null" />
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x5" android:text="毫秒" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin">
+            <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/textView6" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="打印字体" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <Spinner android:gravity="center" android:id="@id/spinner_print_font" android:background="@mipmap/icon_spinner_down" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

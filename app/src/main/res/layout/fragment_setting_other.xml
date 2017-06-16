@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/white" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:orientation="vertical" android:padding="@dimen/activity_vertical_margin" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.2" />
+    <ScrollView android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="@dimen/text_size_large" android:textColor="@color/black" android:layout_gravity="center_horizontal" android:id="@id/tv_title1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="消息通知设置" android:layout_centerHorizontal="true" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/ll_below1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/tv_title1">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="网单通知" android:layout_weight="1.0" />
+                    <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_notification_have_order" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/ll_below2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ll_below1">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="付款通知" android:layout_weight="1.0" />
+                    <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_notification_pay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/ll_below3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ll_below2">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="库存预警通知" android:layout_weight="1.0" />
+                    <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_notification_warring" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/ll_below4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ll_below3">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="退单申请通知" android:layout_weight="1.0" />
+                    <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_notification_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                </LinearLayout>
+                <TextView android:textSize="@dimen/text_size_large" android:textColor="@color/black" android:layout_gravity="center_horizontal" android:id="@id/tv_title4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="声音设置" android:layout_below="@id/ll_below4" android:layout_centerHorizontal="true" />
+                <LinearLayout android:orientation="vertical" android:id="@id/ll_below8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/tv_title4">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="自动付款" android:layout_weight="1.0" />
+                        <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_notification_auto_pay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="订单消息" android:layout_weight="1.0" />
+                        <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_takeout_new" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="付款成功" android:layout_weight="1.0" />
+                        <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_payment_succeed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView android:textSize="@dimen/text_size_large" android:textColor="@color/black" android:layout_gravity="center_horizontal" android:id="@id/tv_title2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="其他设置" android:layout_below="@id/ll_below8" android:layout_centerHorizontal="true" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/ll_below6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/tv_title2">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="盘点功能" android:layout_weight="1.0" />
+                    <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_notification_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/ll_below_waimai" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ll_below6">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="自动接单" android:layout_weight="1.0" />
+                    <com.smart.kitchen.smartkitchen.view.SettingSwitchButton android:id="@id/sb_notification_waimai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_below7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ll_below_waimai">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="设备区域设置" android:layout_weight="1.0" />
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_favorable_select" android:background="@mipmap/shade_input" android:layout_width="@dimen/x70" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8">
+                        <TextView android:textColor="@color/gray" android:gravity="center" android:id="@id/tv_favorable_show" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="请选择区域" android:layout_weight="1.0" />
+                        <ImageView android:clickable="false" android:layout_width="30.0px" android:layout_height="30.0px" android:src="@mipmap/down_icon" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ll_below7">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="新订单刷新时间间隔" android:layout_weight="1.0" />
+                    <EditText android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center" android:id="@id/et_new_order_refresh" android:background="@drawable/shape_edit_bg" android:layout_width="200.0px" android:layout_height="36.0px" android:cursorVisible="false" android:textCursorDrawable="@null" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_favorable" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8" android:layout_above="@id/ll_below7">
+                    <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="设备区域设置" android:layout_weight="1.0" />
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@mipmap/shade_input" android:layout_width="@dimen/x70" android:layout_height="wrap_content">
+                        <com.smart.kitchen.smartkitchen.view.MyListView android:id="@id/lv_favorable_select" android:layout_width="@dimen/x70" android:layout_height="@dimen/x30" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+    <View android:layout_width="40.0dip" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/text_size_large" android:textColor="@color/black" android:layout_gravity="center_horizontal" android:id="@id/tv_title3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="关于我们" />
+        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="收银系统" />
+        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:id="@id/tv_version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="版本号: " />
+        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="企业名称: 上海未铭网络科技" />
+        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="客服电话：" />
+        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/setting_margin" android:text="企业邮箱: zhaohuan@makalon.com.cn" />
+    </LinearLayout>
+</LinearLayout>

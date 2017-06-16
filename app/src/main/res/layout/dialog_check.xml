@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/view111" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout style="@style/dialog_Container">
+                <RelativeLayout style="@style/dialog_Container_Top">
+                    <TextView android:text="@string/add" style="@style/dialog_Container_Top_text" />
+                    <ImageView style="@style/dialog_Container_Top_img" />
+                </RelativeLayout>
+                <LinearLayout android:paddingLeft="@dimen/x8" style="@style/dialog_Container_Bottom">
+                    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <include layout="@layout/adapter_checkdialog" />
+                        <ListView android:id="@id/lw_check" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x3" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                        <LinearLayout android:gravity="center" android:paddingBottom="@dimen/x5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0px">
+                            <TextView android:id="@id/tv_extra_ok" android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x2" android:text="确定" style="@style/corner_textView_bg2" />
+                            <TextView android:id="@id/tv_extra_clear" android:background="@drawable/corner_gray" android:text="取消" style="@style/corner_textView_bg2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

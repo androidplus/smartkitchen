@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:padding="@dimen/x2" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/shop_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="商品" android:layout_weight="2.0" />
+        <TextView android:textSize="14.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/shop_money" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="金额" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="14.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/shop_count" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="数量" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:id="@id/iv_dec" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0px" android:layout_weight="1.0">
+                <com.smart.kitchen.smartkitchen.view.CircleView android:layout_width="22.0px" android:layout_height="22.0px" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

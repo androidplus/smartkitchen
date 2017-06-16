@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/activity_repeat" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:background="@mipmap/tag_dock" android:layout_width="fill_parent" android:layout_height="@dimen/y20">
+        <LinearLayout android:gravity="center_vertical" android:id="@id/ll_finish" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:clickable="false" android:layout_width="wrap_content" android:layout_height="26.0px" android:layout_marginLeft="@dimen/x10" android:src="@mipmap/back" android:onClick="toFinish" />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/dialog_jiaojie" />
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="@dimen/x300" style="@style/dialog_Container">
+        <RelativeLayout style="@style/dialog_Container_Top">
+            <TextView android:text="实收：2000.00元" style="@style/dialog_Container_Top_text" />
+            <ImageView android:id="@id/iv_close" style="@style/dialog_Container_Top_img" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" style="@style/dialog_Container_Bottom">
+            <TableLayout android:paddingLeft="@dimen/x20" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0,1,2">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y15" android:layout_marginBottom="@dimen/x5">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="应收：" />
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1000.00" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y15" android:layout_marginBottom="@dimen/x5">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="优惠：" />
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1000.00" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="会员充值" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y15" android:layout_marginBottom="@dimen/x5">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textColor="@color/black" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="优惠：" />
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1000.00" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="应有现金：" />
+                    </LinearLayout>
+                </LinearLayout>
+            </TableLayout>
+            <EditText android:textSize="18.0px" android:background="@mipmap/beizhu_bg" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textCursorDrawable="@null" />
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y15">
+                <TextView android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x2" android:text="@string/confirm" style="@style/corner_textView_bg2" />
+                <TextView android:textColor="@color/white" android:gravity="center" android:background="@drawable/corner_gray" android:layout_width="@dimen/x40" android:layout_height="@dimen/y20" android:text="@string/cancel" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

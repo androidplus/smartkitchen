@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/rl_container" android:layout_width="70.0px" android:layout_height="34.0px">
+            <View android:id="@id/v_swicther" android:background="@drawable/corner_gray" android:layout_width="52.0px" android:layout_height="10.0px" android:layout_centerInParent="true" />
+            <TextView android:textSize="14.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tv_buttom" android:background="@drawable/circle_gray" android:layout_width="32.0px" android:layout_height="32.0px" android:text="" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

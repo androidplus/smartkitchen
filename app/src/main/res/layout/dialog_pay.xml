@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="wrap_content" style="@style/dialog_Container">
+        <RelativeLayout android:layout_height="80.0px" style="@style/dialog_Container_Top">
+            <TextView android:layout_marginLeft="@dimen/x90" android:text="支付" android:layout_alignParentLeft="true" style="@style/dialog_Container_Top_text" />
+            <TextView android:id="@id/tv_favorable_pay" android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x18" android:text="优惠" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/corner_textView_bg2" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" style="@style/dialog_Container_Bottom">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y5">
+                    <include layout="@layout/zhekou" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="@dimen/x220" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x8" android:layout_marginTop="@dimen/y7">
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8" android:text="总额:" />
+                        <EditText android:enabled="false" android:textSize="20.0dip" android:gravity="center" android:id="@id/et_aggregate_pay" android:background="@mipmap/shade_input" android:layout_width="@dimen/x110" android:layout_height="40.0dip" style="@style/input_style2" />
+                        <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x10">
+                            <ImageView android:id="@id/iv_cash_pay" android:tag="1" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/money" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x2" android:text="  现金  " />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x8" android:layout_marginTop="@dimen/y7">
+                        <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8" android:text="收入:" />
+                        <EditText android:textSize="20.0dip" android:gravity="center" android:id="@id/et_income_pay" android:background="@mipmap/shade_input" android:layout_width="@dimen/x110" android:layout_height="40.0dip" android:text="0.00" android:inputType="numberDecimal" style="@style/input_style2" />
+                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_combination_pay" android:visibility="gone" android:layout_width="@dimen/x110" android:layout_height="wrap_content">
+                            <ImageView android:id="@id/iv_combination_pay1" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x3" android:src="@mipmap/money" />
+                            <EditText android:enabled="false" android:textSize="18.0px" android:gravity="center" android:id="@id/et_combination_pay1" android:background="@mipmap/shade_input" android:layout_width="@dimen/x30" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x4" style="@style/input_style2" />
+                            <ImageView android:id="@id/iv_combination_pay2" android:tag="2" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:layout_marginRight="@dimen/x3" android:src="@mipmap/alipay" />
+                            <EditText android:textSize="18.0px" android:gravity="center" android:id="@id/et_combination_pay2" android:background="@mipmap/shade_input" android:layout_width="@dimen/x30" android:layout_height="wrap_content" android:layout_marginRight="1.0px" style="@style/input_style2" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x10">
+                            <ImageView android:id="@id/iv_alipay_pay" android:tag="2" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/alipay" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x1" android:text="支付宝" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x8" android:layout_marginTop="@dimen/y7">
+                        <TextView android:textColor="@color/black" android:id="@id/tv_change" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8" android:text="找零:" />
+                        <EditText android:enabled="false" android:textSize="20.0dip" android:gravity="center" android:id="@id/et_change_pay" android:background="@mipmap/shade_input" android:layout_width="@dimen/x110" android:layout_height="40.0dip" style="@style/input_style2" />
+                        <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x10">
+                            <ImageView android:id="@id/iv_wxpay_pay" android:tag="3" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/wxpay" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x1" android:text="  微信  " />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:textSize="20.0px" android:textColor="@color/Black" android:id="@id/tv_money" android:visibility="gone" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x7" android:layout_marginTop="@dimen/x5" android:text="原金额 :" style="@style/corner_textView_bg2" />
+                        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y7">
+                                <TextView android:id="@id/tv_settle_pay" android:background="@drawable/corner_blue" android:layout_height="50.0px" android:layout_marginRight="@dimen/x15" android:text="@string/confirm" style="@style/corner_textView_bg2" />
+                                <TextView android:id="@id/tv_quit_pay" android:background="@drawable/corner_gray" android:layout_height="50.0px" android:text="@string/cancel" style="@style/corner_textView_bg2" />
+                            </LinearLayout>
+                            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y8">
+                                <TextView android:textColor="@color/black" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x30" android:text="支付方式：" android:layout_weight="1.0" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="horizontal" android:id="@id/ll_pay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x7" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="组合支付" />
+                            <CheckBox android:id="@id/ck_pay" android:layout_marginLeft="@dimen/x4" style="@style/custom_checkbox" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y5">
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5">
+                            <ImageView android:id="@id/iv_cuzhika_pay" android:tag="4" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/chuzhika" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="储值卡" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5">
+                            <ImageView android:id="@id/iv_unionpay_pay" android:tag="5" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/yinlian" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="银联" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5">
+                            <ImageView android:id="@id/iv_saoyisao_pay" android:tag="6" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/saoyisao1" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="被扫" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5">
+                            <ImageView android:id="@id/iv_obligate1_pay" android:tag="7" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/pay_blank" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="预留" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:id="@id/iv_obligate2_pay" android:tag="8" android:background="@drawable/selector_pay" android:padding="@dimen/x1" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/pay_blank" />
+                            <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="预留" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/ll_zhekou_pay" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <include android:id="@id/include_pay" layout="@layout/zhekou" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

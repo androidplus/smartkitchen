@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/dialog_Container">
+        <RelativeLayout style="@style/dialog_Container_Top">
+            <TextView android:id="@id/tv_title" android:text="@string/vip_not_exist_add_yes_or_not" style="@style/dialog_Container_Top_text" />
+            <ImageView android:id="@id/iv_close" style="@style/dialog_Container_Top_img" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:layout_height="@dimen/y80" style="@style/dialog_Container_Bottom">
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@id/tv_first_button" android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x2" android:text="@string/add" style="@style/corner_textView_bg2" />
+                <TextView android:id="@id/tv_second_button" android:background="@drawable/corner_gray" android:text="@string/cancel" style="@style/corner_textView_bg2" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@mipmap/tag_dock" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:background="@color/gray" android:paddingLeft="@dimen/x5" android:paddingRight="@dimen/x5" android:layout_width="fill_parent" android:layout_height="@dimen/y20">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/two_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="菜品" android:layout_weight="2.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="数量" android:layout_weight="1.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="金额" android:layout_weight="1.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="状态" android:layout_weight="1.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/two_diver" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.baoyz.swipemenulistview.SwipeMenuListView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <View android:background="@color/gray" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:paddingTop="@dimen/y5" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/x10" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/red" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="支付状态:    " />
+                    <TextView android:textSize="14.0px" android:textColor="@color/red" android:id="@id/tv_oederright_pay" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点  单  员:  " />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_oederright_orderpersonnel" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 人    数:    " />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_orderright_peoples" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/x5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <LinearLayout android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="支付状态:    " />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="桌号:    " />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_orderright_tablenumber1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A区09桌" />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_orderright_tablenumber2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x5" android:text="A区09桌" />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_orderright_tablenumber3" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x5" android:text="A区09桌" />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_orderright_tablenumber4" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x5" android:text="A区09桌" />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_orderright_tablenumber5" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x5" android:text="A区09桌" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="备注:    " />
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_orderright_remark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:paddingLeft="@dimen/x4" android:paddingTop="@dimen/y5" android:paddingRight="@dimen/x7" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="合计：" />
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:id="@id/tv_order_total" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" />
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="项   收入: ￥" />
+        <TextView android:textSize="@dimen/x7" android:textColor="@color/white" android:id="@id/tv_order_total_money" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="0.0" android:layout_weight="1.0" />
+        <TextView android:id="@id/tv_order_add" android:background="@drawable/corner_blue" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="追加" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_order_change_table" android:background="@drawable/corner_blue" android:layout_width="100.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="桌号更改" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_order_cancel" android:background="@drawable/corner_gray" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="作废" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_income" android:background="@drawable/corner_red" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="收银" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_print" android:background="@drawable/corner_blue" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="打印" style="@style/corner_textView_bg2" />
+    </LinearLayout>
+</LinearLayout>

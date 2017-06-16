@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/tv_normal_print" android:background="@mipmap/tag_dock" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="小票打印" />
+        <TextView android:textSize="@dimen/text_size_setting" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@id/tv_kitchen_print" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="厨房打印" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="6.0">
+        <FrameLayout android:id="@id/setting_normal_print" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include layout="@layout/fragment_setting_normal_print" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/setting_kitchen_print" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include layout="@layout/fragment_setting_kitchen_print" />
+        </FrameLayout>
+    </RelativeLayout>
+    <View android:background="@mipmap/tag_dock" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+</LinearLayout>

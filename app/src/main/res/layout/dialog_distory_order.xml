@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/view" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:layout_width="@dimen/x250" android:layout_centerInParent="true" style="@style/dialog_Container">
+            <RelativeLayout style="@style/dialog_Container_Top">
+                <TextView android:id="@id/tv_title" android:text="退货" style="@style/dialog_Container_Top_text" />
+                <ImageView android:id="@id/iv_close" style="@style/dialog_Container_Top_img" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="center" style="@style/dialog_Container_Bottom">
+                <LinearLayout android:id="@id/ll_num" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x5">
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x10" android:text="@string/quantity" />
+                    <EditText android:textSize="18.0px" android:gravity="center" android:id="@id/et_distory_num" android:background="@mipmap/shade_input" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x20" android:hint="0" android:inputType="number" style="@style/input_style2" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x5">
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x10" android:text="@string/vip_comment" />
+                    <EditText android:textSize="18.0px" android:textColor="@color/black" android:textColorHint="@color/gray" android:gravity="clip_horizontal" android:id="@id/et_distory_remark" android:background="@mipmap/beizhu_bg" android:padding="@dimen/x2" android:layout_width="fill_parent" android:layout_height="@dimen/x50" android:layout_marginTop="@dimen/x5" android:layout_marginRight="@dimen/x20" android:hint="备注:" android:inputType="textMultiLine" android:textCursorDrawable="@null" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:paddingBottom="@dimen/x5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y15">
+                    <TextView android:id="@id/tv_distory_confirm" android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x2" android:text="确定" style="@style/corner_textView_bg2" />
+                    <TextView android:id="@id/tv_distory_cancel" android:background="@drawable/corner_gray" android:text="@string/cancel" style="@style/corner_textView_bg2" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

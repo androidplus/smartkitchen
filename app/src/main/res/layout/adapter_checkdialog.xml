@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/view_check" android:background="@color/gray" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:padding="@dimen/x2" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="18.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tv_check_standard" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="规格" android:layout_weight="1.0" />
+        <TextView android:textSize="18.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tv_check_former" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="库存" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="18.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tx_check_new" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="最新库存" />
+            <EditText android:textSize="18.0px" android:gravity="center" android:id="@id/et_check" android:background="@mipmap/shade_input" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:inputType="number" style="@style/input_style2" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

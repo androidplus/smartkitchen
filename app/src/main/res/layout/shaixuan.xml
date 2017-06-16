@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/corner_white" android:padding="@dimen/x2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="18.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="订单类型" />
+        <LinearLayout android:gravity="center" android:layout_gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="right" android:id="@id/ll_type" android:background="@mipmap/shade_input" android:clickable="true" android:layout_width="99.0px" android:layout_height="24.0px">
+                <TextView android:textSize="14.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tv_type" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+                <ImageView android:clickable="false" android:layout_width="20.0px" android:layout_height="20.0px" android:src="@mipmap/down_icon" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="18.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="时间" />
+        <LinearLayout android:gravity="center" android:layout_gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:layout_gravity="right" android:id="@id/ll_start_date" android:background="@mipmap/shade_input" android:layout_width="99.0px" android:layout_height="24.0px">
+                <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_start_date" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_gravity="right" android:id="@id/ll_start_time" android:background="@mipmap/shade_input" android:layout_width="99.0px" android:layout_height="24.0px">
+                <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_start_time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <ImageView android:layout_gravity="center" android:layout_width="15.0px" android:layout_height="20.0px" android:src="@mipmap/down_trink" />
+            <LinearLayout android:gravity="center" android:layout_gravity="right" android:id="@id/ll_end_date" android:background="@mipmap/shade_input" android:layout_width="99.0px" android:layout_height="24.0px">
+                <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_end_date" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_gravity="right" android:id="@id/ll_end_time" android:background="@mipmap/shade_input" android:layout_width="99.0px" android:layout_height="24.0px">
+                <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_end_time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:paddingTop="@dimen/x5" android:paddingBottom="@dimen/x5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="18.0px" android:gravity="center" android:id="@id/tv_ok" android:background="@drawable/corner_red" android:layout_width="0.0dip" android:layout_height="24.0px" android:text="@string/confirm" android:layout_weight="1.0" />
+            <TextView android:textSize="18.0px" android:gravity="center" android:id="@id/tv_cancle" android:background="@drawable/corner_gray" android:layout_width="0.0dip" android:layout_height="24.0px" android:layout_marginLeft="5.0px" android:text="@string/cancel" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="18.0px" android:textColor="@color/black" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="订单类型" />
+        <LinearLayout android:gravity="center" android:layout_gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="right" android:background="@mipmap/shade_input" android:visibility="invisible" android:layout_width="99.0px" android:layout_height="24.0px">
+                <TextView android:textSize="14.0px" android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+                <ImageView android:clickable="false" android:layout_width="20.0px" android:layout_height="20.0px" android:src="@mipmap/down_icon" />
+            </LinearLayout>
+        </LinearLayout>
+        <ListView android:layout_gravity="right" android:id="@id/listView" android:visibility="gone" android:layout_width="99.0px" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

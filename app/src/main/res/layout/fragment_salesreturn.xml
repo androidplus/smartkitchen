@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:padding="@dimen/x2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@mipmap/tag_dock" android:padding="@dimen/x5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/corner_white" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include layout="@layout/item_shop" />
+            </LinearLayout>
+            <ListView android:id="@id/sales_listView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <RelativeLayout android:background="@color/red" android:padding="@dimen/x5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:id="@id/sales_totalCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="合计：0" android:layout_centerVertical="true" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:id="@id/sales_totalMoney" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="总额：0.00" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:textSize="18.0px" android:textColor="@color/black" android:textColorHint="@color/gray" android:gravity="clip_horizontal" android:id="@id/et_salesre_return" android:background="@drawable/corner_white" android:padding="@dimen/x2" android:layout_width="fill_parent" android:layout_height="@dimen/x50" android:layout_marginTop="@dimen/x5" android:hint="备注:" android:inputType="textMultiLine" android:textCursorDrawable="@null" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x6">
+                <TextView android:textSize="@dimen/x7" android:gravity="center" android:id="@id/tv_sales_refund" android:background="@drawable/corner_blue" android:clickable="true" android:layout_width="@dimen/x35" android:layout_height="@dimen/x14" android:layout_marginRight="@dimen/x5" android:text="退款" />
+                <TextView android:textSize="@dimen/x7" android:gravity="center" android:id="@id/tv_sales_cancle" android:background="@drawable/corner_gray" android:layout_width="@dimen/x35" android:layout_height="@dimen/x14" android:text="取消" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

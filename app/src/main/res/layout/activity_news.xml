@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@mipmap/tag_dock" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:id="@id/ll_news_black" android:clickable="true" android:layout_width="@dimen/top_left_width" android:layout_height="@dimen/top_height1">
+            <ImageView android:clickable="false" android:layout_width="wrap_content" android:layout_height="26.0px" android:src="@mipmap/back" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="@color/white" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_news_information" android:background="@mipmap/tag_dock" android:paddingTop="@dimen/x5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="22.0px" android:id="@id/tv_information_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/white" android:paddingTop="@dimen/x5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="5.0">
+            <View android:background="@color/black" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <TextView android:textColor="@color/red" android:gravity="center" android:id="@id/tv_information_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x5" android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_news_takeout" android:background="@mipmap/tag_dock" android:paddingTop="@dimen/x5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:padding="@dimen/x6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="22.0px" android:id="@id/tv_takeout_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="标题" />
+        </LinearLayout>
+        <View android:background="@color/white" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/ll_news_wechat" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="3.0">
+                <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+                    <ImageView android:id="@id/img_head_portrait" android:layout_width="40.0px" android:layout_height="40.0px" android:src="@mipmap/user_head" />
+                    <TextView android:textSize="18.0px" android:id="@id/tv_customer_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+                    <TextView android:textSize="18.0px" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="   电话 :  " />
+                    <TextView android:textSize="14.0px" android:id="@id/tv_customer_phone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0px" android:text="" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="2.0">
+                <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="18.0px" android:id="@id/tv_order_time" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="下单时间：" android:layout_weight="1.0" />
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <ImageView android:id="@id/img_waimai_logo" android:layout_width="35.0px" android:layout_height="35.0px" android:layout_marginRight="@dimen/x5" android:src="@mipmap/waimai_baidu" />
+                        <LinearLayout android:gravity="center_horizontal" android:id="@id/ll_waimai_order_status" android:background="@mipmap/quantity_tag" android:layout_width="42.0px" android:layout_height="44.0px" android:layout_marginRight="15.0px">
+                            <TextView android:textSize="18.0px" android:id="@id/tv_waimai_order_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0px" android:text="预约" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="18.0px" android:id="@id/tv_service_time" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="期望送达时间:" android:layout_weight="1.0" />
+                    <TextView android:textSize="18.0px" android:id="@id/tv_waimai_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0px" android:text="已接单" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="18.0px" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="   地址 :  " />
+            <TextView android:textSize="18.0px" android:gravity="center" android:id="@id/tv_customer_address" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:background="@color/gray" android:paddingLeft="@dimen/x5" android:paddingRight="@dimen/x5" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+            <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="菜品" android:layout_weight="2.0" />
+            <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="数量" android:layout_weight="1.0" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+            <TextView android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="金额" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <ListView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <View android:background="@color/gray" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:paddingTop="@dimen/y5" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/x10" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_pay_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="支付方式:" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/x10" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0px" android:textColor="@color/black" android:id="@id/tv_waimai_add" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="备份:" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="@color/gray" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:paddingTop="@dimen/y5" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/black" android:paddingLeft="@dimen/x10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="合计：" />
+                <TextView android:textColor="@color/black" android:id="@id/tv_total" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" />
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="项   收入: ￥" />
+                <TextView android:textColor="@color/black" android:id="@id/tv_total_money" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="0.0" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@id/ll_news_button" android:paddingLeft="@dimen/x10" android:paddingTop="@dimen/y5" android:paddingRight="@dimen/x10" android:paddingBottom="@dimen/y5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/red" android:id="@id/tv_refund" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        <TextView android:id="@id/tv_order_return" android:background="@drawable/corner_blue" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="退款" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_order_turndown" android:background="@drawable/corner_gray" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="驳回" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_waimai_accept" android:background="@drawable/corner_blue" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="接单" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_waimai_disAccept" android:background="@drawable/corner_blue" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="不接单" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_qudan" android:background="@drawable/corner_blue" android:visibility="gone" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="取单" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_waimai_cancle" android:background="@drawable/corner_blue" android:layout_width="90.0px" android:layout_height="@dimen/top_height2" android:layout_marginLeft="5.0px" android:text="退出" style="@style/corner_textView_bg2" />
+    </LinearLayout>
+</LinearLayout>

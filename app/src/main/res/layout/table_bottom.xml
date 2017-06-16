@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@mipmap/tag_dock" android:paddingLeft="15.0px" android:paddingRight="15.0px" android:layout_width="fill_parent" android:layout_height="62.0px">
+        <ImageView android:background="#ff2f4050" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0px" android:src="@mipmap/number_of_people" />
+        <EditText android:textSize="18.0px" android:textColor="@color/black" android:textColorHint="@color/black" android:gravity="center" android:id="@id/et_table_people" android:background="@drawable/corner_white" android:layout_width="61.0px" android:layout_height="24.0px" android:hint="0" android:inputType="number" android:textCursorDrawable="@null" />
+        <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0px" android:layout_marginRight="35.0px" android:text="人" />
+        <LinearLayout android:gravity="center" android:layout_width="0.0dip" android:layout_height="62.0px" android:layout_weight="1.0">
+            <ImageView android:background="#ff2f4050" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0px" android:src="@mipmap/table_numbers" />
+            <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_table_people1" android:visibility="invisible" android:layout_width="61.0px" android:layout_height="24.0px" android:layout_marginRight="15.0px" android:text="A区8桌" />
+            <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_table_people2" android:visibility="invisible" android:layout_width="61.0px" android:layout_height="24.0px" android:layout_marginRight="15.0px" android:text="A区8桌" />
+            <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_table_people3" android:visibility="invisible" android:layout_width="61.0px" android:layout_height="24.0px" android:layout_marginRight="15.0px" android:text="A区8桌" />
+            <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_table_people4" android:visibility="invisible" android:layout_width="61.0px" android:layout_height="24.0px" android:layout_marginRight="15.0px" android:text="A区8桌" />
+            <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_table_people5" android:visibility="invisible" android:layout_width="61.0px" android:layout_height="24.0px" android:layout_marginRight="15.0px" android:text="A区8桌" />
+            <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_tables" android:layout_width="61.0px" android:layout_height="24.0px" android:layout_marginRight="15.0px" android:text="共0桌" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x20">
+            <TextView android:textSize="18.0px" android:textColor="@color/white" android:gravity="center" android:layout_width="wrap_content" android:layout_height="24.0px" android:text="拼桌" />
+            <com.smart.kitchen.smartkitchen.view.MySwitchButton android:id="@id/sb_table" android:layout_width="70.0px" android:layout_height="34.0px" android:layout_marginLeft="@dimen/x1" />
+        </LinearLayout>
+        <TextView android:id="@id/tv_table_confirm" android:background="@drawable/corner_blue" android:layout_marginLeft="5.0px" android:text="确认" style="@style/corner_textView_bg2" />
+        <TextView android:id="@id/tv_table_cancel" android:background="@drawable/corner_gray" android:layout_marginLeft="5.0px" android:text="取消" style="@style/corner_textView_bg2" />
+    </LinearLayout>
+</LinearLayout>

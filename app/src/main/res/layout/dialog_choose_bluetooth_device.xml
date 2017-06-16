@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_large" android:textColor="@color/white" android:gravity="center" android:background="@color/red" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/choose_bluetooth_device" />
+    <View android:background="@color/black" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="@dimen/text_size_normal" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/paired_devices" />
+    <View android:background="@color/black" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/black1" android:id="@id/tv_dialog_choose_bluetooth_device_paired_devices_empty" android:padding="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/tip_have_no_paired_device" />
+    <ListView android:id="@id/lv_dialog_choose_bluetooth_device_paired_devices" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/background_gray" android:dividerHeight="1.0dip" />
+    <View android:background="@color/bgcolor" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/text_size_normal" android:textColor="@color/black" android:id="@id/tv_dialog_choose_bluetooth_device_search_device" android:padding="16.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/search_device" />
+        <ProgressBar android:layout_gravity="center|right" android:id="@id/pb_dialog_choose_bluetooth_device_progress_bar" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" style="@android:style/Widget.ProgressBar.Small" />
+    </FrameLayout>
+    <View android:background="@color/bgcolor" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <ListView android:id="@id/lv_dialog_choose_bluetooth_device_found_devices" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/background_gray" android:dividerHeight="1.0dip" />
+    <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/black1" android:id="@id/tv_dialog_choose_bluetooth_device_found_devices_empty" android:padding="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/tip_have_no_found_bluetooth_device" />
+</LinearLayout>

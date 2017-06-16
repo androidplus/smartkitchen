@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/dialog_Container">
+        <RelativeLayout style="@style/dialog_Container_Top">
+            <ImageView android:id="@id/iv_close" style="@style/dialog_Container_Top_img" />
+            <TextView android:layout_centerHorizontal="true" android:layout_centerVertical="true" style="@style/dialog_Container_Top_text" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:layout_height="@dimen/y80" style="@style/dialog_Container_Bottom">
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="24.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tv_submit_success" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x2" android:text="提交成功！" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

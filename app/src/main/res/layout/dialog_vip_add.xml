@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="@dimen/x250" style="@style/dialog_Container">
+        <RelativeLayout style="@style/dialog_Container_Top">
+            <TextView android:text="@string/vip_adds" style="@style/dialog_Container_Top_text" />
+            <ImageView android:id="@id/iv_close" style="@style/dialog_Container_Top_img" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" style="@style/dialog_Container_Bottom">
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="会员卡号" />
+                <EditText android:textSize="14.0px" android:gravity="center" android:id="@id/vip_card" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/input_style2" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="  姓名     " />
+                <EditText android:textSize="14.0px" android:gravity="center" android:id="@id/vip_name" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/input_style2" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="  电话     " />
+                <EditText android:textSize="14.0px" android:gravity="center" android:id="@id/vip_phone" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/input_style2" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="  生日     " />
+                <EditText android:textSize="14.0px" android:gravity="center" android:id="@id/vip_birth" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/input_style2" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y5">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="      (生日请用 - 号隔开,如 :1990-01-01)" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="  地址     " />
+                <EditText android:textSize="14.0px" android:gravity="center" android:id="@id/vip_site" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/input_style2" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x5" android:text="  备注     " />
+                <EditText android:textSize="14.0px" android:gravity="center" android:id="@id/vip_extras" android:background="@mipmap/shade_input" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/input_style2" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:id="@id/btn_confirm" android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x2" android:text="@string/confirm" style="@style/corner_textView_bg2" />
+                <TextView android:id="@id/btn_cancle" android:background="@drawable/corner_gray" android:text="@string/cancel" style="@style/corner_textView_bg2" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

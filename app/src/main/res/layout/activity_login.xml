@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/activity_login" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:background="@mipmap/login_bg" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0">
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@mipmap/login_bg_middle" android:layout_width="600.0px" android:layout_height="0.0dip" android:layout_weight="3.0">
+            <TextView android:textSize="48.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y15" android:layout_marginBottom="@dimen/y20" android:text="@string/login_system" />
+            <LinearLayout android:gravity="center_vertical" android:id="@id/ll_user" android:layout_width="400.0px" android:layout_height="60.0px">
+                <ImageView android:layout_width="28.0px" android:layout_height="28.0px" android:src="@mipmap/vip" />
+                <EditText android:textColor="@color/black" android:textColorHint="@color/gray" android:id="@id/et_user" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/input_account" android:singleLine="true" android:inputType="phone" android:textCursorDrawable="@null" />
+            </LinearLayout>
+            <View android:background="@color/login_line" android:layout_width="400.0px" android:layout_height="1.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:layout_width="400.0px" android:layout_height="60.0px">
+                <ImageView android:layout_width="28.0px" android:layout_height="28.0px" android:src="@mipmap/login_locker" />
+                <EditText android:textColor="@color/black" android:textColorHint="@color/gray" android:id="@id/et_pwd" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/input_password" android:inputType="textPassword" android:textCursorDrawable="@null" />
+            </LinearLayout>
+            <View android:background="@color/login_line" android:layout_width="400.0px" android:layout_height="1.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:layout_width="400.0px" android:layout_height="@dimen/top_height">
+                <TextView android:textColor="@color/login_tips" android:id="@id/tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:textSize="34.0px" android:textColor="@color/white" android:id="@id/login_btn" android:background="@drawable/corner_red_big" android:layout_width="300.0px" android:layout_height="61.0px" android:text="@string/login" android:onClick="onLogin" />
+    </LinearLayout>
+</LinearLayout>

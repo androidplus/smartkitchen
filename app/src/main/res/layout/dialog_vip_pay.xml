@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="@dimen/x190" style="@style/dialog_Container">
+        <RelativeLayout style="@style/dialog_Container_Top">
+            <TextView android:text="@string/recharge" style="@style/dialog_Container_Top_text" />
+            <ImageView android:id="@id/iv_close" style="@style/dialog_Container_Top_img" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" style="@style/dialog_Container_Bottom">
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x11" android:layout_marginTop="@dimen/y7">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8" android:text="总额:" />
+                <EditText android:textSize="20.0dip" android:gravity="center" android:id="@id/totalMoney" android:background="@mipmap/shade_input" android:layout_width="@dimen/x100" android:layout_height="40.0dip" android:hint="0" android:inputType="numberDecimal" style="@style/input_style2" />
+                <LinearLayout android:background="@mipmap/shade_input" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/black" android:id="@id/extraMoney" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赠送 :" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x11" android:layout_marginTop="@dimen/y7">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8" android:text="收入:" />
+                <EditText android:textSize="20.0dip" android:gravity="center" android:id="@id/incomeMoney" android:background="@mipmap/shade_input" android:layout_width="@dimen/x100" android:layout_height="40.0dip" android:inputType="numberDecimal" style="@style/input_style2" />
+                <LinearLayout android:background="@mipmap/shade_input" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/black" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赠送 :" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/x11" android:layout_marginTop="@dimen/y7">
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x8" android:text="找零:" />
+                <EditText android:enabled="false" android:textSize="20.0dip" android:gravity="center" android:id="@id/restMoney" android:background="@mipmap/shade_input" android:layout_width="@dimen/x100" android:layout_height="40.0dip" style="@style/input_style2" />
+                <LinearLayout android:background="@mipmap/shade_input" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/black" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赠送 :" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <TextView android:id="@id/btn_confirm" android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x2" android:text="@string/confirm" style="@style/corner_textView_bg2" />
+                <TextView android:id="@id/btn_cancle" android:background="@drawable/corner_gray" android:text="@string/cancel" style="@style/corner_textView_bg2" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/black" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="收款方式：" android:layout_weight="1.0" />
+                <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="导购选择：" />
+                <LinearLayout android:gravity="center_vertical" android:id="@id/select_ll" android:background="@mipmap/order_type_bg" android:clickable="true" android:layout_width="120.0px" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/black" android:gravity="center" android:id="@id/select_text" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <ImageView android:clickable="false" android:layout_width="@dimen/x8" android:layout_height="@dimen/x8" android:src="@mipmap/down_icon" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/y10">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_style_money" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <ImageView android:id="@id/iv_style_money" android:padding="@dimen/x1" android:clickable="false" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/money" />
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="现金" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_style_alipay" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <ImageView android:id="@id/iv_style_alipay" android:padding="@dimen/x1" android:clickable="false" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/alipay" />
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="支付宝" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_style_wx" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <ImageView android:id="@id/iv_style_wx" android:padding="@dimen/x1" android:clickable="false" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/wxpay" />
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="微信" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_style_chizhika" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <ImageView android:id="@id/iv_style_chizhika" android:padding="@dimen/x1" android:clickable="false" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/yinlian" />
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="银联" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_style_yinlain" android:visibility="invisible" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <ImageView android:id="@id/iv_style_yinlain" android:padding="@dimen/x1" android:clickable="false" android:layout_width="@dimen/x20" android:layout_height="@dimen/x20" android:src="@mipmap/saoyisao1" />
+                    <TextView android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="被扫" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

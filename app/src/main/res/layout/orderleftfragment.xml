@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@mipmap/tag_dock" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/y20">
+            <LinearLayout android:gravity="center" android:id="@id/ll_finish" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageView android:clickable="false" android:layout_width="wrap_content" android:layout_height="26.0px" android:src="@mipmap/back" />
+            </LinearLayout>
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/two_diver" />
+            <LinearLayout android:gravity="center" android:id="@id/ll_shaixuan" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="18.0px" android:id="@id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="筛选" />
+            </LinearLayout>
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/x3" android:src="@mipmap/two_diver" />
+        </LinearLayout>
+        <View android:background="@color/gray" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:orientation="vertical" android:background="@mipmap/tag_dock" android:padding="@dimen/x3" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+                    <TextView android:textSize="18.0px" android:gravity="center" android:id="@id/tv_tangchi" android:background="@color/colorPrimary" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="堂吃" android:layout_weight="1.0" />
+                    <TextView android:textSize="18.0px" android:textColor="@color/black" android:gravity="center" android:id="@id/tv_waimai" android:background="@color/gray" android:padding="3.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="外卖" android:layout_weight="1.0" />
+                </LinearLayout>
+                <com.smart.kitchen.smartkitchen.view.SwipeRefreshView android:id="@id/swipe_container" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                    <ListView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                </com.smart.kitchen.smartkitchen.view.SwipeRefreshView>
+                <TextView android:layout_gravity="bottom" android:id="@id/tv_refresh" android:background="@drawable/corner_blue" android:layout_width="fill_parent" android:layout_height="@dimen/top_height2" android:text="刷新" style="@style/corner_textView_bg2" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

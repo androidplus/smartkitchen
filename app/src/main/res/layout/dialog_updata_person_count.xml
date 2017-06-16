@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/dialog_Container">
+        <RelativeLayout style="@style/dialog_Container_Top">
+            <TextView android:text="@string/vip_not_exist_add_yes_or_not" style="@style/dialog_Container_Top_text" />
+            <ImageView android:id="@id/iv_close" style="@style/dialog_Container_Top_img" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:background="@mipmap/white_corner_bg" android:layout_height="@dimen/y80" style="@style/dialog_Container_Bottom">
+            <EditText android:textSize="14.0px" android:gravity="center" android:id="@id/editText" android:background="@mipmap/shade_input" android:layout_width="@dimen/x80" android:layout_height="wrap_content" android:text="10" style="@style/input_style2" />
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x5">
+                <TextView android:background="@drawable/corner_blue" android:layout_marginRight="@dimen/x2" android:text="@string/vip_add" style="@style/corner_textView_bg2" />
+                <TextView android:background="@drawable/corner_gray" android:text="@string/cancel" style="@style/corner_textView_bg2" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:background="@color/white" android:paddingLeft="@dimen/x5" android:paddingRight="@dimen/x5" android:layout_width="fill_parent" android:layout_height="@dimen/top_height">
+        <TextView android:textColor="@color/black" android:gravity="center" android:id="@id/tv_order_right_caipin" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="菜品" android:layout_weight="2.0" />
+        <ImageView android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:id="@id/tv_order_right_count" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="0" android:layout_weight="1.0" />
+        <ImageView android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/one_diver" />
+        <TextView android:textColor="@color/black" android:gravity="center" android:id="@id/tv_order_right_money" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

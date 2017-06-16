@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/dialog_Container">
+        <RelativeLayout style="@style/dialog_Container_Top">
+            <TextView android:text="" style="@style/dialog_Container_Top_text" />
+            <ImageView android:id="@id/iv_close" android:src="@mipmap/hold_w" style="@style/dialog_Container_Top_img" />
+        </RelativeLayout>
+        <LinearLayout style="@style/dialog_Container_Bottom">
+            <LinearLayout android:background="@color/gray" android:padding="@dimen/x8" android:layout_width="@dimen/x140" android:layout_height="@dimen/x140">
+                <ImageView android:id="@id/iv_qr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </LinearLayout>
+            <TextView android:textSize="22.0px" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/x8" android:text="@string/please_scan_pay_code" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
