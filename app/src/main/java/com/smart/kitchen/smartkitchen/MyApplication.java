@@ -55,6 +55,7 @@ public class MyApplication extends Application {
         private ConnStateHandler() {
         }
 
+        @Override
         public void handleMessage(Message message) {
             super.handleMessage(message);
             Bundle data = message.getData();
@@ -64,11 +65,11 @@ public class MyApplication extends Application {
                     return;
                 case 33:
                     MyApplication.mConnResultObservable.setChanged();
-                    MyApplication.mConnResultObservable.notifyObservers(Integer.valueOf(33));
+                    MyApplication.mConnResultObservable.notifyObservers(33);
                     return;
                 case 34:
                     MyApplication.mConnResultObservable.setChanged();
-                    MyApplication.mConnResultObservable.notifyObservers(Integer.valueOf(34));
+                    MyApplication.mConnResultObservable.notifyObservers(34);
                     return;
                 default:
                     return;
@@ -80,14 +81,15 @@ public class MyApplication extends Application {
         private PrintFinishHandler() {
         }
 
+        @Override
         public void handleMessage(Message message) {
             super.handleMessage(message);
             Bundle data = message.getData();
             switch (data.getInt("flag")) {
                 case MyApplication.PRINTFINISHHANDLER_FLAG /*7174*/:
-                    int i = data.getInt("state", 0) & 255;
-                    LogUtils.d("inquiry_status------", i + "");
-                    if (i == 128) {
+                    int state = data.getInt("state", 0) & 0xff;
+                    LogUtils.d("inquiry_status------", state + "");
+                    if (state == 128) {
                         MyApplication.isPrintFinish = true;
                         return;
                     } else {
@@ -100,6 +102,7 @@ public class MyApplication extends Application {
         }
     }
 
+    @Override
     public void onCreate() {
         super.onCreate();
         SoundUtils.getInstance(this).init();
@@ -111,6 +114,20 @@ public class MyApplication extends Application {
         initDriver();
     }
 
+    private void initDriver() {
+        UsbManager usbManager = (UsbManager) instances.getSystemService(USB_SERVICE);
+        HsUsbPrintDriver.getInstance().setUsbManager(usbManager);
+        LabelUsbPrintDriver.getInstance().setUsbManager(usbManager);
+        Handler connStateHandler = new ConnStateHandler();
+        HsBluetoothPrintDriver.getInstance().setHandler(connStateHandler);
+        HsUsbPrintDriver.getInstance().setHandler(connStateHandler);
+        HsWifiPrintDriver.getInstance().setHandler(connStateHandler);
+        LabelBluetoothPrintDriver.getInstance().setHandler(connStateHandler);
+        LabelUsbPrintDriver.getInstance().setHandler(connStateHandler);
+        LabelWifiPrintDriver.getInstance().setHandler(connStateHandler);
+        printFinishHandler = new PrintFinishHandler();
+    }
+
     public static MyApplication getApp() {
         return instances;
     }
@@ -119,9 +136,9 @@ public class MyApplication extends Application {
         return mConnState;
     }
 
-    private void setConnState(int i) {
-        if (mConnState != i) {
-            mConnState = i;
+    private void setConnState(int connState) {
+        if (mConnState != connState) {
+            mConnState = connState;
             mConnStateObservable.setChanged();
             mConnStateObservable.notifyObservers(getConnStateString());
         }
@@ -140,7 +157,7 @@ public class MyApplication extends Application {
         connectedStr = instances.getResources().getString(R.string.connected);
         connStateConnectedString = new SpannableString(connectedStr);
         if (connectedColorSpan == null) {
-            connectedColorSpan = new ForegroundColorSpan(Color.parseColor("#00ff00"));
+            connectedColorSpan = new ForegroundColorSpan(Color.GREEN);
         }
         connStateConnectedString.setSpan(connectedColorSpan, 0, connectedStr.length(), 18);
         return connStateConnectedString;
@@ -153,20 +170,6 @@ public class MyApplication extends Application {
         } else if (!activitys.contains(activity)) {
             activitys.add(activity);
         }
-    }
-
-    private void initDriver() {
-        UsbManager usbManager = (UsbManager) instances.getSystemService(USB_SERVICE);
-        HsUsbPrintDriver.getInstance().setUsbManager(usbManager);
-        LabelUsbPrintDriver.getInstance().setUsbManager(usbManager);
-        Handler connStateHandler = new ConnStateHandler();
-        HsBluetoothPrintDriver.getInstance().setHandler(connStateHandler);
-        HsUsbPrintDriver.getInstance().setHandler(connStateHandler);
-        HsWifiPrintDriver.getInstance().setHandler(connStateHandler);
-        LabelBluetoothPrintDriver.getInstance().setHandler(connStateHandler);
-        LabelUsbPrintDriver.getInstance().setHandler(connStateHandler);
-        LabelWifiPrintDriver.getInstance().setHandler(connStateHandler);
-        printFinishHandler = new PrintFinishHandler();
     }
 
     public static void removeActivity(Activity activity) {
