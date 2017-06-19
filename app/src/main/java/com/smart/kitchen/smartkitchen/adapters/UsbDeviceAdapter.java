@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UsbDeviceAdapter extends BaseAdapter {
     private Context mContext;
-    private LayoutInflater mInflater = LayoutInflater.from(this.mContext);
+    private LayoutInflater mInflater;
     private List<UsbDevice> mList;
 
     private class ViewHolder {
@@ -25,6 +25,7 @@ public class UsbDeviceAdapter extends BaseAdapter {
     public UsbDeviceAdapter(Context context, List<UsbDevice> list) {
         this.mContext = context;
         this.mList = list;
+        mInflater = LayoutInflater.from(this.mContext);
     }
 
     public int getCount() {
