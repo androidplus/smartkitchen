@@ -305,158 +305,179 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
         }
     }
 
-    public void onItemClick(int i) {
-        String tag = ((LeftMenu) this.leftMenus.get(i)).getTag();
-        boolean z = true;
+    @Override
+    public void onItemClick(final int position) {
+        final int n2 = 2131230819;
+        final int n3 = 2;
+        final boolean selectTAG = true;
+        final String tag = leftMenus.get(position).getTag();
+        int selectIndex = -1;
         switch (tag.hashCode()) {
-            case -1846485744:
-                if (tag.equals("writeOff")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case -1572315523:
-                if (tag.equals("back_foods")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case -1097452776:
-                if (tag.equals("locker")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case -934531685:
-                if (tag.equals("repeat")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case -699592733:
-                if (tag.equals("history_order")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case 3208383:
-                if (tag.equals("hold")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case 111578632:
-                if (tag.equals("users")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case 465628774:
-                if (tag.equals("distory_foods")) {
-                    z = true;
-                    break;
-                }
-                break;
-            case 1141029527:
+            case 1141029527: {
                 if (tag.equals("get_money")) {
-                    z = false;
+                    selectIndex = 0;
                     break;
                 }
                 break;
-            case 1142956325:
+            }
+            case 1142956325: {
                 if (tag.equals("get_order")) {
-                    z = true;
+                    selectIndex = (selectTAG ? 1 : 0);
                     break;
                 }
                 break;
-            case 1985941072:
+            }
+            case -699592733: {
+                if (tag.equals("history_order")) {
+                    selectIndex = n3;
+                    break;
+                }
+                break;
+            }
+            case -1572315523: {
+                if (tag.equals("back_foods")) {
+                    selectIndex = 3;
+                    break;
+                }
+                break;
+            }
+            case 465628774: {
+                if (tag.equals("distory_foods")) {
+                    selectIndex = 4;
+                    break;
+                }
+                break;
+            }
+            case 3208383: {
+                if (tag.equals("hold")) {
+                    selectIndex = 5;
+                    break;
+                }
+                break;
+            }
+            case 111578632: {
+                if (tag.equals("users")) {
+                    selectIndex = 6;
+                    break;
+                }
+                break;
+            }
+            case 1985941072: {
                 if (tag.equals("setting")) {
-                    z = true;
+                    selectIndex = 7;
                     break;
                 }
                 break;
+            }
+            case -934531685: {
+                if (tag.equals("repeat")) {
+                    selectIndex = 8;
+                    break;
+                }
+                break;
+            }
+            case -1097452776: {
+                if (tag.equals("locker")) {
+                    selectIndex = 9;
+                    break;
+                }
+                break;
+            }
+            case -1846485744: {
+                if (tag.equals("writeOff")) {
+                    selectIndex = 10;
+                    break;
+                }
+                break;
+            }
         }
-        int x = z?1:0;
-        switch (x) {
-            case 0:
-                setSelect(0);
-                if (selectTAG != 0) {
+        switch (selectIndex) {
+            case 0: {
+                this.setSelect(0);
+                if (MainActivity.selectTAG != 0) {
                     clear();
-                    select1();
+                    this.select1();
                     this.adapter.setSelectFoodType(0);
-                    selectTAG = 0;
-                    return;
+                    MainActivity.selectTAG = 0;
+                    break;
                 }
-                return;
-            case 1:
-                if (getArea()) {
+                break;
+            }
+            case 1: {
+                if (this.getArea()) {
                     Toasts.show(this.context, "请先至设置界面选择区域");
-                    return;
-                } else {
-                    startActivity(new Intent(this, OrderActivity.class));
-                    return;
+                    break;
                 }
-//            case true:
-//                startActivity(new Intent(this, HistoryOrderActivity.class));
-//                return;
-//            case true:
-//                if (AuthorityUtil.getInstance().getRoleFlag() == 2) {
-//                    setSelect(0);
-//                    if (selectTAG != 1) {
-//                        clear();
-//                        select();
-//                        this.adapter.setSelectFoodType(0);
-//                        selectTAG = 1;
-//                        return;
-//                    }
-//                    return;
-//                }
-//                Toasts.show(this.context, getResources().getString(R.string.no_authority));
-//                return;
-//            case true:
-//                if (AuthorityUtil.getInstance().permitBreakage() || AuthorityUtil.getInstance().getRoleFlag() == 2) {
-//                    startActivity(new Intent(this, BreakageActivity.class));
-//                    return;
-//                } else {
-//                    Toasts.show(this.context, getResources().getString(R.string.no_authority));
-//                    return;
-//                }
-//            case true:
-//                if (!AuthorityUtil.getInstance().permitCheck()) {
-//                    Toasts.show(this.context, getResources().getString(R.string.no_authority));
-//                    return;
-//                } else if (SPUtils.getUserinfos2(this.context, SPUtils.SETTING_NOTIFICATIONCOUNT)) {
-//                    startActivity(new Intent(this, CheckActivity.class));
-//                    return;
-//                } else {
-//                    Toasts.show(this.context, "未开启盘点功能，前往本地设置开启");
-//                    return;
-//                }
-//            case true:
-//                startActivityForResult(new Intent(this.context, SearchActivity.class), 122);
-//                return;
-//            case true:
-//                startActivity(new Intent(this, LocalSettingActivity.class));
-//                return;
-//            case true:
-//                startActivity(new Intent(this.context, RepeatActivity.class));
-//                return;
-//            case true:
-//                Intent intent = new Intent(this, LoginActivity.class);
-//                intent.putExtra("is_main", true);
-//                startActivity(intent);
-//                return;
-//            case true:
-//                SPUtils.setUserinfo(this.context, SPUtils.IS_LOGIN, Boolean.valueOf(false));
-//                SPUtils.remove(this.context, SPUtils.SETTING_AREA);
-//                this.context.stopService(new Intent(this.context, ClientSocketService.class));
-//                startActivity(new Intent(this.context, LoginActivity.class));
-//                TestEneitys.leftMenus = null;
-//                AuthorityUtil.setInstance();
-//                finish();
-//                return;
-//            default:
-//                return;
+                this.startActivity(new Intent(this, (Class)OrderActivity.class));
+                break;
+            }
+            case 2: {
+                this.startActivity(new Intent(this, (Class)HistoryOrderActivity.class));
+                break;
+            }
+            case 3: {
+                if (AuthorityUtil.getInstance().getRoleFlag() != n3) {
+                    Toasts.show(this.context, this.getResources().getString(n2));
+                    break;
+                }
+                this.setSelect(0);
+                if (MainActivity.selectTAG != (selectTAG ? 1 : 0)) {
+                    clear();
+                    this.select();
+                    this.adapter.setSelectFoodType(0);
+                    MainActivity.selectTAG = (selectTAG ? 1 : 0);
+                    break;
+                }
+                break;
+            }
+            case 4: {
+                if (AuthorityUtil.getInstance().permitBreakage() || AuthorityUtil.getInstance().getRoleFlag() == n3) {
+                    this.startActivity(new Intent(this, (Class)BreakageActivity.class));
+                    break;
+                }
+                Toasts.show(this.context, this.getResources().getString(n2));
+                break;
+            }
+            case 5: {
+                if (!AuthorityUtil.getInstance().permitCheck()) {
+                    Toasts.show(this.context, this.getResources().getString(n2));
+                    break;
+                }
+                if (SPUtils.getUserinfos2(this.context, "NotificationCount")) {
+                    this.startActivity(new Intent(this, (Class)CheckActivity.class));
+                    break;
+                }
+                Toasts.show(this.context, "未开启盘点功能，前往本地设置开启");
+                break;
+            }
+            case 6: {
+                this.startActivityForResult(new Intent(this.context, (Class)SearchActivity.class), 122);
+                break;
+            }
+            case 7: {
+                this.startActivity(new Intent(this, (Class)LocalSettingActivity.class));
+                break;
+            }
+            case 8: {
+                this.startActivity(new Intent(this.context, (Class)RepeatActivity.class));
+                break;
+            }
+            case 9: {
+                final Intent intent = new Intent(this, (Class)LoginActivity.class);
+                intent.putExtra("is_main", selectTAG);
+                this.startActivity(intent);
+                break;
+            }
+            case 10: {
+                SPUtils.setUserinfo(this.context, "login", false);
+                SPUtils.remove(this.context, "areaSetting");
+                this.context.stopService(new Intent(this.context, (Class)ClientSocketService.class));
+                this.startActivity(new Intent(this.context, (Class)LoginActivity.class));
+                TestEneitys.leftMenus = null;
+                AuthorityUtil.setInstance();
+                this.finish();
+                break;
+            }
         }
     }
 
