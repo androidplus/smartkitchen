@@ -65,10 +65,8 @@
     <string name="confirm">确定</string>
     <string name="connect">连 接</string>
     <string name="connected">已连接</string>
-    <string name="coupon">"优惠:优惠券 抵扣 %1$s
- \u0009\u0009\u0009\u0009积分 \u0009\u0009\u0009抵扣%2$s"</string>
-    <string name="coupon_info">"优惠信息:
-"</string>
+    <string name="coupon">优惠:优惠券 抵扣 %1$s \n \t\t\t\t积分 \t\t\t抵扣%2$s</string>
+    <string name="coupon_info">优惠信息: \n</string>
     <string name="device_does_not_support_bluetooth">本机不支持蓝牙功能</string>
     <string name="eighty_percent_off">8折</string>
     <string name="fail_connect">连接失败</string>
@@ -157,18 +155,14 @@
     <string name="sixty_percent_off">6折</string>
     <string name="size">规格:</string>
     <string name="storage_inform">库存预警提醒</string>
-    <string name="string_help_text">"当前应用缺少必要权限。
-
-请点击\"设置\"-\"权限\"-打开所需权限。"</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
     <string name="success_connect">连接成功</string>
     <string name="taste">口味:</string>
     <string name="ten_percent_off">1折</string>
     <string name="test">测试</string>
     <string name="thirty_percent_off">3折</string>
-    <string name="ticket_comment">"注 : 小票logo建议使用300*200的
- jpg,bap.gif.png格式的黑白图片"</string>
-    <string name="ticket_logo">"小票
-LOGO"</string>
+    <string name="ticket_comment">注 : 小票logo建议使用300*200的\n jpg,bap.gif.png格式的黑白图片</string>
+    <string name="ticket_logo">小票\nLOGO</string>
     <string name="ticket_logo_choose">选择</string>
     <string name="time_second_diff">时间间隔(秒)</string>
     <string name="tip_choose_address">请选择设备地址</string>
