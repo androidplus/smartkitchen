@@ -57,7 +57,6 @@ import com.smart.kitchen.smartkitchen.utils.SPUtils;
 import com.smart.kitchen.smartkitchen.utils.Toasts;
 import com.smart.kitchen.smartkitchen.view.CircleView;
 import com.smart.kitchen.smartkitchen.view.MyListView;
-import com.vilyever.b.a;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -1180,7 +1179,7 @@ public class DialogUtils {
         listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
                 textView3.setText(((TableArea) list.get(i)).getArea_name());
-                textView3.setTextColor(a.a().getColor(R.color.black));
+                textView3.setTextColor(context.getResources().getColor(R.color.black));
                 linearLayout.setVisibility(View.INVISIBLE);
                 SPUtils.setUserinfo(DialogUtils.this.context, SPUtils.SETTING_AREA, ((TableArea) list.get(i)).getId() + "");
             }

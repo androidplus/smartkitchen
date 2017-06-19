@@ -4,7 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.a.a.a.a.a;
+
+import com.smart.kitchen.smartkitchen.db.MigrationHelper;
 import com.smart.kitchen.smartkitchen.utils.LogUtils;
 import de.greenrobot.dao.AbstractDaoMaster;
 import de.greenrobot.dao.identityscope.IdentityScopeType;
@@ -36,7 +37,7 @@ public class DaoMaster extends AbstractDaoMaster {
             clsArr[3] = MessageCenterDao.class;
             clsArr[5] = TableAreaDao.class;
             clsArr[6] = TableNumberDao.class;
-            a.a().a(sQLiteDatabase, clsArr);
+            MigrationHelper.init().upgrade(sQLiteDatabase, clsArr);
         }
     }
 

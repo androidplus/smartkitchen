@@ -1,35 +1,37 @@
-package com.a.a.a.a;
+package com.smart.kitchen.smartkitchen.db;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
+
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
 import de.greenrobot.dao.internal.DaoConfig;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 /* compiled from: MigrationHelper */
-public class a {
-    private static a a;
+public class MigrationHelper {
+    private static MigrationHelper MigrationHelper;
 
-    public static a a() {
-        if (a == null) {
-            a = new a();
+    public static MigrationHelper init() {
+        if (MigrationHelper == null) {
+            MigrationHelper = new MigrationHelper();
         }
-        return a;
+        return MigrationHelper;
     }
 
-    public void a(SQLiteDatabase sQLiteDatabase, Class<? extends AbstractDao<?, ?>>... clsArr) {
-        b(sQLiteDatabase, clsArr);
-        a(sQLiteDatabase, true, clsArr);
-        b(sQLiteDatabase, false, clsArr);
+    public void upgrade(SQLiteDatabase sQLiteDatabase, Class<? extends AbstractDao<?, ?>>... clsArr) {
+        updateTable(sQLiteDatabase, clsArr);
+        dropTable(sQLiteDatabase, true, clsArr);
+        createTable(sQLiteDatabase, false, clsArr);
         c(sQLiteDatabase, clsArr);
     }
 
-    private void b(SQLiteDatabase sQLiteDatabase, Class<? extends AbstractDao<?, ?>>... clsArr) {
+    private void updateTable(SQLiteDatabase sQLiteDatabase, Class<? extends AbstractDao<?, ?>>... clsArr) {
         for (Class daoConfig : clsArr) {
             DaoConfig daoConfig2 = new DaoConfig(sQLiteDatabase, daoConfig);
             String str = "";
@@ -69,13 +71,13 @@ public class a {
         }
     }
 
-    private void a(SQLiteDatabase sQLiteDatabase, boolean z, Class<? extends AbstractDao<?, ?>>... clsArr) {
+    private void dropTable(SQLiteDatabase sQLiteDatabase, boolean z, Class<? extends AbstractDao<?, ?>>... clsArr) {
         for (Class daoConfig : clsArr) {
             sQLiteDatabase.execSQL("DROP TABLE " + (z ? "IF EXISTS " : "") + "\"" + new DaoConfig(sQLiteDatabase, daoConfig).tablename + "\"");
         }
     }
 
-    private void b(SQLiteDatabase sQLiteDatabase, boolean z, Class<? extends AbstractDao<?, ?>>... clsArr) {
+    private void createTable(SQLiteDatabase sQLiteDatabase, boolean z, Class<? extends AbstractDao<?, ?>>... clsArr) {
         for (Class daoConfig : clsArr) {
             DaoConfig daoConfig2 = new DaoConfig(sQLiteDatabase, daoConfig);
             String str = "";
