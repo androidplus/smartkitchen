@@ -111,7 +111,7 @@ public class AddToGoodsAdapter extends BaseAdapter {
         viewHolder.reset();
         int i2 = 0;
         while (i2 < AddToActivity.shoppingAll.size()) {
-            if (i2 < AddToActivity.indexof && String.valueOf(((OrderGoods) AddToActivity.shoppingAll.get(i2)).getGoods().getId()).equals(String.valueOf(((Goods) this.list.get(i)).getId()))) {
+            if (i2 < AddToActivity.indexOf && String.valueOf(((OrderGoods) AddToActivity.shoppingAll.get(i2)).getGoods().getId()).equals(String.valueOf(((Goods) this.list.get(i)).getId()))) {
                 viewHolder.checked();
             }
             i2++;

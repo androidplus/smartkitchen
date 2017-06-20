@@ -64,7 +64,7 @@ public class LoginActivity extends BaseFragmentActivity implements LoginView {
     protected void initData() {
         if (SPUtils.isLogin(this.context)) {
             this.presenter.setUserName();
-            this.llUser.setVisibility(8);
+            this.llUser.setVisibility(View.GONE);
             this.loginBtn.setText("确定");
         }
     }

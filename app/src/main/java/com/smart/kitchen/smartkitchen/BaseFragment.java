@@ -22,6 +22,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initView(View view);
 
+    @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
         this.activity = getActivity();
@@ -33,8 +34,8 @@ public abstract class BaseFragment extends Fragment {
         initData();
     }
 
-    protected String getStrings(int i) {
-        return Contants.getString(this.context, i);
+    protected String getStrings(int resId) {
+        return Contants.getString(this.context, resId);
     }
 
     protected void initProgressDialog() {

@@ -77,7 +77,7 @@ public class AddToAdapter extends BaseAdapter {
         }
         viewHolder.shop_count.setText("" + ((OrderGoods) this.list.get(i)).getCount());
         viewHolder.shop_name.setText(((OrderGoods) this.list.get(i)).getGoods().getName());
-        if (i < AddToActivity.indexof) {
+        if (i < AddToActivity.indexOf) {
             viewHolder.iv_dec.setVisibility(4);
             viewHolder.iv_dec.setOnClickListener(null);
         } else {

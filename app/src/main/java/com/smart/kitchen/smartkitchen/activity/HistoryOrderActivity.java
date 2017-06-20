@@ -17,12 +17,14 @@ public class HistoryOrderActivity extends BaseFragmentActivity {
     private HistoryOrderRightFragment1 historyOrderRightFragment1;
     private HistoryOrderRightFragment2 historyOrderRightFragment2;
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_order);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
         onLeftChange();
@@ -32,11 +34,13 @@ public class HistoryOrderActivity extends BaseFragmentActivity {
         this.historyOrderLeftFragment.change();
     }
 
+    @Override
     protected void initView() {
         showLeft();
         showRight1();
     }
 
+    @Override
     protected void initEvent() {
         this.historyOrderLeftFragment.setOnDataTransmissionListener(new OnDataTransmissionListener() {
             public void dataTransmission(String str, int i) {
@@ -49,6 +53,7 @@ public class HistoryOrderActivity extends BaseFragmentActivity {
         });
     }
 
+    @Override
     protected void initData() {
     }
 

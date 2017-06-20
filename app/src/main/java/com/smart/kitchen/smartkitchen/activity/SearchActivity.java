@@ -35,12 +35,14 @@ public class SearchActivity extends BaseFragmentActivity implements SearchView {
     private VIPInfoFragment vipInfoFragmrnt;
     private VipPayFragment vipPayFragment;
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_search);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.etSearch = (EditText) findViewById(R.id.et_search);
     }
@@ -55,6 +57,7 @@ public class SearchActivity extends BaseFragmentActivity implements SearchView {
         }
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new SearchPresenter(this, this);
         this.dialogUtils = new DialogUtils(this);
@@ -77,6 +80,7 @@ public class SearchActivity extends BaseFragmentActivity implements SearchView {
         beginTransaction.commit();
     }
 
+    @Override
     protected void initData() {
     }
 
@@ -129,6 +133,7 @@ public class SearchActivity extends BaseFragmentActivity implements SearchView {
         }
     }
 
+    @Override
     public void onSuccess(VipInfo vipInfo) {
         if (vipInfo == null) {
             this.dialogUtils.showConfirm(this.etSearch, "会员不存在", new String[]{"添加", "取消"}, new OnClickListener() {
@@ -147,10 +152,12 @@ public class SearchActivity extends BaseFragmentActivity implements SearchView {
         showVipFragment(vipInfo);
     }
 
+    @Override
     public void onFial(String str) {
         LogUtils.d("vip", str);
     }
 
+    @Override
     public String getInput() {
         return this.etSearch.getText().toString().trim();
     }

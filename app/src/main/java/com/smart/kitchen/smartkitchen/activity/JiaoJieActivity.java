@@ -33,12 +33,14 @@ public class JiaoJieActivity extends BaseFragmentActivity implements JiaoJieView
     private TextView tvTime;
     private TextView tvVipPay;
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_jiao_jie);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.tvTime = (TextView) findViewById(R.id.tv_time);
         this.tvOrderCount = (TextView) findViewById(R.id.tv_order_count);
@@ -52,6 +54,7 @@ public class JiaoJieActivity extends BaseFragmentActivity implements JiaoJieView
         this.tvJiaojieQuit = (TextView) findViewById(R.id.tv_jiaojie_quit);
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new JiaoJiePresenter(this, this);
         this.tvJiaojie.setOnClickListener(new OnClickListener() {
@@ -80,18 +83,22 @@ public class JiaoJieActivity extends BaseFragmentActivity implements JiaoJieView
         finish();
     }
 
+    @Override
     protected void initData() {
         this.tvTime.setText(CalendarUtils.getNowFullTime());
         this.presenter.showInfoById();
     }
 
+    @Override
     public void onSuccess(String str) {
         complete();
     }
 
+    @Override
     public void onFail() {
     }
 
+    @Override
     public void showInfo(JiaoJieInfo jiaoJieInfo) {
         this.jiaoJieInfo = jiaoJieInfo;
         this.tvOrderCount.setText("" + jiaoJieInfo.getOrdercount());
@@ -106,6 +113,7 @@ public class JiaoJieActivity extends BaseFragmentActivity implements JiaoJieView
         }
     }
 
+    @Override
     public JiaoJieInfo getJiaoJieInfo() {
         String trim = this.etExtra.getText().toString().trim();
         if (!Contants.isEmpty(trim)) {
@@ -115,6 +123,7 @@ public class JiaoJieActivity extends BaseFragmentActivity implements JiaoJieView
         return this.jiaoJieInfo;
     }
 
+    @Override
     public UserInfo getUserInfo() {
         return this.presenter.getBeforeUserInfo();
     }

@@ -45,6 +45,7 @@ public abstract class BaseActivity extends Activity implements IRoot {
         SocketReceiver() {
         }
 
+        @Override
         public void onReceive(Context context, Intent intent) {
             String stringExtra = intent.getStringExtra("msg");
             String stringExtra2 = intent.getStringExtra("paysuccess");
@@ -58,11 +59,11 @@ public abstract class BaseActivity extends Activity implements IRoot {
         }
     }
 
-    protected abstract void initData();
+    protected abstract void initView();
 
     protected abstract void initEvent();
 
-    protected abstract void initView();
+    protected abstract void initData();
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -70,8 +71,9 @@ public abstract class BaseActivity extends Activity implements IRoot {
         setScreen();
     }
 
-    public void setContentView(int i) {
-        super.setContentView(i);
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
         initView();
         initBroadCast();
         this.dialogUtils = new DialogUtils(this);
@@ -84,21 +86,22 @@ public abstract class BaseActivity extends Activity implements IRoot {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
-    protected String getStrings(int i) {
-        return Contants.getString(this.context, i);
+    protected String getStrings(int resId) {
+        return Contants.getString(this.context, resId);
     }
 
     public void toFinish(View view) {
         finish();
     }
 
+    @Override
     public boolean dispatchTouchEvent(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == 0) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             View currentFocus = getCurrentFocus();
             if (AutoSoftUtils.isShouldHideInput(currentFocus, motionEvent)) {
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 if (inputMethodManager != null) {
-                    inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
+                    inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
                 }
             }
             return super.dispatchTouchEvent(motionEvent);
@@ -109,23 +112,25 @@ public abstract class BaseActivity extends Activity implements IRoot {
         }
     }
 
-    public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {
-        if (iArr.length <= 0 || iArr[0] != 0) {
-            onRequestPermissionsFail(i);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (grantResults.length <= 0 || grantResults[0] != 0) {
+            onRequestPermissionsFail(requestCode);
         } else {
-            haveRoot(i);
+            haveRoot(requestCode);
         }
-        super.onRequestPermissionsResult(i, strArr, iArr);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    public void haveRoot(int i) {
-        onRequestPermissionsSuccess(i);
+    @Override
+    public void haveRoot(int requestCode) {
+        onRequestPermissionsSuccess(requestCode);
     }
 
-    protected void onRequestPermissionsSuccess(int i) {
+    protected void onRequestPermissionsSuccess(int requestCode) {
     }
 
-    protected void onRequestPermissionsFail(int i) {
+    protected void onRequestPermissionsFail(int requestCode) {
         Permission.showMissingPermissionDialog(this.context);
     }
 
@@ -156,10 +161,12 @@ public abstract class BaseActivity extends Activity implements IRoot {
         }
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
     }
 
+    @Override
     protected void onPause() {
         super.onPause();
     }
@@ -248,6 +255,7 @@ public abstract class BaseActivity extends Activity implements IRoot {
         HsUsbPrintDriver.getInstance().connect(usbDevice);
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (this.socketReceiver != null) {

@@ -104,8 +104,8 @@ public class Contants {
         return context.getResources().getDrawable(i);
     }
 
-    public static String getString(Context context, int i) {
-        return context.getResources().getString(i);
+    public static String getString(Context context, int resId) {
+        return context.getResources().getString(resId);
     }
 
     public static String getName(String str) {

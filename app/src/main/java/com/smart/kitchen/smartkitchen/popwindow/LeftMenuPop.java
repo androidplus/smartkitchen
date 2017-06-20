@@ -21,7 +21,7 @@ public class LeftMenuPop {
     public PopupWindow popWindow;
 
     public interface OnItemClickListener {
-        void onItemClick(int i);
+        void onItemClick(int position);
     }
 
     public LeftMenuPop(Context context) {

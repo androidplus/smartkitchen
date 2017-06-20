@@ -32,8 +32,8 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
     public static final int MAX_ONE_PAGE = 10;
     private static final String TAG = "CheckActivity";
     public static CheckActivity checkActivity;
-    public static List<Goods> checkInfoMap = new ArrayList();
-    public static List<String> checkInfoMap_Key = new ArrayList();
+    public static List<Goods> checkInfoMap = new ArrayList<>();
+    public static List<String> checkInfoMap_Key = new ArrayList<>();
     public static List<FoodType> listTmp;
     private final int CHANGE_GOODS = 0;
     private final int CHECK_GOODS = 1;
@@ -134,6 +134,7 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
         }
     }
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_check);
@@ -141,6 +142,7 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.gridView = (MyGridView) findViewById(R.id.gridView);
         this.tvBefore = (TextView) findViewById(R.id.tv_before);
@@ -157,6 +159,7 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
         this.menuCheckBack.setOnClickListener(this);
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new CheckPresenter(this, this);
         this.gridView.setOnItemClickListener(new OnItemClickListener() {
@@ -167,6 +170,7 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
         });
     }
 
+    @Override
     protected void initData() {
         this.presenter.getGoodsListFromDB();
         this.presenter.getGoodsListFromNET();
@@ -186,6 +190,7 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
         beginTransaction.commit();
     }
 
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.menu_check_back:
@@ -204,13 +209,16 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
         }
     }
 
+    @Override
     public void onSuccess(List<FoodType> list) {
         ShowFoodType(list);
     }
 
+    @Override
     public void onFail() {
     }
 
+    @Override
     public void ShowFoodType(List<FoodType> list) {
         if (listTmp == null) {
             listTmp = new ArrayList();
@@ -221,6 +229,7 @@ public class CheckActivity extends BaseFragmentActivity implements OnClickListen
         initFoodType();
     }
 
+    @Override
     public void inFrom(String str) {
     }
 

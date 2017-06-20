@@ -44,6 +44,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         SocketReceiver() {
         }
 
+        @Override
         public void onReceive(Context context, Intent intent) {
             String stringExtra = intent.getStringExtra("msg");
             String stringExtra2 = intent.getStringExtra("paysuccess");
@@ -56,11 +57,11 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         }
     }
 
-    protected abstract void initData();
+    protected abstract void initView();
 
     protected abstract void initEvent();
 
-    protected abstract void initView();
+    protected abstract void initData();
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -81,13 +82,14 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
+    @Override
     public boolean dispatchTouchEvent(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == 0) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             View currentFocus = getCurrentFocus();
             if (AutoSoftUtils.isShouldHideInput(currentFocus, motionEvent)) {
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 if (inputMethodManager != null) {
-                    inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
+                    inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(),InputMethodManager.RESULT_UNCHANGED_SHOWN);
                 }
             }
             return super.dispatchTouchEvent(motionEvent);
@@ -102,13 +104,14 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         finish();
     }
 
-    public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {
-        if (iArr.length <= 0 || iArr[0] != 0) {
-            onRequestPermissionsFail(i);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (grantResults.length <= 0 || grantResults[0] != 0) {
+            onRequestPermissionsFail(requestCode);
         } else {
-            haveRoot(i);
+            haveRoot(requestCode);
         }
-        super.onRequestPermissionsResult(i, strArr, iArr);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     protected void initProgressDialog() {
@@ -119,18 +122,19 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         }
     }
 
-    protected String getStrings(int i) {
-        return Contants.getString(this.context, i);
+    protected String getStrings(int resId) {
+        return Contants.getString(this.context, resId);
     }
 
-    public void haveRoot(int i) {
-        onRequestPermissionsSuccess(i);
+    @Override
+    public void haveRoot(int requestCode) {
+        onRequestPermissionsSuccess(requestCode);
     }
 
-    public void receiverMessagesMain(String str) {
-        LogUtils.e(TAG, "receiverMessagesMain: " + str);
-        SoundUtils.messageNew(str);
-        receiverMessages(str);
+    public void receiverMessagesMain(String msg) {
+        LogUtils.e(TAG, "receiverMessagesMain: " + msg);
+        SoundUtils.messageNew(msg);
+        receiverMessages(msg);
     }
 
     public void receiverMessages(String str) {
@@ -220,6 +224,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         HsUsbPrintDriver.getInstance().connect(usbDevice);
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (this.socketReceiver != null) {

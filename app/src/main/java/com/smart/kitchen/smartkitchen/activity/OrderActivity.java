@@ -3,6 +3,7 @@ package com.smart.kitchen.smartkitchen.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+
 import com.smart.kitchen.smartkitchen.BaseFragmentActivity;
 import com.smart.kitchen.smartkitchen.R;
 import com.smart.kitchen.smartkitchen.fragments.OrderLeftFragment;
@@ -19,12 +20,14 @@ public class OrderActivity extends BaseFragmentActivity {
     private OrderRightFragment2 orderRightFragment2;
     private String temp = "";
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_order);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
         onLeftChange();
@@ -34,11 +37,13 @@ public class OrderActivity extends BaseFragmentActivity {
         this.orderLeftFragment.change();
     }
 
+    @Override
     protected void initView() {
         showLeft();
         showRight1();
     }
 
+    @Override
     protected void initEvent() {
         this.orderLeftFragment.setOnDataTransmissionListener(new OnDataTransmissionListener() {
             public void dataTransmission(String str, int i) {
@@ -59,6 +64,7 @@ public class OrderActivity extends BaseFragmentActivity {
         });
     }
 
+    @Override
     protected void initData() {
     }
 
@@ -95,10 +101,10 @@ public class OrderActivity extends BaseFragmentActivity {
     public void showRight2() {
         FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         hideFragment(beginTransaction);
-        if (this.orderRightFragment2 == null) {
-            this.orderRightFragment2 = new OrderRightFragment2();
-            beginTransaction.add((int) R.id.right_frag, this.orderRightFragment2);
-            this.orderRightFragment2.onListenerOnChange(new OrderRightFragment2.OnListenerOnChange() {
+        if (orderRightFragment2 == null) {
+            orderRightFragment2 = new OrderRightFragment2();
+            beginTransaction.add(R.id.right_frag, orderRightFragment2);
+            orderRightFragment2.onListenerOnChange(new OrderRightFragment2.OnListenerOnChange() {
                 public void onChange(String str) {
                     if ("onChange".equals(str)) {
                         OrderActivity.this.onLeftChange();
@@ -116,11 +122,11 @@ public class OrderActivity extends BaseFragmentActivity {
     }
 
     private void hideFragment(FragmentTransaction fragmentTransaction) {
-        if (this.orderRightFragment2 != null) {
-            fragmentTransaction.hide(this.orderRightFragment2);
+        if (orderRightFragment2 != null) {
+            fragmentTransaction.hide(orderRightFragment2);
         }
-        if (this.orderRightFragment1 != null) {
-            fragmentTransaction.hide(this.orderRightFragment1);
+        if (orderRightFragment1 != null) {
+            fragmentTransaction.hide(orderRightFragment1);
         }
     }
 }

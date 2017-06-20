@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.parser.Feature;
@@ -37,6 +38,7 @@ import com.smart.kitchen.smartkitchen.utils.FinishActivity;
 import com.smart.kitchen.smartkitchen.utils.LogUtils;
 import com.smart.kitchen.smartkitchen.utils.Toasts;
 import com.smart.kitchen.smartkitchen.view.MyGridView;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,12 +47,12 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
     public static final int MAX_ONE_PAGE = 10;
     private static final String TAG = "AddToActivity";
     public static AddToActivity addToActivity;
-    public static int indexof = 0;
+    public static int indexOf = 0;
     public static List<FoodType> listTmp;
-    public static List<OrderGoods> shoppingAll = new ArrayList();
-    public static List<OrderGoods> shoppingAllType = new ArrayList();
-    public static List<OrderGoods> shoppingCarMap = new ArrayList();
-    public static List<String> shoppingCarMap_Key = new ArrayList();
+    public static List<OrderGoods> shoppingAll = new ArrayList<>();
+    public static List<OrderGoods> shoppingAllType = new ArrayList<>();
+    public static List<OrderGoods> shoppingCarMap = new ArrayList<>();
+    public static List<String> shoppingCarMap_Key = new ArrayList<>();
     private final int CHANGE_GOODS = 1;
     private final int CHANGE_SHOP_CAR = 0;
     private MenuAdapter adapter;
@@ -75,7 +77,7 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
     };
     private ImageView ivMenuController;
     private LinearLayout ivMsg;
-    private List<LeftMenu> leftMenus = TestEneitys.getLeftMenuData();
+    private List<LeftMenu> leftMenus;
     private List<Fragment> leftMenusFragmentList;
     private List<FoodType> list;
     private LinearLayout llMenuRight;
@@ -85,7 +87,7 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
     private TextView msgCount;
     private OrderInfo orderInfo;
     private MainPresenter presenter;
-    private FragmentManager selectFM = getSupportFragmentManager();
+    private FragmentManager selectFM;
     private int totalPage = 0;
     private TextView tvBefore;
     private TextView tvNext;
@@ -216,12 +218,14 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
         shoppingAll.addAll(shoppingAllType);
     }
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.appendfood);
         addToActivity = this;
         FinishActivity.add(this);
-        this.addToFragment.setIsOk(new isOk() {
+        selectFM = getSupportFragmentManager();
+        addToFragment.setIsOk(new isOk() {
             public void isOk() {
                 if (AddToActivity.shoppingCarMap.size() == 0) {
                     Toasts.show(AddToActivity.this.context, "请先添加菜品");
@@ -232,37 +236,39 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
         });
     }
 
+    @Override
     protected void initView() {
-        this.gridView = (MyGridView) findViewById(R.id.gridView);
-        this.tvBefore = (TextView) findViewById(R.id.tv_before);
-        this.tvNext = (TextView) findViewById(R.id.tv_next);
-        this.llMenuRight = (LinearLayout) findViewById(R.id.ll_menu_right);
-        this.menuController = (LinearLayout) findViewById(R.id.menu_controller);
-        this.llSearch = (RelativeLayout) findViewById(R.id.ll_search);
-        this.llTopRight = (LinearLayout) findViewById(R.id.ll_top_right);
-        this.msgCount = (TextView) findViewById(R.id.msg_count);
-        this.ivMsg = (LinearLayout) findViewById(R.id.iv_msg);
-        this.ivMenuController = (ImageView) findViewById(R.id.iv_menu_controller);
-        this.ivMsg.setOnClickListener(this);
-        this.tvBefore.setOnClickListener(this);
-        this.tvNext.setOnClickListener(this);
-        this.ivMenuController.setImageResource(R.mipmap.back);
+        gridView = (MyGridView) findViewById(R.id.gridView);
+        tvBefore = (TextView) findViewById(R.id.tv_before);
+        tvNext = (TextView) findViewById(R.id.tv_next);
+        llMenuRight = (LinearLayout) findViewById(R.id.ll_menu_right);
+        menuController = (LinearLayout) findViewById(R.id.menu_controller);
+        llSearch = (RelativeLayout) findViewById(R.id.ll_search);
+        llTopRight = (LinearLayout) findViewById(R.id.ll_top_right);
+        msgCount = (TextView) findViewById(R.id.msg_count);
+        ivMsg = (LinearLayout) findViewById(R.id.iv_msg);
+        ivMenuController = (ImageView) findViewById(R.id.iv_menu_controller);
+        ivMsg.setOnClickListener(this);
+        tvBefore.setOnClickListener(this);
+        tvNext.setOnClickListener(this);
+        ivMenuController.setImageResource(R.mipmap.back);
     }
 
+    @Override
     protected void initEvent() {
-        this.presenter = new MainPresenter(this, this, this.progressDialog);
-        this.llSearch.setOnClickListener(new OnClickListener() {
+        presenter = new MainPresenter(this, this, this.progressDialog);
+        llSearch.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 AddToActivity.this.startActivity(new Intent(AddToActivity.this.context, SearchActivity.class));
             }
         });
-        this.gridView.setOnItemClickListener(new OnItemClickListener() {
+        gridView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
                 AddToActivity.this.adapter.setSelectFoodType(i);
                 AddToActivity.this.setSelect(((AddToActivity.this.currentIndex - 1) * 10) + i);
             }
         });
-        this.menuController.setOnClickListener(new OnClickListener() {
+        menuController.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 AddToActivity.clear();
                 AddToActivity.this.finish();
@@ -270,27 +276,33 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
         });
     }
 
+    @Override
     protected void initData() {
-        this.leftMenusFragmentList = new ArrayList();
-        for (int i = 0; i < this.leftMenus.size(); i++) {
-            this.leftMenusFragmentList.add(null);
+        leftMenus = TestEneitys.getLeftMenuData();
+        leftMenusFragmentList = new ArrayList<>();
+        for (int i = 0; i < leftMenus.size(); i++) {
+            leftMenusFragmentList.add(null);
         }
-        this.presenter.getGoodsListFromDB();
-        this.presenter.getGoodsListFromNET();
+
+        presenter.getGoodsListFromDB();
+        presenter.getGoodsListFromNET();
         receiverMessages(null);
+
         initShopData();
-        this.orderInfo = (OrderInfo) getIntent().getSerializableExtra("ORD");
+        orderInfo = (OrderInfo) getIntent().getSerializableExtra("ORD");
         shoppingAll.clear();
         shoppingAllType.clear();
-        List<OrderGoods> list = (List) JSON.parseObject(this.orderInfo.getGoodslist(), new TypeReference<List<OrderGoods>>() {
+
+        List<OrderGoods> list = JSON.parseObject(this.orderInfo.getGoodslist(), new TypeReference<List<OrderGoods>>() {
         }, new Feature[0]);
         for (int i2 = 0; i2 < list.size(); i2++) {
-            if (((OrderGoods) list.get(i2)).getStatus() != 4) {
+            if ((list.get(i2)).getStatus() != 4) {
                 shoppingAll.add(list.get(i2));
                 shoppingAllType.add(list.get(i2));
             }
         }
-        indexof = shoppingAll.size();
+        indexOf = shoppingAll.size();
+
         change();
     }
 
@@ -363,14 +375,15 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
         this.adapter.notifyDataSetChanged();
     }
 
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_before:
-                this.currentIndex--;
+                currentIndex--;
                 addData();
                 return;
             case R.id.tv_next:
-                this.currentIndex++;
+                currentIndex++;
                 addData();
                 return;
             default:
@@ -379,24 +392,24 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
     }
 
     private void initShopData() {
-        this.addToFragment = new AddToFragment();
-        getSupportFragmentManager().beginTransaction().add((int) R.id.main_frag_right, this.addToFragment);
-        FragmentTransaction beginTransaction = this.selectFM.beginTransaction();
-        beginTransaction.add(R.id.main_frag_right, this.addToFragment, "AddToFragment");
+        addToFragment = new AddToFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.main_frag_right, addToFragment);
+        FragmentTransaction beginTransaction = selectFM.beginTransaction();
+        beginTransaction.add(R.id.main_frag_right, addToFragment, "AddToFragment");
         beginTransaction.commit();
     }
 
-    private void setSelect(int i) {
+    private void setSelect(int selectedIndex) {
         FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         hideFragment(beginTransaction);
-        if (this.fragmentList.get(i) == null) {
-            LogUtils.e(TAG, "setSelect:is null " + i);
-            this.fragmentList.set(i, new AddToGoodsFragment());
-            ((AddToGoodsFragment) this.fragmentList.get(i)).setIndexPage(i);
-            beginTransaction.add((int) R.id.main_frag, (Fragment) this.fragmentList.get(i));
+        if (fragmentList.get(selectedIndex) == null) {
+            LogUtils.e(TAG, "setSelect:is null " + selectedIndex);
+            fragmentList.set(selectedIndex, new AddToGoodsFragment());
+            fragmentList.get(selectedIndex).setIndexPage(selectedIndex);
+            beginTransaction.add(R.id.main_frag, fragmentList.get(selectedIndex));
         } else {
-            LogUtils.e(TAG, "setSelect:not null " + i);
-            beginTransaction.show((Fragment) this.fragmentList.get(i));
+            LogUtils.e(TAG, "setSelect:not null " + selectedIndex);
+            beginTransaction.show(fragmentList.get(selectedIndex));
         }
         try {
             beginTransaction.commit();
@@ -418,13 +431,13 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
     private void hideFragment(FragmentTransaction fragmentTransaction) {
         int i = 0;
         for (int i2 = 0; i2 < this.leftMenus.size(); i2++) {
-            if (this.leftMenusFragmentList.get(i2) != null) {
-                fragmentTransaction.hide((Fragment) this.leftMenusFragmentList.get(i2));
+            if (leftMenusFragmentList.get(i2) != null) {
+                fragmentTransaction.hide(leftMenusFragmentList.get(i2));
             }
         }
-        while (i < this.fragmentList.size()) {
-            if (this.fragmentList.get(i) != null) {
-                fragmentTransaction.hide((Fragment) this.fragmentList.get(i));
+        while (i < fragmentList.size()) {
+            if (fragmentList.get(i) != null) {
+                fragmentTransaction.hide(fragmentList.get(i));
             }
             i++;
         }
@@ -432,7 +445,7 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
 
     public void notifyGoodsChange() {
         for (int i = 0; i < this.fragmentList.size(); i++) {
-            AddToGoodsFragment addToGoodsFragment = (AddToGoodsFragment) this.fragmentList.get(i);
+            AddToGoodsFragment addToGoodsFragment = fragmentList.get(i);
             if (addToGoodsFragment != null) {
                 Message message = new Message();
                 message.what = 1;
@@ -450,21 +463,24 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
 
     public void notifyShopCarChange() {
         LogUtils.e(TAG, "notifyShopCarChange: ");
-        if (this.addToFragment != null) {
-            this.handler.sendEmptyMessage(0);
-            if (this.addToFragment != null) {
-                this.handler.sendEmptyMessage(0);
+        if (addToFragment != null) {
+            handler.sendEmptyMessage(0);
+            if (addToFragment != null) {
+                handler.sendEmptyMessage(0);
             }
         }
     }
 
+    @Override
     public void onSuccess(List<FoodType> list) {
         ShowFoodType(list);
     }
 
+    @Override
     public void onFail() {
     }
 
+    @Override
     public void ShowFoodType(List<FoodType> list) {
         if (listTmp == null) {
             listTmp = new ArrayList();
@@ -475,11 +491,13 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
         initFoodType();
     }
 
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
         this.vipinfo = (VipInfo) getIntent().getSerializableExtra("vip");
@@ -487,9 +505,11 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
         }
     }
 
-    public void receiverMessages(String str) {
+    @Override
+    public void receiverMessages(String msg) {
     }
 
+    @Override
     public boolean onKeyDown(int i, KeyEvent keyEvent) {
         if (i == 4) {
             clear();
@@ -498,14 +518,15 @@ public class AddToActivity extends BaseFragmentActivity implements OnClickListen
         return true;
     }
 
+    @Override
     public void isSubmitIndent(String str, String str2) {
         if ("onSuccess".equals(str)) {
             finish();
             clear();
         } else if ("onAlert".equals(str)) {
-            Toasts.show(this.context, "未追加成功,请重新追加");
+            Toasts.show(context, "未追加成功,请重新追加");
         } else if ("onFailure".equals(str)) {
-            Toasts.show(this.context, "未追加成功,请重新追加");
+            Toasts.show(context, "未追加成功,请重新追加");
         }
     }
 }

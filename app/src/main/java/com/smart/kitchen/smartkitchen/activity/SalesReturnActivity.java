@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.smart.kitchen.smartkitchen.BaseFragmentActivity;
 import com.smart.kitchen.smartkitchen.BuildConfig;
 import com.smart.kitchen.smartkitchen.R;
@@ -23,6 +24,7 @@ import com.smart.kitchen.smartkitchen.utils.DoubleUtils;
 import com.smart.kitchen.smartkitchen.utils.FinishActivity;
 import com.smart.kitchen.smartkitchen.utils.SPUtils;
 import com.smart.kitchen.smartkitchen.utils.Toasts;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,12 +53,14 @@ public class SalesReturnActivity extends BaseFragmentActivity implements OnClick
     public TextView tvSales9;
     public TextView tvSettleSales;
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.dialog_sales_return);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.etAggregateSales = (EditText) findViewById(R.id.et_aggregate_sales);
         this.etIncomeSales = (EditText) findViewById(R.id.et_income_sales);
@@ -78,12 +82,14 @@ public class SalesReturnActivity extends BaseFragmentActivity implements OnClick
         this.tvQuitSales = (TextView) findViewById(R.id.tv_quit_sales);
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new SalesReturnPresenter(this.context, this);
         this.orderInfo = (OrderInfo) getIntent().getSerializableExtra("ORD");
         this.money = String.valueOf(this.orderInfo.getTotalprice());
     }
 
+    @Override
     protected void initData() {
         this.etDiscountSales.setText("10.0");
         this.tvSales10.setSelected(true);
@@ -128,6 +134,7 @@ public class SalesReturnActivity extends BaseFragmentActivity implements OnClick
         inputEdit();
     }
 
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_favorable_sales:
@@ -213,12 +220,12 @@ public class SalesReturnActivity extends BaseFragmentActivity implements OnClick
         int i;
         if (z) {
             for (i = 0; i < this.list.size(); i++) {
-                ((View) this.list.get(i)).setOnClickListener(null);
+                (this.list.get(i)).setOnClickListener(null);
             }
             return;
         }
         for (i = 0; i < this.list.size(); i++) {
-            ((View) this.list.get(i)).setOnClickListener(this);
+            (this.list.get(i)).setOnClickListener(this);
         }
     }
 
@@ -245,12 +252,14 @@ public class SalesReturnActivity extends BaseFragmentActivity implements OnClick
         return this.etAggregateSales.getText().toString().trim();
     }
 
+    @Override
     public void onFailure(String str) {
         if ("salesReturnConsumer".equals(str)) {
             Toasts.show(this.context, "网络请求失败,请重新操作");
         }
     }
 
+    @Override
     public void onSuccess(String str) {
         if ("salesReturnConsumer".equals(str)) {
             finish();
@@ -258,6 +267,7 @@ public class SalesReturnActivity extends BaseFragmentActivity implements OnClick
         }
     }
 
+    @Override
     public void onAlert(String str) {
         if ("salesReturnConsumer".equals(str)) {
             Toasts.show(this.context, "网络请求失败,请重新操作");

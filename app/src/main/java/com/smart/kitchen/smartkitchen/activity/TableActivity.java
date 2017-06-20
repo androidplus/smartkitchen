@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.parser.Feature;
@@ -44,6 +45,7 @@ import com.smart.kitchen.smartkitchen.utils.Toasts;
 import com.smart.kitchen.smartkitchen.view.MyGridView;
 import com.smart.kitchen.smartkitchen.view.MySwitchButton;
 import com.smart.kitchen.smartkitchen.view.MySwitchButton.OnChangeListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,8 +105,8 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         List stringTableName = new StringTableNumber().getStringTableName(SingletonTableNumberList.getInstance().getSelectList());
         for (int i = 0; i < SingletonTableNumberList.getInstance().getSelectList().size(); i++) {
             if (i < 5) {
-                ((TextView) tvList.get(i)).setVisibility(View.VISIBLE);
-                ((TextView) tvList.get(i)).setText((CharSequence) stringTableName.get(i));
+                tvList.get(i).setVisibility(View.VISIBLE);
+                tvList.get(i).setText((CharSequence) stringTableName.get(i));
             }
         }
         tvTables.setText("共" + SingletonTableNumberList.getInstance().getSelectList().size() + "桌");
@@ -112,16 +114,18 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
 
     public static void listClear() {
         for (int i = 0; i < tvList.size(); i++) {
-            ((TextView) tvList.get(i)).setVisibility(View.INVISIBLE);
+            tvList.get(i).setVisibility(View.INVISIBLE);
         }
     }
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_table);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.frameLayout = (FrameLayout) findViewById(R.id.main_frag);
         this.gridView = (MyGridView) findViewById(R.id.gridView);
@@ -167,11 +171,13 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         this.tvTableCancel.setOnClickListener(this);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
         receiverMessages(null);
     }
 
+    @Override
     public void onWindowFocusChanged(boolean z) {
         super.onWindowFocusChanged(z);
         if (z && this.flag == 0 && !this.TYPE.equals("OrderRight")) {
@@ -193,6 +199,7 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         }
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new TablePresenter(this.context, this, this.progressDialog);
         this.orderInfo = (OrderInfo) getIntent().getSerializableExtra("ORD");
@@ -262,6 +269,7 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         });
     }
 
+    @Override
     protected void initData() {
         this.presenter.getAreaListFromDB();
         this.presenter.getAreaListFromNET();
@@ -337,6 +345,7 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         this.adapter.notifyDataSetChanged();
     }
 
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_before:
@@ -395,48 +404,48 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
             for (int i3 = 0; i3 < size; i3++) {
                 TableNumber tableNumber = this.presenter.getTableNumber(((TableNumber) this.tableNumbers.get(i3)).getId().longValue());
                 TableNumber tableNumber2 = new TableNumber(1l);
-                tableNumber2.setId(((TableNumber) this.tableNumbers.get(i3)).getId());
-                tableNumber2.setTable_name(((TableNumber) this.tableNumbers.get(i3)).getTable_name());
-                tableNumber2.setArea_name(((TableNumber) this.tableNumbers.get(i3)).getArea_name());
-                tableNumber2.setEating_count(((TableNumber) this.tableNumbers.get(i3)).getEating_count());
+                tableNumber2.setId((this.tableNumbers.get(i3)).getId());
+                tableNumber2.setTable_name((this.tableNumbers.get(i3)).getTable_name());
+                tableNumber2.setArea_name((this.tableNumbers.get(i3)).getArea_name());
+                tableNumber2.setEating_count((this.tableNumbers.get(i3)).getEating_count());
                 tableNumber2.setTable_person(Integer.valueOf(1));
-                tableNumber2.setPid(((TableNumber) this.tableNumbers.get(i3)).getPid());
+                tableNumber2.setPid((this.tableNumbers.get(i3)).getPid());
                 tableNumber2.setTable_type_count(Integer.valueOf(intValue2));
                 int intValue3 = tableNumber.getTable_type_count().intValue() + intValue2;
-                ((TableNumber) this.tableNumbers.get(i3)).setTable_person(Integer.valueOf(1));
-                ((TableNumber) this.tableNumbers.get(i3)).setTable_type_count(Integer.valueOf(intValue3));
+                this.tableNumbers.get(i3).setTable_person(Integer.valueOf(1));
+                this.tableNumbers.get(i3).setTable_type_count(Integer.valueOf(intValue3));
                 arrayList.add(tableNumber2);
                 if (i3 == 1) {
-                    if (((TableNumber) this.tableNumbers.get(0)).getTable_type_count().intValue() <= ((TableNumber) this.tableNumbers.get(i3)).getTable_type_count().intValue()) {
-                        i2 = ((TableNumber) this.tableNumbers.get(0)).getTable_type_count().intValue();
+                    if ((this.tableNumbers.get(0)).getTable_type_count().intValue() <= tableNumbers.get(i3).getTable_type_count().intValue()) {
+                        i2 = (this.tableNumbers.get(0)).getTable_type_count().intValue();
                         i = 0;
                     } else {
-                        i2 = ((TableNumber) this.tableNumbers.get(i3)).getTable_type_count().intValue();
+                        i2 = (this.tableNumbers.get(i3)).getTable_type_count().intValue();
                         i = i3;
                     }
                 }
-                if (i2 > ((TableNumber) this.tableNumbers.get(i3)).getTable_type_count().intValue()) {
-                    i2 = ((TableNumber) this.tableNumbers.get(i3)).getTable_type_count().intValue();
+                if (i2 > tableNumbers.get(i3).getTable_type_count().intValue()) {
+                    i2 = tableNumbers.get(i3).getTable_type_count().intValue();
                     i = i3;
                 }
                 if (i3 == size - 1 && i != -1) {
-                    ((TableNumber) this.tableNumbers.get(i)).setTable_type_count(Integer.valueOf(((TableNumber) this.tableNumbers.get(i)).getTable_type_count().intValue() + intValue));
+                    tableNumbers.get(i).setTable_type_count(Integer.valueOf(tableNumbers.get(i).getTable_type_count().intValue() + intValue));
                     ((TableNumber) arrayList.get(i)).setTable_type_count(Integer.valueOf(intValue + intValue2));
                 }
             }
         } else {
-            TableNumber tableNumber3 = this.presenter.getTableNumber(((TableNumber) this.tableNumbers.get(0)).getId().longValue());
+            TableNumber tableNumber3 = this.presenter.getTableNumber(this.tableNumbers.get(0).getId().longValue());
             i = Integer.parseInt(getETTablePeople());
             TableNumber tableNumber4 = new TableNumber(0l);
-            tableNumber4.setId(((TableNumber) this.tableNumbers.get(0)).getId());
-            tableNumber4.setTable_name(((TableNumber) this.tableNumbers.get(0)).getTable_name());
-            tableNumber4.setArea_name(((TableNumber) this.tableNumbers.get(0)).getArea_name());
-            tableNumber4.setEating_count(((TableNumber) this.tableNumbers.get(0)).getEating_count());
+            tableNumber4.setId(this.tableNumbers.get(0).getId());
+            tableNumber4.setTable_name((this.tableNumbers.get(0)).getTable_name());
+            tableNumber4.setArea_name((this.tableNumbers.get(0)).getArea_name());
+            tableNumber4.setEating_count(this.tableNumbers.get(0).getEating_count());
             tableNumber4.setTable_person(Integer.valueOf(1));
-            tableNumber4.setPid(((TableNumber) this.tableNumbers.get(0)).getPid());
+            tableNumber4.setPid((this.tableNumbers.get(0)).getPid());
             tableNumber4.setTable_type_count(Integer.valueOf(i));
-            ((TableNumber) this.tableNumbers.get(0)).setTable_type_count(Integer.valueOf(tableNumber3.getTable_type_count().intValue() + i));
-            ((TableNumber) this.tableNumbers.get(0)).setTable_person(Integer.valueOf(1));
+            this.tableNumbers.get(0).setTable_type_count(Integer.valueOf(tableNumber3.getTable_type_count().intValue() + i));
+            this.tableNumbers.get(0).setTable_person(Integer.valueOf(1));
             arrayList.add(tableNumber4);
         }
         this.orderInfo.setTablenumber(JSON.toJSONString(arrayList));
@@ -445,7 +454,7 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
     private void initShopData() {
         this.shopFragment = new TableShopFragment();
         FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
-        beginTransaction.add((int) R.id.main_frag_right, this.shopFragment);
+        beginTransaction.add(R.id.main_frag_right, shopFragment);
         beginTransaction.commit();
     }
 
@@ -453,11 +462,11 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         hideFragment(beginTransaction);
         if (this.fragmentList.get(i) == null) {
-            this.fragmentList.set(i, new TableFragment());
-            ((TableFragment) this.fragmentList.get(i)).setIndexPage(i);
-            beginTransaction.add((int) R.id.main_frag, (Fragment) this.fragmentList.get(i));
+            fragmentList.set(i, new TableFragment());
+            fragmentList.get(i).setIndexPage(i);
+            beginTransaction.add(R.id.main_frag, fragmentList.get(i));
         } else {
-            beginTransaction.show((Fragment) this.fragmentList.get(i));
+            beginTransaction.show(fragmentList.get(i));
         }
         try {
             beginTransaction.commit();
@@ -469,15 +478,17 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
     private void hideFragment(FragmentTransaction fragmentTransaction) {
         for (int i = 0; i < this.fragmentList.size(); i++) {
             if (this.fragmentList.get(i) != null) {
-                fragmentTransaction.hide((Fragment) this.fragmentList.get(i));
+                fragmentTransaction.hide(this.fragmentList.get(i));
             }
         }
     }
 
+    @Override
     public void onSuccess(List<TableArea> list) {
         ShowTableArea(list);
     }
 
+    @Override
     public void onFail() {
     }
 
@@ -516,6 +527,7 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         }
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         SingletonTableNumberList.getInstance().clear();
@@ -540,6 +552,7 @@ public class TableActivity extends BaseFragmentActivity implements OnClickListen
         finishTo();
     }
 
+    @Override
     public boolean onKeyDown(int i, KeyEvent keyEvent) {
         if (i == 4) {
             finishTo();

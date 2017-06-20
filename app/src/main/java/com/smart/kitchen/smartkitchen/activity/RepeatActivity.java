@@ -39,12 +39,14 @@ public class RepeatActivity extends BaseActivity implements JiaoJieView {
     private TextView tvTime;
     private TextView tvVipPay;
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_repeat);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.llContainer = (LinearLayout) findViewById(R.id.ll_container_jiaojie);
         this.llContainer.setBackgroundColor(this.context.getResources().getColor(R.color.white));
@@ -60,6 +62,7 @@ public class RepeatActivity extends BaseActivity implements JiaoJieView {
         this.tvQuit = (TextView) findViewById(R.id.tv_jiaojie_quit);
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new JiaoJiePresenter(this, this.context);
         this.tvJiaojie.setOnClickListener(new OnClickListener() {
@@ -75,12 +78,14 @@ public class RepeatActivity extends BaseActivity implements JiaoJieView {
         });
     }
 
+    @Override
     protected void initData() {
         String nowFullTime = CalendarUtils.getNowFullTime();
         this.tvTime.setText(nowFullTime);
         this.presenter.showInfo(nowFullTime);
     }
 
+    @Override
     public void onSuccess(String str) {
         SPUtils.setUserinfo(this.context, SPUtils.NEED_JIAOJIE, Boolean.valueOf(true));
         SPUtils.setUserinfo(this.context, SPUtils.ID_JIAOJIE, str);
@@ -93,9 +98,11 @@ public class RepeatActivity extends BaseActivity implements JiaoJieView {
         finish();
     }
 
+    @Override
     public void onFail() {
     }
 
+    @Override
     public void showInfo(JiaoJieInfo jiaoJieInfo) {
         this.jiaoJieInfo = jiaoJieInfo;
         this.tvOrderCount.setText("" + jiaoJieInfo.getOrdercount());
@@ -110,6 +117,7 @@ public class RepeatActivity extends BaseActivity implements JiaoJieView {
         }
     }
 
+    @Override
     public JiaoJieInfo getJiaoJieInfo() {
         String trim = this.etExtra.getText().toString().trim();
         if (!Contants.isEmpty(trim)) {
@@ -122,6 +130,7 @@ public class RepeatActivity extends BaseActivity implements JiaoJieView {
         return this.jiaoJieInfo;
     }
 
+    @Override
     public UserInfo getUserInfo() {
         UserInfo nowUserInfo = this.presenter.getNowUserInfo();
         LogUtils.e(TAG, "getUserInfo: " + JSON.toJSONString(nowUserInfo));

@@ -28,69 +28,69 @@ public class HttpUtils {
         client.setTimeout(11000);
     }
 
-    public static void get(String str, AsyncHttpResponseHandler asyncHttpResponseHandler) {
-        client.get(str, asyncHttpResponseHandler);
+    public static void get(String url, AsyncHttpResponseHandler asyncHttpResponseHandler) {
+        client.get(url, asyncHttpResponseHandler);
     }
 
-    public static void get(String str, RequestParams requestParams, AsyncHttpResponseHandler asyncHttpResponseHandler) {
-        client.get(str, requestParams, (ResponseHandlerInterface) asyncHttpResponseHandler);
+    public static void get(String url, RequestParams requestParams, AsyncHttpResponseHandler asyncHttpResponseHandler) {
+        client.get(url, requestParams, (ResponseHandlerInterface) asyncHttpResponseHandler);
     }
 
-    public static void get(String str, JsonHttpResponseHandler jsonHttpResponseHandler) {
-        client.get(str, jsonHttpResponseHandler);
+    public static void get(String url, JsonHttpResponseHandler jsonHttpResponseHandler) {
+        client.get(url, jsonHttpResponseHandler);
     }
 
-    public static void get(String str, RequestParams requestParams, JsonHttpResponseHandler jsonHttpResponseHandler) {
-        client.get(str, requestParams, (ResponseHandlerInterface) jsonHttpResponseHandler);
+    public static void get(String url, RequestParams requestParams, JsonHttpResponseHandler jsonHttpResponseHandler) {
+        client.get(url, requestParams, (ResponseHandlerInterface) jsonHttpResponseHandler);
     }
 
-    public static void get(String str, BinaryHttpResponseHandler binaryHttpResponseHandler) {
-        client.get(str, binaryHttpResponseHandler);
+    public static void get(String url, BinaryHttpResponseHandler binaryHttpResponseHandler) {
+        client.get(url, binaryHttpResponseHandler);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, boolean z) {
-        post(context, str, requestParams, null, z);
+    public static void post(Context context, String url, RequestParams requestParams, boolean z) {
+        post(context, url, requestParams, null, z);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams) {
-        post(context, str, requestParams, null, false);
+    public static void post(Context context, String url, RequestParams requestParams) {
+        post(context, url, requestParams, null, false);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, OnResultListener onResultListener, boolean z) {
-        post(context, str, requestParams, 0, onResultListener, null, z);
+    public static void post(Context context, String url, RequestParams requestParams, OnResultListener onResultListener, boolean z) {
+        post(context, url, requestParams, 0, onResultListener, null, z);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, OnResultListener onResultListener) {
-        post(context, str, requestParams, 0, onResultListener, null, false);
+    public static void post(Context context, String url, RequestParams requestParams, OnResultListener onResultListener) {
+        post(context, url, requestParams, 0, onResultListener, null, false);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, OnResultListener onResultListener, ProgressDialog progressDialog, boolean z) {
-        post(context, str, requestParams, 0, onResultListener, progressDialog, z);
+    public static void post(Context context, String url, RequestParams requestParams, OnResultListener onResultListener, ProgressDialog progressDialog, boolean z) {
+        post(context, url, requestParams, 0, onResultListener, progressDialog, z);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, OnResultListener onResultListener, ProgressDialog progressDialog) {
-        post(context, str, requestParams, 0, onResultListener, progressDialog, false);
+    public static void post(Context context, String url, RequestParams requestParams, OnResultListener onResultListener, ProgressDialog progressDialog) {
+        post(context, url, requestParams, 0, onResultListener, progressDialog, false);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, int i, OnResultListener onResultListener, boolean z) {
-        post(context, str, requestParams, i, onResultListener, null, z);
+    public static void post(Context context, String url, RequestParams requestParams, int i, OnResultListener onResultListener, boolean z) {
+        post(context, url, requestParams, i, onResultListener, null, z);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, int i, OnResultListener onResultListener) {
-        post(context, str, requestParams, i, onResultListener, null, false);
+    public static void post(Context context, String url, RequestParams requestParams, int i, OnResultListener onResultListener) {
+        post(context, url, requestParams, i, onResultListener, null, false);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, int i, OnResultListener onResultListener, ProgressDialog progressDialog, boolean z) {
-        post(context, str, requestParams, i, onResultListener, progressDialog, null, z);
+    public static void post(Context context, String url, RequestParams requestParams, int i, OnResultListener onResultListener, ProgressDialog progressDialog, boolean z) {
+        post(context, url, requestParams, i, onResultListener, progressDialog, null, z);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, int i, OnResultListener onResultListener, ProgressDialog progressDialog) {
-        post(context, str, requestParams, i, onResultListener, progressDialog, null, false);
+    public static void post(Context context, String url, RequestParams requestParams, int i, OnResultListener onResultListener, ProgressDialog progressDialog) {
+        post(context, url, requestParams, i, onResultListener, progressDialog, null, false);
     }
 
-    public static void post(Context context, String str, RequestParams requestParams, int i, OnResultListener onResultListener, ProgressDialog progressDialog, View view, boolean z) {
+    public static void post(Context context, String url, RequestParams requestParams, int i, OnResultListener onResultListener, ProgressDialog progressDialog, View view, boolean z) {
         if (NetUtils.isConnected(context)) {
-            LogUtils.e(TAG, "post: " + str + "?" + requestParams.toString());
+            LogUtils.e(TAG, "post: " + url + "?" + requestParams.toString());
             if (view != null) {
                 view.setEnabled(false);
             }
@@ -101,12 +101,11 @@ public class HttpUtils {
             final ProgressDialog progressDialog2 = progressDialog;
             final boolean z2 = z;
             final Context context2 = context;
-            final String str2 = str;
+            final String str2 = url;
             final RequestParams requestParams2 = requestParams;
             final int i2 = i;
             final OnResultListener onResultListener2 = onResultListener;
-            client.post(str, requestParams, new TextHttpResponseHandler() {
-
+            client.post(url, requestParams, new TextHttpResponseHandler() {
 
                 @Override
                 public void onFailure(int i, Header[] headerArr, String str, Throwable th) {
@@ -161,15 +160,15 @@ public class HttpUtils {
         client.cancelRequests(context, true);
     }
 
-    public static boolean uploadFile(final Context context, String str, String str2, String str3, final ProgressDialog progressDialog) throws Exception {
+    public static boolean uploadFile(final Context context, String str, String url, String name, final ProgressDialog progressDialog) throws Exception {
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/ce.docx");
         if (file.exists()) {
             AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
             RequestParams requestParams = new RequestParams();
             requestParams.put("uploadFile", file);
-            requestParams.put("name", str3);
+            requestParams.put("name", name);
             progressDialog.setMax(Integer.parseInt(file.length() + ""));
-            asyncHttpClient.post(str2, requestParams, new AsyncHttpResponseHandler() {
+            asyncHttpClient.post(url, requestParams, new AsyncHttpResponseHandler() {
 
                 public void onProgress(long j, long j2) {
                     progressDialog.setProgress((int) (((((double) j) * 1.0d) / ((double) j2)) * 100.0d));

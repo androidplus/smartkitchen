@@ -149,12 +149,14 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
     private boolean vipTag = false;
     private String vipUserId = "";
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.dialog_pay);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.tvFavorablePay = (TextView) findViewById(R.id.tv_favorable_pay);
         this.etAggregatePay = (EditText) findViewById(R.id.et_aggregate_pay);
@@ -220,22 +222,23 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
         this.llFavorableCk = (LinearLayout) findViewById(R.id.include_pay).findViewById(R.id.ll_ck_favorable);
         this.llVip = (LinearLayout) findViewById(R.id.include_pay).findViewById(R.id.ll_ck_vip);
         this.tvMoney = (TextView) findViewById(R.id.tv_money);
-        this.conponList = new ArrayList<Conpon>();
+        this.conponList = new ArrayList<>();
         this.discountCouponAdapter = new DiscountCouponAdapter(this.conponList, this.context);
         this.lvFavorableSelect.setAdapter(this.discountCouponAdapter);
         this.lvFavorableSelect.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
                 PayActivity.this.discountCouponAdapter.setSelect(i);
-                PayActivity.this.tvTipIsnotVip.setText(((Conpon) PayActivity.this.conponList.get(i)).getName());
-                PayActivity.this.vipSelete = (Conpon) PayActivity.this.conponList.get(i);
+                PayActivity.this.tvTipIsnotVip.setText( PayActivity.this.conponList.get(i).getName());
+                PayActivity.this.vipSelete = PayActivity.this.conponList.get(i);
                 PayActivity.this.tvTipIsnotVip.setTextColor(PayActivity.this.getResources().getColor(R.color.black));
-                PayActivity.this.etFavorableVip.setText("优惠信息 : " + ((Conpon) PayActivity.this.conponList.get(i)).getDetail());
+                PayActivity.this.etFavorableVip.setText("优惠信息 : " + PayActivity.this.conponList.get(i).getDetail());
                 PayActivity.this.lvFavorableSelect.setVisibility(View.GONE);
             }
         });
-        this.payDialogUtils = new PayDialogUtils(this);
+        payDialogUtils = new PayDialogUtils(this);
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new PayPresenter(this, this.context, this.progressDialog);
         this.orderInfo = (OrderInfo) getIntent().getSerializableExtra("ORD");
@@ -243,6 +246,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
         this.presenter.getOrderPay(this.orderInfo.getOrderid());
     }
 
+    @Override
     protected void initData() {
         if (-1 != SPUtils.getUserinfos(this.context, SPUtils.SETTING_PRINT_PAPERSTYLE)) {
             this.mPapertype = SPUtils.getUserinfos(this.context, SPUtils.SETTING_PRINT_PAPERSTYLE);
@@ -398,6 +402,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
         });
     }
 
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_favorable_pay:
@@ -792,16 +797,16 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                     if (this.ckFavorable.isChecked()) {
                         setClick(true, this.listConpon);
                         this.etFavorableNumber.setEnabled(false);
-                        this.tvCouponRecord.setVisibility(0);
+                        this.tvCouponRecord.setVisibility(View.VISIBLE);
                     } else {
                         this.etAggregatePay.setText(this.money);
                         this.etIncomePay.setText(this.money);
                         setClick(false, this.listConpon);
                         this.etFavorableNumber.setEnabled(true);
-                        this.tvCouponRecord.setVisibility(4);
+                        this.tvCouponRecord.setVisibility(View.INVISIBLE);
                     }
                     if (this.useBoolean) {
-                        this.tvMoney.setVisibility(4);
+                        this.tvMoney.setVisibility(View.INVISIBLE);
                         setBalance();
                     }
                     this.useBoolean = false;
@@ -829,16 +834,16 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                     if (this.ckFavorable.isChecked()) {
                         setClick(true, this.listConpon);
                         this.etFavorableNumber.setEnabled(false);
-                        this.tvCouponRecord.setVisibility(0);
+                        this.tvCouponRecord.setVisibility(View.VISIBLE);
                     } else {
                         this.etAggregatePay.setText(this.money);
                         this.etIncomePay.setText(this.money);
                         setClick(false, this.listConpon);
                         this.etFavorableNumber.setEnabled(true);
-                        this.tvCouponRecord.setVisibility(4);
+                        this.tvCouponRecord.setVisibility(View.INVISIBLE);
                     }
                     if (this.useBoolean) {
-                        this.tvMoney.setVisibility(4);
+                        this.tvMoney.setVisibility(View.INVISIBLE);
                         setBalance();
                     }
                     this.useBoolean = false;
@@ -872,17 +877,17 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                         setClick(true, this.listVip);
                         this.etVipInfo.setEnabled(false);
                         this.ckIntegral.setClickable(false);
-                        this.tvMemberRecord.setVisibility(0);
+                        this.tvMemberRecord.setVisibility(View.VISIBLE);
                     } else {
                         this.etAggregatePay.setText(this.money);
                         this.etIncomePay.setText(this.money);
                         setClick(false, this.listVip);
                         this.etVipInfo.setEnabled(true);
                         this.ckIntegral.setClickable(true);
-                        this.tvMemberRecord.setVisibility(4);
+                        this.tvMemberRecord.setVisibility(View.INVISIBLE);
                     }
                     if (this.useBoolean) {
-                        this.tvMoney.setVisibility(4);
+                        this.tvMoney.setVisibility(View.INVISIBLE);
                         setBalance();
                     }
                     this.useBoolean = false;
@@ -911,17 +916,17 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                         setClick(true, this.listVip);
                         this.etVipInfo.setEnabled(false);
                         this.ckIntegral.setClickable(false);
-                        this.tvMemberRecord.setVisibility(0);
+                        this.tvMemberRecord.setVisibility(View.VISIBLE);
                     } else {
                         this.etAggregatePay.setText(this.money);
                         this.etIncomePay.setText(this.money);
                         setClick(false, this.listVip);
                         this.etVipInfo.setEnabled(true);
                         this.ckIntegral.setClickable(true);
-                        this.tvMemberRecord.setVisibility(4);
+                        this.tvMemberRecord.setVisibility(View.INVISIBLE);
                     }
                     if (this.useBoolean) {
-                        this.tvMoney.setVisibility(4);
+                        this.tvMoney.setVisibility(View.INVISIBLE);
                         setBalance();
                     }
                     this.useBoolean = false;
@@ -1057,22 +1062,22 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
     private void combinationPay(String str) {
         if (!this.ckPay.isChecked()) {
             try {
-                this.printUtil.delayPrint(this.context, "", (OrderInfo) JSON.parseObject(str, new TypeReference<OrderInfo>() {
+                this.printUtil.delayPrint(this.context, "",  JSON.parseObject(str, new TypeReference<OrderInfo>() {
                 }, new Feature[0]), 0);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             finish();
         } else if (this.NUMBER == 1) {
-            this.etIncomePay.setVisibility(8);
-            this.llCombinationPay.setVisibility(0);
+            this.etIncomePay.setVisibility(View.GONE);
+            this.llCombinationPay.setVisibility(View.VISIBLE);
             for (int i = 0; i < this.paylist.size(); i++) {
-                if (((View) this.paylist.get(i)).getTag().toString().equals(this.PayTypeTAG)) {
-                    this.ivCombinationPay1.setImageDrawable(((ImageView) this.paylist.get(i)).getDrawable());
+                if (( this.paylist.get(i)).getTag().toString().equals(this.PayTypeTAG)) {
+                    ivCombinationPay1.setImageDrawable(((ImageView)paylist.get(i)).getDrawable());
                     this.ivCombinationPay1.setTag(this.PayTypeTAG);
                 }
             }
-            this.differMoney = Double.valueOf(ArithmeticUtils.sub(getAggregatePayMoney(), getIncomePayMoney(), 2));
+            differMoney = Double.valueOf(ArithmeticUtils.sub(getAggregatePayMoney(), getIncomePayMoney(), 2));
             this.etCombinationPay1.setText(getIncomePayMoney());
             this.etCombinationPay2.setText(String.valueOf(this.differMoney));
             this.etCombinationPay2.setEnabled(false);
@@ -1080,7 +1085,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
             this.NUMBER = 2;
         } else {
             try {
-                this.printUtil.delayPrint(this.context, "", (OrderInfo) JSON.parseObject(str, new TypeReference<OrderInfo>() {
+                printUtil.delayPrint(context, "",  JSON.parseObject(str, new TypeReference<OrderInfo>() {
                 }, new Feature[0]), 0);
             } catch (Exception e2) {
                 e2.printStackTrace();
@@ -1093,7 +1098,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
         this.listGoods = (List) JSON.parseObject(this.orderInfo.getGoodslist(), new TypeReference<List<OrderGoods>>() {
         }, new Feature[0]);
         for (int i = 0; i < this.listGoods.size(); i++) {
-            if (((OrderGoods) this.listGoods.get(i)).getStatus() == 0) {
+            if (( listGoods.get(i)).getStatus() == 0) {
                 this.servingTag = false;
                 return;
             }
@@ -1102,7 +1107,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
 
     public void setPays(String str) {
         for (int i = 0; i < this.paylist.size(); i++) {
-            if (str == ((View) this.paylist.get(i)).getTag().toString()) {
+            if (str == ( paylist.get(i)).getTag().toString()) {
                 this.ivCombinationPay2.setImageDrawable(((ImageView) this.paylist.get(i)).getDrawable());
                 this.ivCombinationPay2.setTag(str);
             }
@@ -1193,7 +1198,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
         switch (str.hashCode()) {
             case 49:
                 if (str.equals("1")) {
-                    obj = null;
+                    obj = 0;
                     break;
                 }
                 break;
@@ -1278,12 +1283,12 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
     public void inform(String str, String str2) {
         if ("orderPayOnSuccess".equals(str)) {
             if (!(TextUtils.isEmpty(str2) || str2 == null)) {
-                OrderPayStatus orderPayStatus = (OrderPayStatus) JSON.parseObject(str2, new TypeReference<OrderPayStatus>() {
+                OrderPayStatus orderPayStatus = JSON.parseObject(str2, new TypeReference<OrderPayStatus>() {
                 }, new Feature[0]);
                 this.etAggregatePay.setText(ArithmeticUtils.sub(this.money, String.valueOf(orderPayStatus.getPayedmoney()), 2));
                 this.etIncomePay.setText(ArithmeticUtils.sub(this.money, String.valueOf(orderPayStatus.getPayedmoney()), 2));
                 this.OrderPay = true;
-                this.tvMoney.setVisibility(0);
+                this.tvMoney.setVisibility(View.VISIBLE);
                 this.tvMoney.setText("此订单为第二次支付");
             }
         } else if ("orderPayOnAlert".equals(str)) {
@@ -1312,8 +1317,8 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
         }
         if ("searchVipOnSuccess".equals(str)) {
             if ("null".equals(str2) || TextUtils.isEmpty(str2)) {
-                this.llFavorableSelect.setVisibility(8);
-                this.tvTipIsnot.setVisibility(0);
+                this.llFavorableSelect.setVisibility(View.GONE);
+                this.tvTipIsnot.setVisibility(View.VISIBLE);
                 this.etFavorableVip.setText("优惠信息 :");
                 this.tvTipIsnotVip.setText("请选择优惠");
                 this.vipTag = false;
@@ -1323,14 +1328,14 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                 this.userVip = false;
                 Toasts.show(this.context, "查询成功,不是会员");
             } else {
-                this.tvTipIsnot.setVisibility(8);
-                this.llFavorableSelect.setVisibility(0);
+                this.tvTipIsnot.setVisibility(View.GONE);
+                this.llFavorableSelect.setVisibility(View.VISIBLE);
                 this.tvTipIsnotVip.setText("请选择优惠");
                 this.tvTipIsnotVip.setTextColor(getResources().getColor(R.color.gray));
                 this.vipTag = true;
                 this.userVip = true;
                 this.conponList.clear();
-                this.vipConpon = (VipConpon) JSON.parseObject(str2, new TypeReference<VipConpon>() {
+                this.vipConpon =  JSON.parseObject(str2, new TypeReference<VipConpon>() {
                 }, new Feature[0]);
                 this.vipUserId = this.vipConpon.getUserID();
                 this.conponList.addAll(this.vipConpon.getCoupons());
@@ -1339,13 +1344,13 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                     this.tvIntegral.setText("没有可用积分");
                     this.ckIntegral.setEnabled(false);
                 } else {
-                    this.tvIntegral.setText("可用" + this.vipConpon.getPointsamount() + "积分,是否使用积分");
-                    this.ckIntegral.setEnabled(true);
+                    tvIntegral.setText("可用" + vipConpon.getPointsamount() + "积分,是否使用积分");
+                    ckIntegral.setEnabled(true);
                 }
                 if (this.conponList.size() > 0) {
-                    this.tvTipIsnotVip.setText(((Conpon) this.conponList.get(0)).getName());
-                    this.etFavorableVip.setText("优惠信息 :" + ((Conpon) this.conponList.get(0)).getName() + "," + ((Conpon) this.conponList.get(0)).getDetail());
-                    this.vipSelete = (Conpon) this.conponList.get(0);
+                    this.tvTipIsnotVip.setText(( conponList.get(0)).getName());
+                    this.etFavorableVip.setText("优惠信息 :" + ( conponList.get(0)).getName() + "," + (conponList.get(0)).getDetail());
+                    this.vipSelete =  conponList.get(0);
                 } else if (Integer.valueOf(this.vipConpon.getPointsamount()).intValue() <= 0) {
                     this.vipTag = false;
                 }
@@ -1367,26 +1372,26 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
         }
         if ("checkConponOnSuccess".equals(str)) {
             if (TextUtils.isEmpty(str2)) {
-                this.tvFavorableOk.setVisibility(0);
+                this.tvFavorableOk.setVisibility(View.VISIBLE);
                 this.tvFavorableOk.setText("该优惠券不可用,请重新选择");
                 this.couponTag = false;
                 this.etFavorableParticulars.setText("优惠信息 :");
             } else {
-                this.tvFavorableOk.setVisibility(0);
+                this.tvFavorableOk.setVisibility(View.INVISIBLE);
                 this.tvFavorableOk.setText("该优惠券可用");
                 this.couponTag = true;
-                this.conpon = (Conpon) JSON.parseObject(str2, new TypeReference<Conpon>() {
+                this.conpon = JSON.parseObject(str2, new TypeReference<Conpon>() {
                 }, new Feature[0]);
                 this.etFavorableParticulars.setText("优惠信息 :" + this.conpon.getName() + "," + this.conpon.getDetail());
             }
         } else if ("checkConponOnAlert".equals(str)) {
-            this.tvFavorableOk.setVisibility(4);
+            this.tvFavorableOk.setVisibility(View.INVISIBLE);
             Toasts.show(this.context, "该优惠券不可用,请重新选择");
             this.tvFavorableOk.setText("该优惠券不可用");
             this.etFavorableParticulars.setText("优惠信息 :");
             this.couponTag = false;
         } else if ("checkConponOnFailure".equals(str)) {
-            this.tvFavorableOk.setVisibility(4);
+            this.tvFavorableOk.setVisibility(View.INVISIBLE);
             this.couponTag = false;
             Toasts.show(this.context, "网络请求失败,请重新请求");
             this.tvFavorableOk.setText("查询失败,请重新查询");
@@ -1397,7 +1402,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                 Toasts.show(this.context, "计算失败,请重新点击查询");
                 this.tvQuery.setText("计算金额");
                 this.tvQuery.setBackgroundResource(R.drawable.corner_gray);
-                this.tvMoney.setVisibility(8);
+                this.tvMoney.setVisibility(View.GONE);
                 this.etAggregatePay.setText(this.money);
                 this.etIncomePay.setText(this.money);
                 this.favorableMoney = "";
@@ -1407,7 +1412,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
                 this.etIncomePay.setText(str2);
                 this.tvQuery.setText("计算成功");
                 this.tvQuery.setBackgroundResource(R.drawable.corner_red);
-                this.tvMoney.setVisibility(0);
+                this.tvMoney.setVisibility(View.VISIBLE);
                 this.tvMoney.setText("原金额 :" + this.money);
                 this.favorableMoney = str2;
                 this.useBoolean = true;
@@ -1416,7 +1421,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
             Toasts.show(this.context, "请求失败,请重新点击查询");
             this.tvQuery.setText("计算金额");
             this.tvQuery.setBackgroundResource(R.drawable.corner_gray);
-            this.tvMoney.setVisibility(8);
+            this.tvMoney.setVisibility(View.GONE);
             this.etAggregatePay.setText(this.money);
             this.etIncomePay.setText(this.money);
             this.favorableMoney = "";
@@ -1425,7 +1430,7 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
             Toasts.show(this.context, "请求失败,请重新点击查询");
             this.tvQuery.setText("计算金额");
             this.tvQuery.setBackgroundResource(R.drawable.corner_gray);
-            this.tvMoney.setVisibility(8);
+            this.tvMoney.setVisibility(View.GONE);
             this.etAggregatePay.setText(this.money);
             this.etIncomePay.setText(this.money);
             this.favorableMoney = "";

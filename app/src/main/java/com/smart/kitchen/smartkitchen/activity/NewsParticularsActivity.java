@@ -68,12 +68,14 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
     private TextView tvWaimaiOrderStatus;
     private TextView tvWaimaiStatus;
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_news);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.imgHeadPortrait = (ImageView) findViewById(R.id.img_head_portrait);
         this.tvCustomerName = (TextView) findViewById(R.id.tv_customer_name);
@@ -107,6 +109,7 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
         this.tvQudan = (TextView) findViewById(R.id.tv_qudan);
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new NewsParticularsPresenter(this.context, this, this.progressDialog);
         this.center = (MessageCenter) getIntent().getSerializableExtra("MessageCenter");
@@ -122,18 +125,20 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
                 this.presenter.takeOut(this.center.getMsg_id() + "");
             }
             if (this.center.getMsg_type().intValue() == 9) {
-                this.llNewsInformation.setVisibility(0);
-                this.llNewsTakeout.setVisibility(8);
+                this.llNewsInformation.setVisibility(View.VISIBLE);
+                this.llNewsTakeout.setVisibility(View.GONE);
                 this.tvInformationContent.setText(this.center.getMsg_content());
             }
         }
     }
 
+    @Override
     protected void initData() {
         this.mAdapter = new NewsParticularsAdapter(this.context, this.mList);
         this.mListView.setAdapter(this.mAdapter);
     }
 
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_news_black:
@@ -179,28 +184,28 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
         }
     }
 
-    private void showrejectRefundBtn() {
+    private void showRejectRefundBtn() {
         if (this.orderInfo.getIs_need_refund() == 1 && this.orderInfo.getRefund_opera() == 0) {
-            this.tvOrderReturn.setVisibility(0);
-            this.tvOrderTurndown.setVisibility(0);
+            this.tvOrderReturn.setVisibility(View.VISIBLE);
+            this.tvOrderTurndown.setVisibility(View.VISIBLE);
             return;
         }
         this.tvRefund.setText("");
-        this.tvOrderReturn.setVisibility(8);
-        this.tvOrderTurndown.setVisibility(8);
+        this.tvOrderReturn.setVisibility(View.GONE);
+        this.tvOrderTurndown.setVisibility(View.GONE);
     }
 
     public void onSuccess(int i, String str) {
         switch (i) {
             case 0:
-                this.orderInfo = (OrderInfo) JSON.parseObject(str, new TypeReference<OrderInfo>() {
+                orderInfo =  JSON.parseObject(str, new TypeReference<OrderInfo>() {
                 }, new Feature[0]);
-                showrejectRefundBtn();
-                List list = (List) JSON.parseObject(this.orderInfo.getGoodslist(), new TypeReference<List<OrderGoods>>() {
+                showRejectRefundBtn();
+                List<OrderGoods> list = JSON.parseObject(orderInfo.getGoodslist(), new TypeReference<List<OrderGoods>>() {
                 }, new Feature[0]);
                 if (this.center.getMsg_type().intValue() != 9) {
-                    this.llNewsTakeout.setVisibility(0);
-                    this.llNewsInformation.setVisibility(8);
+                    this.llNewsTakeout.setVisibility(View.VISIBLE);
+                    this.llNewsInformation.setVisibility(View.GONE);
                     this.tvTakeoutTitle.setText(this.center.getMsg_content());
                     if (this.center.getMsg_type().intValue() == 0 || this.center.getMsg_type().intValue() == 5) {
                         this.tvCustomerName.setText("订单号 :" + this.orderInfo.getOrderid());
@@ -209,11 +214,11 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
                         } else {
                             this.tvOrderTime.setText("下单时间 :");
                         }
-                        this.imgWaimaiLogo.setVisibility(8);
-                        this.llWaimaiOrderStatus.setVisibility(8);
-                        this.tvCustomerPhone.setVisibility(4);
-                        this.tvQudan.setVisibility(0);
-                        List<TableNumber> list2 = (List) JSON.parseObject(this.orderInfo.getTablenumber(), new TypeReference<List<TableNumber>>() {
+                        this.imgWaimaiLogo.setVisibility(View.GONE);
+                        this.llWaimaiOrderStatus.setVisibility(View.GONE);
+                        this.tvCustomerPhone.setVisibility(View.INVISIBLE);
+                        this.tvQudan.setVisibility(View.VISIBLE);
+                        List<TableNumber> list2 = JSON.parseObject(this.orderInfo.getTablenumber(), new TypeReference<List<TableNumber>>() {
                         }, new Feature[0]);
                         StringBuffer stringBuffer = new StringBuffer();
                         if (list2.size() > 1) {
@@ -235,21 +240,21 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
                         this.tvTotal.setText(list.size() + "");
                         this.tvTotalMoney.setText(this.orderInfo.getTotalprice() + "");
                         this.tvWaimaiAccept.setVisibility(View.GONE);
-                        this.tvWaimaiDisAccept.setVisibility(8);
+                        this.tvWaimaiDisAccept.setVisibility(View.GONE);
                     } else if (this.center.getMsg_type().intValue() == 1 || this.center.getMsg_type().intValue() == 2 || this.center.getMsg_type().intValue() == 3 || this.center.getMsg_type().intValue() == 4) {
                         if (this.center.getFlag().intValue() == 8) {
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                             if (this.orderInfo.getIs_need_refund() != 1) {
                                 this.tvRefund.setText("");
-                                this.tvOrderReturn.setVisibility(8);
-                                this.tvOrderTurndown.setVisibility(8);
+                                this.tvOrderReturn.setVisibility(View.GONE);
+                                this.tvOrderTurndown.setVisibility(View.GONE);
                             } else if (this.orderInfo.getRefund_opera() == 0) {
-                                this.tvOrderReturn.setVisibility(0);
-                                this.tvOrderTurndown.setVisibility(0);
+                                this.tvOrderReturn.setVisibility(View.VISIBLE);
+                                this.tvOrderTurndown.setVisibility(View.VISIBLE);
                             } else {
-                                this.tvOrderReturn.setVisibility(8);
-                                this.tvOrderTurndown.setVisibility(8);
+                                this.tvOrderReturn.setVisibility(View.GONE);
+                                this.tvOrderTurndown.setVisibility(View.GONE);
                                 if (this.orderInfo.getRefund_res() == 0) {
                                     this.tvRefund.setText("已接受该订单退款");
                                 } else if (this.orderInfo.getRefund_res() == 1) {
@@ -257,8 +262,8 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
                                 }
                             }
                         }
-                        this.tvQudan.setVisibility(8);
-                        DeliverySite deliverySite = (DeliverySite) JSON.parseObject(this.orderInfo.getUserinfo(), new TypeReference<DeliverySite>() {
+                        this.tvQudan.setVisibility(View.GONE);
+                        DeliverySite deliverySite = JSON.parseObject(this.orderInfo.getUserinfo(), new TypeReference<DeliverySite>() {
                         }, new Feature[0]);
                         this.tvCustomerName.setText(deliverySite.getReceiver());
                         if (this.orderInfo.getOrderdate() != null) {
@@ -276,53 +281,53 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
                             this.imgWaimaiLogo.setImageResource(R.mipmap.waimai_baidu);
                         }
                         if (this.orderInfo.getIs_yuyue().intValue() == 0) {
-                            this.llWaimaiOrderStatus.setVisibility(4);
+                            this.llWaimaiOrderStatus.setVisibility(View.INVISIBLE);
                         }
                         this.tvCustomerPhone.setText(deliverySite.getReceiverphone());
                         this.tvCustomerAddress.setText(deliverySite.getAddress());
                         if (this.orderInfo.getWant_time() != null) {
-                            this.tvServiceTime.setVisibility(0);
+                            this.tvServiceTime.setVisibility(View.VISIBLE);
                             this.tvServiceTime.setText("期望送达时间 :" + this.orderInfo.getWant_time());
                         } else {
-                            this.tvServiceTime.setVisibility(0);
+                            this.tvServiceTime.setVisibility(View.VISIBLE);
                             this.tvServiceTime.setText("期望送达时间 :");
                         }
                         if ("0".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("未接单");
-                            this.tvWaimaiAccept.setVisibility(0);
-                            this.tvWaimaiDisAccept.setVisibility(0);
+                            this.tvWaimaiAccept.setVisibility(View.VISIBLE);
+                            this.tvWaimaiDisAccept.setVisibility(View.VISIBLE);
                         } else if ("1".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("已接单");
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         } else if ("2".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("配送中");
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         } else if ("3".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("已完成");
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         } else if ("4".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("已退货");
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         } else if ("5".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("没有接单");
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         } else if ("6".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("已驳回");
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         } else if ("9".equals(this.orderInfo.getOrderstatus())) {
                             this.tvWaimaiStatus.setText("已作废");
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         }
                         if (this.center.getMsg_type().intValue() == 5) {
-                            this.tvWaimaiAccept.setVisibility(8);
-                            this.tvWaimaiDisAccept.setVisibility(8);
+                            this.tvWaimaiAccept.setVisibility(View.GONE);
+                            this.tvWaimaiDisAccept.setVisibility(View.GONE);
                         }
                         if (this.orderInfo.getPay_style() != null) {
                             this.tvPayType.setText("支付方式 :" + this.orderInfo.getPay_style());
@@ -341,8 +346,8 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
                     return;
                 } else if (this.center.getMsg_type().intValue() == 9) {
                     this.tvInformationTitle.setText("库存预警");
-                    this.llNewsInformation.setVisibility(0);
-                    this.llNewsTakeout.setVisibility(8);
+                    this.llNewsInformation.setVisibility(View.VISIBLE);
+                    this.llNewsTakeout.setVisibility(View.GONE);
                     this.tvInformationContent.setText(this.center.getMsg_content());
                     return;
                 } else {
@@ -370,12 +375,13 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
         }
     }
 
+    @Override
     public void onAlert(int i, String str) {
         switch (i) {
             case 0:
-                this.llNewsInformation.setVisibility(0);
-                this.llNewsTakeout.setVisibility(8);
-                this.llNewsButton.setVisibility(4);
+                this.llNewsInformation.setVisibility(View.VISIBLE);
+                this.llNewsTakeout.setVisibility(View.GONE);
+                this.llNewsButton.setVisibility(View.INVISIBLE);
                 this.tvInformationTitle.setText("查询不到该订单");
                 return;
             case 1:
@@ -392,22 +398,23 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
         }
     }
 
+    @Override
     public void onFailure(int i, String str) {
         switch (i) {
             case 0:
-                this.llNewsInformation.setVisibility(0);
-                this.llNewsTakeout.setVisibility(8);
-                this.llNewsButton.setVisibility(4);
+                this.llNewsInformation.setVisibility(View.VISIBLE);
+                this.llNewsTakeout.setVisibility(View.GONE);
+                this.llNewsButton.setVisibility(View.INVISIBLE);
                 this.tvInformationTitle.setText("消息加载失败");
                 return;
             case 1:
                 Toasts.show(this.context, "网络发生错误,请重新发送");
                 return;
             case 6:
-                Toasts.showShort(this.context, (CharSequence) "网络请求失败");
+                Toasts.showShort(this.context, "网络请求失败");
                 return;
             case 7:
-                Toasts.showShort(this.context, (CharSequence) "网络请求失败");
+                Toasts.showShort(this.context, "网络请求失败");
                 return;
             default:
                 return;

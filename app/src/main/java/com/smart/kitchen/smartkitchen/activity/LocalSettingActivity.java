@@ -37,6 +37,7 @@ public class LocalSettingActivity extends BaseFragmentActivity implements LocalS
             super(list, fragmentManager);
         }
 
+        @Override
         public Fragment getItem(int i, String str) {
             if (str.equals("打印设置")) {
                 return LocalSettingActivity.this.settingPrintFrangment;
@@ -47,17 +48,20 @@ public class LocalSettingActivity extends BaseFragmentActivity implements LocalS
             return null;
         }
 
+        @Override
         public CharSequence getPageTitle(int i) {
-            return (CharSequence) getData().get(i);
+            return getData().get(i);
         }
     }
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_local_setting);
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.tabTitle = (TabLayout) findViewById(R.id.activity_setting_tab);
         this.viewPager = (ViewPager) findViewById(R.id.fragment_setting_vp);
@@ -73,6 +77,7 @@ public class LocalSettingActivity extends BaseFragmentActivity implements LocalS
         this.tabTitle.setupWithViewPager(this.viewPager);
     }
 
+    @Override
     protected void initEvent() {
         this.imgBack.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
@@ -81,11 +86,13 @@ public class LocalSettingActivity extends BaseFragmentActivity implements LocalS
         });
     }
 
+    @Override
     protected void initData() {
         this.presenter = new LocalSettingPresenter(this.context, this);
         this.presenter.getTableAreaFromNET();
     }
 
+    @Override
     public void ShowTableArea(List<TableArea> list) {
         this.settingOtherFragment.upDateArea(list);
     }

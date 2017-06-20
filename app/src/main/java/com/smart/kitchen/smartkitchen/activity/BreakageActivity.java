@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.smart.kitchen.smartkitchen.BaseFragmentActivity;
 import com.smart.kitchen.smartkitchen.R;
 import com.smart.kitchen.smartkitchen.adapters.MenuAdapter;
@@ -24,6 +25,7 @@ import com.smart.kitchen.smartkitchen.mvp.view.BreakageView;
 import com.smart.kitchen.smartkitchen.utils.FinishActivity;
 import com.smart.kitchen.smartkitchen.utils.LogUtils;
 import com.smart.kitchen.smartkitchen.view.MyGridView;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,8 +35,8 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
     private static final String TAG = "BreakageActivity";
     public static BreakageActivity breakageActivity;
     public static List<FoodType> listTmp;
-    public static List<OrderGoods> shoppingCarMap = new ArrayList();
-    public static List<String> shoppingCarMap_Key = new ArrayList();
+    public static List<OrderGoods> shoppingCarMap = new ArrayList<>();
+    public static List<String> shoppingCarMap_Key = new ArrayList<>();
     private final int CHANGE_GOODS = 1;
     private final int CHANGE_SHOP_CAR = 0;
     private MenuAdapter adapter;
@@ -75,17 +77,18 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         if (shoppingCarMap.size() > 0) {
             i = 0;
             while (i < shoppingCarMap.size()) {
-                if (orderGoods.getGoods().getId().equals(((OrderGoods) shoppingCarMap.get(i)).getGoods().getId()) && orderGoods.getGoodsize().getId().equals(((OrderGoods) shoppingCarMap.get(i)).getGoodsize().getId())) {
-                    if (orderGoods.getGoodtaste() != null && ((OrderGoods) shoppingCarMap.get(i)).getGoodtaste() == null) {
+                if (orderGoods.getGoods().getId().equals((shoppingCarMap.get(i)).getGoods().getId())
+                        && orderGoods.getGoodsize().getId().equals((shoppingCarMap.get(i)).getGoodsize().getId())) {
+                    if (orderGoods.getGoodtaste() != null && (shoppingCarMap.get(i)).getGoodtaste() == null) {
                         return;
                     }
-                    if (orderGoods.getGoodtaste() != null || ((OrderGoods) shoppingCarMap.get(i)).getGoodtaste() == null) {
-                        if (orderGoods.getGoodtaste() == null && ((OrderGoods) shoppingCarMap.get(i)).getGoodtaste() == null) {
-                            orderGoods2 = (OrderGoods) shoppingCarMap.get(i);
+                    if (orderGoods.getGoodtaste() != null || (shoppingCarMap.get(i)).getGoodtaste() == null) {
+                        if (orderGoods.getGoodtaste() == null && (shoppingCarMap.get(i)).getGoodtaste() == null) {
+                            orderGoods2 = shoppingCarMap.get(i);
                             obj = 1;
                             break;
-                        } else if (orderGoods.getGoodtaste().getId().equals(((OrderGoods) shoppingCarMap.get(i)).getGoodtaste().getId())) {
-                            orderGoods2 = (OrderGoods) shoppingCarMap.get(i);
+                        } else if (orderGoods.getGoodtaste().getId().equals((shoppingCarMap.get(i)).getGoodtaste().getId())) {
+                            orderGoods2 = shoppingCarMap.get(i);
                             int i2 = 1;
                             break;
                         }
@@ -181,6 +184,7 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         breakageActivity.change();
     }
 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_breakage);
@@ -188,6 +192,7 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         FinishActivity.add(this);
     }
 
+    @Override
     protected void initView() {
         this.gridView = (MyGridView) findViewById(R.id.gridView);
         this.tvBefore = (TextView) findViewById(R.id.tv_before);
@@ -201,9 +206,10 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         this.tvBefore.setOnClickListener(this);
         this.tvNext.setOnClickListener(this);
         this.menuController.setOnClickListener(this);
-        this.llTopRight.setVisibility(4);
+        this.llTopRight.setVisibility(View.INVISIBLE);
     }
 
+    @Override
     protected void initEvent() {
         this.presenter = new BreakagePresenter(this, this);
         this.gridView.setOnItemClickListener(new OnItemClickListener() {
@@ -214,6 +220,7 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         });
     }
 
+    @Override
     protected void initData() {
         this.presenter.getGoodsListFromDB();
         this.presenter.getGoodsListFromNET();
@@ -235,7 +242,7 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         }
         this.totalPage = i;
         if (listTmp.size() > 10) {
-            this.llMenuRight.setVisibility(0);
+            this.llMenuRight.setVisibility(View.VISIBLE);
         }
         addData();
         if (listTmp.size() > 0) {
@@ -246,15 +253,15 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
     private void addData() {
         if (this.currentIndex <= 1) {
             this.currentIndex = 1;
-            this.tvBefore.setVisibility(4);
-            this.tvNext.setVisibility(0);
+            this.tvBefore.setVisibility(View.INVISIBLE);
+            this.tvNext.setVisibility(View.VISIBLE);
         }
         if (this.currentIndex >= this.totalPage) {
             this.currentIndex = this.totalPage;
         }
         if (this.currentIndex > 1 && this.currentIndex < this.totalPage) {
-            this.tvBefore.setVisibility(0);
-            this.tvNext.setVisibility(0);
+            this.tvBefore.setVisibility(View.VISIBLE);
+            this.tvNext.setVisibility(View.VISIBLE);
         }
         if (this.list == null) {
             this.list = new ArrayList();
@@ -271,11 +278,11 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         }
         if (this.list.size() <= 5) {
             if (listTmp.size() <= 10) {
-                this.tvBefore.setVisibility(8);
-                this.tvNext.setVisibility(8);
+                this.tvBefore.setVisibility(View.GONE);
+                this.tvNext.setVisibility(View.GONE);
             } else {
-                this.tvBefore.setVisibility(0);
-                this.tvNext.setVisibility(8);
+                this.tvBefore.setVisibility(View.VISIBLE);
+                this.tvNext.setVisibility(View.GONE);
             }
             this.gridView.setNumColumns(this.list.size());
         } else {
@@ -314,17 +321,17 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         beginTransaction.commit();
     }
 
-    private void setSelect(int i) {
+    private void setSelect(int selectedIndex) {
         FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         hideFragment(beginTransaction);
-        if (this.fragmentList.get(i) == null) {
-            LogUtils.e(TAG, "setSelect:is null " + i);
-            this.fragmentList.set(i, new BreakageGoodsFragment());
-            ((BreakageGoodsFragment) this.fragmentList.get(i)).setIndexPage(i);
-            beginTransaction.add((int) R.id.main_frag, (Fragment) this.fragmentList.get(i));
+        if (fragmentList.get(selectedIndex) == null) {
+            LogUtils.e(TAG, "setSelect:is null " + selectedIndex);
+            fragmentList.set(selectedIndex, new BreakageGoodsFragment());
+             fragmentList.get(selectedIndex).setIndexPage(selectedIndex);
+            beginTransaction.add( R.id.main_frag, this.fragmentList.get(selectedIndex));
         } else {
-            LogUtils.e(TAG, "setSelect:not null " + i);
-            beginTransaction.show((Fragment) this.fragmentList.get(i));
+            LogUtils.e(TAG, "setSelect:not null " + selectedIndex);
+            beginTransaction.show(fragmentList.get(selectedIndex));
         }
         try {
             beginTransaction.commit();
@@ -344,16 +351,16 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
     }
 
     private void hideFragment(FragmentTransaction fragmentTransaction) {
-        for (int i = 0; i < this.fragmentList.size(); i++) {
-            if (this.fragmentList.get(i) != null) {
-                fragmentTransaction.hide((Fragment) this.fragmentList.get(i));
+        for (int i = 0; i < fragmentList.size(); i++) {
+            if (fragmentList.get(i) != null) {
+                fragmentTransaction.hide( fragmentList.get(i));
             }
         }
     }
 
     public void notifyGoodsChange() {
         for (int i = 0; i < this.fragmentList.size(); i++) {
-            BreakageGoodsFragment breakageGoodsFragment = (BreakageGoodsFragment) this.fragmentList.get(i);
+            BreakageGoodsFragment breakageGoodsFragment = fragmentList.get(i);
             if (breakageGoodsFragment != null) {
                 Message message = new Message();
                 message.what = 1;
@@ -376,13 +383,16 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         }
     }
 
+    @Override
     public void onSuccess(List<FoodType> list) {
         ShowFoodType(list);
     }
 
+    @Override
     public void onFail() {
     }
 
+    @Override
     public void ShowFoodType(List<FoodType> list) {
         if (listTmp == null) {
             listTmp = new ArrayList();
@@ -393,14 +403,17 @@ public class BreakageActivity extends BaseFragmentActivity implements OnClickLis
         initFoodType();
     }
 
+    @Override
     public void inFrom(String str) {
     }
 
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
     }

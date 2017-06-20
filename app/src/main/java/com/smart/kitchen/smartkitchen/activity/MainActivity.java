@@ -536,6 +536,7 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
     private FragmentTransaction getFragmentTransaction() {
         FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         hideFragment(beginTransaction);
+        hideFragment(beginTransaction);
         return beginTransaction;
     }
 
