@@ -66,9 +66,8 @@ public class StandardAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.standar_item, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
@@ -77,8 +76,9 @@ public class StandardAdapter extends BaseAdapter {
             viewHolder.checked();
         }
         if (this.flag == 0) {
-            viewHolder.textView.setText(((GoodSize) this.list.get(i)).getSpec_name());
-            if (((GoodSize) this.list.get(i)).getCount().intValue() == 0) {
+            GoodSize goodSize = (GoodSize) this.list.get(i);
+            viewHolder.textView.setText(goodSize.getSpec_name());
+            if (goodSize.getCount().intValue() == 0) {
                 viewHolder.textView.setTextColor(this.context.getResources().getColor(R.color.white));
                 viewHolder.textView.setBackground(this.context.getResources().getDrawable(R.drawable.corner_black));
             }

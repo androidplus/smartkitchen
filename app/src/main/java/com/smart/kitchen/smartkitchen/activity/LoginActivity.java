@@ -108,9 +108,10 @@ public class LoginActivity extends BaseFragmentActivity implements LoginView {
     }
 
     private void check(UserInfo userInfo) {
-        if (Contants.isEmpty(SPUtils.getUserinfo(this.context, SPUtils.STORE_ID)) || (userInfo.getOnwerid() + "").equals(SPUtils.getUserinfo(this.context, SPUtils.STORE_ID))) {
+        if (Contants.isEmpty(SPUtils.getUserinfo(context, SPUtils.STORE_ID)) ||
+                (userInfo.getOnwerid() + "").equals(SPUtils.getUserinfo(context, SPUtils.STORE_ID))) {
             Intent intent;
-            if (SPUtils.isLogin(this.context)) {
+            if (SPUtils.isLogin(context)) {
                 saveUserInfo(userInfo, false);
                 if (SPUtils.isNeedJiaojie(this.context)) {
                     intent = new Intent(this.context, JiaoJieActivity.class);

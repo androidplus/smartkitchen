@@ -92,9 +92,8 @@ public class LeftOrderAdapter extends BaseAdapter {
         int i2 = 0;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.left_orderinfo_item, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
@@ -103,33 +102,34 @@ public class LeftOrderAdapter extends BaseAdapter {
             viewHolder.check();
         }
         viewHolder.tvNumber.setText((i + 1) + "");
-        viewHolder.tvOrder.setText("订单编号：" + ((OrderInfo) this.list.get(i)).getOrderid());
-        viewHolder.tvTime.setText(((OrderInfo) this.list.get(i)).getOrderdate());
-        viewHolder.tvMoney.setText("￥" + ((OrderInfo) this.list.get(i)).getTotalprice().toString());
-        if (((OrderInfo) this.list.get(i)).getIs_new().intValue() == 0) {
-            viewHolder.ivNewOrderNotification.setVisibility(0);
+        OrderInfo orderInfo = this.list.get(i);
+        viewHolder.tvOrder.setText("订单编号：" + orderInfo.getOrderid());
+        viewHolder.tvTime.setText(orderInfo.getOrderdate());
+        viewHolder.tvMoney.setText("￥" + orderInfo.getTotalprice().toString());
+        if (orderInfo.getIs_new().intValue() == 0) {
+            viewHolder.ivNewOrderNotification.setVisibility(View.VISIBLE);
         } else {
-            viewHolder.ivNewOrderNotification.setVisibility(4);
+            viewHolder.ivNewOrderNotification.setVisibility(View.INVISIBLE);
         }
-        if ("tangchi".equals(((OrderInfo) this.list.get(i)).getOrderfrom()) || "wxtangchi".equals(((OrderInfo) this.list.get(i)).getOrderfrom())) {
+        if ("tangchi".equals(orderInfo.getOrderfrom()) || "wxtangchi".equals(orderInfo.getOrderfrom())) {
             List list;
-            viewHolder.tvOrderinfoLeft.setVisibility(0);
-            viewHolder.ivOrderinfoLeft.setVisibility(8);
-            viewHolder.tvArea1.setVisibility(4);
-            viewHolder.tvArea2.setVisibility(4);
-            if (!Contants.isEmpty(((OrderInfo) this.list.get(i)).getTablenumber())) {
-                list = (List) JSON.parseObject(((OrderInfo) this.list.get(i)).getTablenumber(), new TypeReference<List<TableNumber>>() {
+            viewHolder.tvOrderinfoLeft.setVisibility(View.VISIBLE);
+            viewHolder.ivOrderinfoLeft.setVisibility(View.GONE);
+            viewHolder.tvArea1.setVisibility(View.INVISIBLE);
+            viewHolder.tvArea2.setVisibility(View.INVISIBLE);
+            if (!Contants.isEmpty(orderInfo.getTablenumber())) {
+                list = (List) JSON.parseObject(orderInfo.getTablenumber(), new TypeReference<List<TableNumber>>() {
                 }, new Feature[0]);
                 if (list.size() > 0) {
-                    viewHolder.tvArea1.setVisibility(0);
+                    viewHolder.tvArea1.setVisibility(View.VISIBLE);
                     viewHolder.tvArea1.setText(((TableNumber) list.get(0)).getArea_name() + "区" + ((TableNumber) list.get(0)).getTable_name() + "桌");
                 }
                 if (list.size() > 1) {
-                    viewHolder.tvArea2.setVisibility(0);
+                    viewHolder.tvArea2.setVisibility(View.VISIBLE);
                     viewHolder.tvArea2.setText(((TableNumber) list.get(1)).getArea_name() + "区" + ((TableNumber) list.get(1)).getTable_name() + "桌");
                 }
             }
-            list = (List) JSON.parseObject(((OrderInfo) this.list.get(i)).getGoodslist(), new TypeReference<List<OrderGoods>>() {
+            list = (List) JSON.parseObject(orderInfo.getGoodslist(), new TypeReference<List<OrderGoods>>() {
             }, new Feature[0]);
             int i3 = 0;
             while (i2 < list.size()) {
@@ -145,18 +145,18 @@ public class LeftOrderAdapter extends BaseAdapter {
                 viewHolder.tvOrderinfoLeft.setText("出");
                 viewHolder.tvOrderinfoLeft.setBackgroundResource(R.mipmap.top_trink_gray);
             }
-        } else if ("wxwaimai".equals(((OrderInfo) this.list.get(i)).getOrderfrom()) || "meituan".equals(((OrderInfo) this.list.get(i)).getOrderfrom()) || "eleme".equals(((OrderInfo) this.list.get(i)).getOrderfrom()) || "baidu".equals(((OrderInfo) this.list.get(i)).getOrderfrom())) {
-            viewHolder.tvOrderinfoLeft.setVisibility(8);
-            viewHolder.ivOrderinfoLeft.setVisibility(0);
-            viewHolder.tvArea1.setVisibility(4);
-            viewHolder.tvArea2.setVisibility(4);
-            if ("baidu".equals(((OrderInfo) this.list.get(i)).getOrderfrom())) {
+        } else if ("wxwaimai".equals(orderInfo.getOrderfrom()) || "meituan".equals(orderInfo.getOrderfrom()) || "eleme".equals(orderInfo.getOrderfrom()) || "baidu".equals(orderInfo.getOrderfrom())) {
+            viewHolder.tvOrderinfoLeft.setVisibility(View.GONE);
+            viewHolder.ivOrderinfoLeft.setVisibility(View.VISIBLE);
+            viewHolder.tvArea1.setVisibility(View.INVISIBLE);
+            viewHolder.tvArea2.setVisibility(View.INVISIBLE);
+            if ("baidu".equals(orderInfo.getOrderfrom())) {
                 viewHolder.ivOrderinfoLeft.setImageResource(R.mipmap.waimai_baidu);
-            } else if ("meituan".equals(((OrderInfo) this.list.get(i)).getOrderfrom())) {
+            } else if ("meituan".equals(orderInfo.getOrderfrom())) {
                 viewHolder.ivOrderinfoLeft.setImageResource(R.mipmap.waimai_meituan);
-            } else if ("eleme".equals(((OrderInfo) this.list.get(i)).getOrderfrom())) {
+            } else if ("eleme".equals(orderInfo.getOrderfrom())) {
                 viewHolder.ivOrderinfoLeft.setImageResource(R.mipmap.waimai_eleme);
-            } else if ("wxwaimai".equals(((OrderInfo) this.list.get(i)).getOrderfrom())) {
+            } else if ("wxwaimai".equals(orderInfo.getOrderfrom())) {
                 viewHolder.ivOrderinfoLeft.setImageResource(R.mipmap.waimai_self);
             }
         }

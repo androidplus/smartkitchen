@@ -47,20 +47,20 @@ public class NewsParticularsAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.order_right_item2, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        if (((OrderGoods) this.list.get(i)).getGoods().getName() != null) {
-            viewHolder.tvOrderCaipin.setText(((OrderGoods) this.list.get(i)).getGoods().getName());
+        OrderGoods orderGoods = this.list.get(i);
+        if (orderGoods.getGoods().getName() != null) {
+            viewHolder.tvOrderCaipin.setText(orderGoods.getGoods().getName());
         }
-        viewHolder.tvOrderCount.setText(((OrderGoods) this.list.get(i)).getCount() + "");
-        if (((OrderGoods) this.list.get(i)).getGoodsize() != null) {
-            viewHolder.tvOrderMoney.setText(((OrderGoods) this.list.get(i)).getGoodsize().getSale_price() + "");
+        viewHolder.tvOrderCount.setText(orderGoods.getCount() + "");
+        if (orderGoods.getGoodsize() != null) {
+            viewHolder.tvOrderMoney.setText(orderGoods.getGoodsize().getSale_price() + "");
         } else {
-            viewHolder.tvOrderMoney.setText(((OrderGoods) this.list.get(i)).getGoods().getMoney().toString());
+            viewHolder.tvOrderMoney.setText(orderGoods.getGoods().getMoney().toString());
         }
         return view;
     }

@@ -388,10 +388,10 @@ public class NewsParticularsActivity extends BaseFragmentActivity implements OnC
                 Toasts.show(this.context, "网络发生错误,请重新发送");
                 return;
             case 6:
-                Toasts.showShort(this.context, (CharSequence) "退款提交失败");
+                Toasts.showShort(this.context, "退款提交失败");
                 return;
             case 7:
-                Toasts.showShort(this.context, (CharSequence) "驳回失败");
+                Toasts.showShort(this.context, "驳回失败");
                 return;
             default:
                 return;

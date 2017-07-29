@@ -225,7 +225,7 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
         }
         this.totalPage = i;
         if (listTmp.size() > 10) {
-            this.llMenuRight.setVisibility(0);
+            this.llMenuRight.setVisibility(View.VISIBLE);
         }
         addData();
         if (listTmp.size() > 0) {
@@ -236,15 +236,15 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
     private void addData() {
         if (this.currentIndex <= 1) {
             this.currentIndex = 1;
-            this.tvBefore.setVisibility(4);
-            this.tvNext.setVisibility(0);
+            this.tvBefore.setVisibility(View.INVISIBLE);
+            this.tvNext.setVisibility(View.VISIBLE);
         }
         if (this.currentIndex >= this.totalPage) {
             this.currentIndex = this.totalPage;
         }
         if (this.currentIndex > 1 && this.currentIndex < this.totalPage) {
-            this.tvBefore.setVisibility(0);
-            this.tvNext.setVisibility(0);
+            this.tvBefore.setVisibility(View.VISIBLE);
+            this.tvNext.setVisibility(View.VISIBLE);
         }
         if (this.list == null) {
             this.list = new ArrayList();
@@ -261,11 +261,11 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
         }
         if (this.list.size() <= 5) {
             if (listTmp.size() <= 10) {
-                this.tvBefore.setVisibility(8);
-                this.tvNext.setVisibility(8);
+                this.tvBefore.setVisibility(View.GONE);
+                this.tvNext.setVisibility(View.GONE);
             } else {
-                this.tvBefore.setVisibility(0);
-                this.tvNext.setVisibility(8);
+                this.tvBefore.setVisibility(View.VISIBLE);
+                this.tvNext.setVisibility(View.GONE);
             }
             this.gridView.setNumColumns(this.list.size());
         } else {
@@ -279,10 +279,11 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
         this.adapter.notifyDataSetChanged();
     }
 
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.menu_controller:
-                this.popWindowUtils.leftMenuPopWindow(this.leftMenus, view, this.llTopRight, this);
+                popWindowUtils.leftMenuPopWindow(this.leftMenus, view, this.llTopRight, this);
                 return;
             case R.id.tv_before:
                 this.currentIndex--;
@@ -293,8 +294,7 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
                 addData();
                 return;
             case R.id.iv_msg:
-                View view2 = view;
-                this.dialogUtils.showMSG(view2, this.llTopRight, this.presenter.getMessaggeListNOReadFromDB(), this.presenter.getMessaggeListReadedFromDB(), new OnClickListener() {
+                dialogUtils.showMSG(view, this.llTopRight, this.presenter.getMessaggeListNOReadFromDB(), this.presenter.getMessaggeListReadedFromDB(), new OnClickListener() {
                     public void onClick(View view) {
                         MainActivity.this.receiverMessages(null);
                     }
@@ -307,89 +307,46 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 
     @Override
     public void onItemClick(final int position) {
-        final int n2 = 2131230819;
-        final int n3 = 2;
-        final boolean selectTAG = true;
         final String tag = leftMenus.get(position).getTag();
         int selectIndex = -1;
-        switch (tag.hashCode()) {
-            case 1141029527: {
-                if (tag.equals("get_money")) {
-                    selectIndex = 0;
-                    break;
-                }
+        switch (tag) {
+            case "get_money":
+                selectIndex = 0;
                 break;
-            }
-            case 1142956325: {
-                if (tag.equals("get_order")) {
-                    selectIndex = (selectTAG ? 1 : 0);
-                    break;
-                }
+            case "get_order":
+                selectIndex = 1;
                 break;
-            }
-            case -699592733: {
-                if (tag.equals("history_order")) {
-                    selectIndex = n3;
-                    break;
-                }
+            case "history_order":
+                selectIndex = 2;
                 break;
-            }
-            case -1572315523: {
-                if (tag.equals("back_foods")) {
-                    selectIndex = 3;
-                    break;
-                }
+            case "back_foods":
+                selectIndex = 3;
                 break;
-            }
-            case 465628774: {
-                if (tag.equals("distory_foods")) {
-                    selectIndex = 4;
-                    break;
-                }
+            case "distory_foods":
+                selectIndex = 4;
+
                 break;
-            }
-            case 3208383: {
-                if (tag.equals("hold")) {
-                    selectIndex = 5;
-                    break;
-                }
+            case "hold":
+                selectIndex = 5;
+
                 break;
-            }
-            case 111578632: {
-                if (tag.equals("users")) {
-                    selectIndex = 6;
-                    break;
-                }
+            case "users":
+                selectIndex = 6;
                 break;
-            }
-            case 1985941072: {
-                if (tag.equals("setting")) {
-                    selectIndex = 7;
-                    break;
-                }
+            case "setting":
+                selectIndex = 7;
                 break;
-            }
-            case -934531685: {
-                if (tag.equals("repeat")) {
-                    selectIndex = 8;
-                    break;
-                }
+            case "repeat":
+                selectIndex = 8;
                 break;
-            }
-            case -1097452776: {
-                if (tag.equals("locker")) {
-                    selectIndex = 9;
-                    break;
-                }
+            case "locker":
+                selectIndex = 9;
+
                 break;
-            }
-            case -1846485744: {
-                if (tag.equals("writeOff")) {
-                    selectIndex = 10;
-                    break;
-                }
+            case "writeOff":
+                selectIndex = 10;
+
                 break;
-            }
         }
         switch (selectIndex) {
             case 0: {
@@ -416,31 +373,31 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
                 break;
             }
             case 3: {
-                if (AuthorityUtil.getInstance().getRoleFlag() != n3) {
-                    Toasts.show(this.context, this.getResources().getString(n2));
+                if (AuthorityUtil.getInstance().getRoleFlag() != 2) {
+                    Toasts.show(this.context, this.getResources().getString(R.string.no_authority));
                     break;
                 }
                 this.setSelect(0);
-                if (MainActivity.selectTAG != (selectTAG ? 1 : 0)) {
+                if (selectTAG != 1 ) {
                     clear();
-                    this.select();
-                    this.adapter.setSelectFoodType(0);
-                    MainActivity.selectTAG = (selectTAG ? 1 : 0);
+                    select();
+                    adapter.setSelectFoodType(0);
+                    selectTAG = 1;
                     break;
                 }
                 break;
             }
             case 4: {
-                if (AuthorityUtil.getInstance().permitBreakage() || AuthorityUtil.getInstance().getRoleFlag() == n3) {
+                if (AuthorityUtil.getInstance().permitBreakage() || AuthorityUtil.getInstance().getRoleFlag() == 2) {
                     this.startActivity(new Intent(this, (Class)BreakageActivity.class));
                     break;
                 }
-                Toasts.show(this.context, this.getResources().getString(n2));
+                Toasts.show(this.context, this.getResources().getString(R.string.no_authority));
                 break;
             }
             case 5: {
                 if (!AuthorityUtil.getInstance().permitCheck()) {
-                    Toasts.show(this.context, this.getResources().getString(n2));
+                    Toasts.show(this.context, this.getResources().getString(R.string.no_authority));
                     break;
                 }
                 if (SPUtils.getUserinfos2(this.context, "NotificationCount")) {
@@ -464,7 +421,7 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
             }
             case 9: {
                 final Intent intent = new Intent(this, (Class)LoginActivity.class);
-                intent.putExtra("is_main", selectTAG);
+                intent.putExtra("is_main", true);
                 this.startActivity(intent);
                 break;
             }
@@ -483,7 +440,7 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 
     private void initShopData() {
         this.shopFragment = new ShopFragment();
-        getSupportFragmentManager().beginTransaction().add((int) R.id.main_frag_right, this.shopFragment);
+        getSupportFragmentManager().beginTransaction().add(R.id.main_frag_right, this.shopFragment);
         this.salesReturnFragment = new SalesReturnFragment();
         FragmentTransaction beginTransaction = this.selectFM.beginTransaction();
         beginTransaction.add(R.id.main_frag_right, this.shopFragment, "ShopFragment");

@@ -69,7 +69,7 @@ public class DiscountCouponAdapter extends BaseAdapter {
         if (this.select == i) {
             viewHolder.checked();
         }
-        viewHolder.text.setText(((Conpon) this.list.get(i)).getName());
+        viewHolder.text.setText(list.get(i).getName());
         return view;
     }
 }

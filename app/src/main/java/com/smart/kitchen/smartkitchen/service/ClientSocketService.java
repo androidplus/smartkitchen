@@ -168,48 +168,27 @@ public class ClientSocketService extends Service implements SocketDelegate {
         }
         String type = myMessages.getType();
         int i2 = -1;
-        switch (type.hashCode()) {
-            case -1635650018:
-                if (type.equals("changetable")) {
-                    i2 = 4;
-                    break;
-                }
+        switch (type) {
+            case "changetable":
+                i2 = 4;
                 break;
-            case -1204616613:
-                if (type.equals("paysuccess")) {
-                    i2 = 3;
-                    break;
-                }
+            case "paysuccess":
+                i2 = 3;
                 break;
-            case -554624859:
-                if (type.equals("updatetable")) {
-                    i2 = 5;
-                    break;
-                }
+            case "updatetable":
+                i2 = 5;
                 break;
-            case 108417:
-                if (type.equals("msg")) {
-                    i2 = 2;
-                    break;
-                }
+            case "msg":
+                i2 = 2;
                 break;
-            case 110414:
-                if (type.equals("out")) {
-                    i2 = 6;
-                    break;
-                }
+            case "out":
+                i2 = 6;
                 break;
-            case 3237136:
-                if (type.equals("init")) {
-                    i2 = 1;
-                    break;
-                }
+            case "init":
+                i2 = 1;
                 break;
-            case 3441010:
-                if (type.equals("ping")) {
-                    i2 = 0;
-                    break;
-                }
+            case "ping":
+                i2 = 0;
                 break;
         }
         Intent intent;
@@ -362,7 +341,7 @@ public class ClientSocketService extends Service implements SocketDelegate {
 
     public void orderReceiving(final Long l, int i) {
         RequestParams requestParams = new RequestParams();
-        requestParams.put("orderid", (Object) l);
+        requestParams.put("orderid", l);
         requestParams.put("staffid", new UserInfoDaoManager().getNowUserInfo().getUserid());
         requestParams.put("status", 1);
         if (i == 1) {

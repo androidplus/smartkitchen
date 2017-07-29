@@ -69,21 +69,22 @@ public class RightOrderAdapter1 extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        if (TextUtils.isEmpty(((OrderGoods) this.list.get(i)).getMark()) || ((OrderGoods) this.list.get(i)).getMark() == null) {
-            viewHolder.tvOrderCaipin.setText(((OrderGoods) this.list.get(i)).getGoods().getName());
-        } else if (((OrderGoods) this.list.get(i)).getMark().length() < 10) {
-            viewHolder.tvOrderCaipin.setText(((OrderGoods) this.list.get(i)).getGoods().getName() + "(" + ((OrderGoods) this.list.get(i)).getMark() + ")");
+        OrderGoods orderGoods = this.list.get(i);
+        if (TextUtils.isEmpty(orderGoods.getMark()) || orderGoods.getMark() == null) {
+            viewHolder.tvOrderCaipin.setText(orderGoods.getGoods().getName());
+        } else if (orderGoods.getMark().length() < 10) {
+            viewHolder.tvOrderCaipin.setText(orderGoods.getGoods().getName() + "(" + orderGoods.getMark() + ")");
         } else {
-            viewHolder.tvOrderCaipin.setText(((OrderGoods) this.list.get(i)).getGoods().getName() + "(" + ((OrderGoods) this.list.get(i)).getMark().substring(0, 10) + "..." + ")");
+            viewHolder.tvOrderCaipin.setText(orderGoods.getGoods().getName() + "(" + orderGoods.getMark().substring(0, 10) + "..." + ")");
         }
-        viewHolder.tvOrderCount.setText(((OrderGoods) this.list.get(i)).getCount() + "");
-        Log.e("getViewsss", "getView: " + ((OrderGoods) this.list.get(i)).getGoodsize());
-        if (((OrderGoods) this.list.get(i)).getGoodsize() == null) {
-            viewHolder.tvOrderMoney.setText(String.valueOf(((OrderGoods) this.list.get(i)).getGoods().getMoney()));
+        viewHolder.tvOrderCount.setText(orderGoods.getCount() + "");
+        Log.e("getViewsss", "getView: " + orderGoods.getGoodsize());
+        if (orderGoods.getGoodsize() == null) {
+            viewHolder.tvOrderMoney.setText(String.valueOf(orderGoods.getGoods().getMoney()));
         } else {
-            viewHolder.tvOrderMoney.setText(String.valueOf(((OrderGoods) this.list.get(i)).getGoodsize().getSale_price()));
+            viewHolder.tvOrderMoney.setText(String.valueOf(orderGoods.getGoodsize().getSale_price()));
         }
-        final int status = ((OrderGoods) this.list.get(i)).getStatus();
+        final int status = orderGoods.getStatus();
         if (status == 0) {
             viewHolder.tvOrderStatus.setText("未出单");
             viewHolder.tvOrderStatus.setBackgroundResource(R.drawable.corner_red);
@@ -120,7 +121,7 @@ public class RightOrderAdapter1 extends BaseAdapter {
     }
 
     public boolean isEnabled(int i) {
-        if (((OrderGoods) this.list.get(i)).getStatus() == 4) {
+        if ((list.get(i)).getStatus() == 4) {
             return false;
         }
         return true;

@@ -59,19 +59,19 @@ public class TableShopAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.item_shop_adapter, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        if (((OrderGoods) this.list.get(i)).getGoodsize() == null) {
-            viewHolder.shop_money.setText(String.valueOf(((OrderGoods) this.list.get(i)).getGoods().getMoney()));
+        OrderGoods orderGoods = this.list.get(i);
+        if (orderGoods.getGoodsize() == null) {
+            viewHolder.shop_money.setText(String.valueOf(orderGoods.getGoods().getMoney()));
         } else {
-            viewHolder.shop_money.setText(String.valueOf(((OrderGoods) this.list.get(i)).getGoodsize().getSale_price()));
+            viewHolder.shop_money.setText(String.valueOf(orderGoods.getGoodsize().getSale_price()));
         }
-        viewHolder.shop_count.setText("" + ((OrderGoods) this.list.get(i)).getCount());
-        viewHolder.shop_name.setText(((OrderGoods) this.list.get(i)).getGoods().getName());
+        viewHolder.shop_count.setText("" + orderGoods.getCount());
+        viewHolder.shop_name.setText(orderGoods.getGoods().getName());
         return view;
     }
 }

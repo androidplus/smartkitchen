@@ -64,15 +64,15 @@ public class SalesReturnAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.item_shop_adapter, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.shop_count.setText("" + ((OrderGoods) this.list.get(i)).getCount());
-        viewHolder.shop_money.setText("" + ((OrderGoods) this.list.get(i)).getGoods().getMoney());
-        viewHolder.shop_name.setText(((OrderGoods) this.list.get(i)).getGoods().getName());
+        OrderGoods orderGoods = this.list.get(i);
+        viewHolder.shop_count.setText("" + orderGoods.getCount());
+        viewHolder.shop_money.setText("" + orderGoods.getGoods().getMoney());
+        viewHolder.shop_name.setText(orderGoods.getGoods().getName());
         viewHolder.iv_dec.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 if (SalesReturnAdapter.this.listener != null) {

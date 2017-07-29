@@ -43,15 +43,15 @@ public class UsbDeviceAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
         if (view == null) {
-            view = this.mInflater.inflate(R.layout.basic_dialog_item, null);
-            ViewHolder viewHolder2 = new ViewHolder();
-            viewHolder2.tvText = (TextView) view.findViewById(R.id.tv_basic_dialog_item_text);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            view = mInflater.inflate(R.layout.basic_dialog_item, null);
+            viewHolder= new ViewHolder();
+            viewHolder.tvText = (TextView) view.findViewById(R.id.tv_basic_dialog_item_text);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.tvText.setText("打印设备" + ((UsbDevice) this.mList.get(i)).getVendorId() + ((UsbDevice) this.mList.get(i)).getProductId() + ((UsbDevice) this.mList.get(i)).getDeviceId());
+        UsbDevice usbDevice =mList.get(i);
+        viewHolder.tvText.setText("打印设备" + usbDevice.getVendorId() + usbDevice.getProductId() + usbDevice.getDeviceId());
         return view;
     }
 }

@@ -50,10 +50,11 @@ public class LeftMenuPop {
         final LeftMenuAdapter leftMenuAdapter = new LeftMenuAdapter(list, this.context);
         listView.setAdapter(leftMenuAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
-                leftMenuAdapter.setSelect(i);
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                leftMenuAdapter.setSelect(position);
                 if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(i);
+                    onItemClickListener.onItemClick(position);
                 }
             }
         });

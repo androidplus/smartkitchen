@@ -32,13 +32,13 @@ public class LeftMenuAdapter extends BaseAdapter {
         public void reset(int i) {
             this.ll_container.setBackgroundResource(R.drawable.left_bg_normal);
             this.title.setTextColor(LeftMenuAdapter.this.context.getResources().getColor(R.color.black));
-            this.title_icon.setImageResource(((LeftMenu) LeftMenuAdapter.this.leftMenus.get(i)).getTitle_icon());
+            this.title_icon.setImageResource(( LeftMenuAdapter.this.leftMenus.get(i)).getTitle_icon());
         }
 
         public void checked(int i) {
             this.ll_container.setBackgroundResource(R.drawable.left_bg_checked);
             this.title.setTextColor(LeftMenuAdapter.this.context.getResources().getColor(R.color.white));
-            this.title_icon.setImageResource(((LeftMenu) LeftMenuAdapter.this.leftMenus.get(i)).getTitle_icon_ckecked());
+            this.title_icon.setImageResource(( LeftMenuAdapter.this.leftMenus.get(i)).getTitle_icon_ckecked());
         }
     }
 
@@ -47,27 +47,31 @@ public class LeftMenuAdapter extends BaseAdapter {
         this.context = context;
     }
 
-    public void setSelect(int i) {
-        this.select = i;
+    public void setSelect(int position) {
+        this.select = position;
         notifyDataSetChanged();
     }
 
+    @Override
     public int getCount() {
         return this.leftMenus.size();
     }
 
+    @Override
     public Object getItem(int i) {
         return this.leftMenus.get(i);
     }
 
+    @Override
     public long getItemId(int i) {
         return 0;
     }
 
+    @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
         if (view == null) {
-            view = LayoutInflater.from(this.context).inflate(R.layout.left_menu_item, null);
+            view = LayoutInflater.from(context).inflate(R.layout.left_menu_item, null);
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
         } else {
@@ -77,7 +81,7 @@ public class LeftMenuAdapter extends BaseAdapter {
         if (this.select == i) {
             viewHolder.checked(i);
         }
-        viewHolder.title.setText(((LeftMenu) this.leftMenus.get(i)).getTitle());
+        viewHolder.title.setText(leftMenus.get(i).getTitle());
         return view;
     }
 }

@@ -1195,56 +1195,12 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
 
     public void getMoney(Double d, String str) {
         Integer obj = -1;
-        switch (str.hashCode()) {
-            case 49:
-                if (str.equals("1")) {
-                    obj = 0;
-                    break;
-                }
-                break;
-            case 50:
-                if (str.equals("2")) {
-                    obj = 1;
-                    break;
-                }
-                break;
-            case 51:
-                if (str.equals("3")) {
-                    obj = 2;
-                    break;
-                }
-                break;
-            case 52:
-                if (str.equals("4")) {
-                    obj = 3;
-                    break;
-                }
-                break;
-            case 53:
-                if (str.equals("5")) {
-                    obj = 4;
-                    break;
-                }
-                break;
-            case 54:
-                if (str.equals("6")) {
-                    obj = 5;
-                    break;
-                }
-                break;
-            case 55:
-                if (str.equals("7")) {
-                    obj = 6;
-                    break;
-                }
-                break;
-            case 56:
-                if (str.equals("8")) {
-                    obj = 7;
-                    break;
-                }
-                break;
+        try {
+            obj = Integer.parseInt(str) - 1;
+        }catch (Exception e){
+
         }
+
         switch (obj) {
             case 0:
                 this.printUtil.cashBoxTest(this.context);

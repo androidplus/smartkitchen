@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.parser.Feature;
@@ -23,6 +24,7 @@ import com.smart.kitchen.smartkitchen.entitys.OrderGoods;
 import com.smart.kitchen.smartkitchen.popwindow.DialogUtils;
 import com.smart.kitchen.smartkitchen.popwindow.DialogUtils.PropertyListener;
 import com.smart.kitchen.smartkitchen.utils.Toasts;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,47 +105,48 @@ public class GoodsAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.item_goods, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.reset();
-        if (MainActivity.getGoodsCount(String.valueOf(((Goods) this.list.get(i)).getId())) > 0) {
+        Goods goods = this.list.get(i);
+        if (MainActivity.getGoodsCount(String.valueOf(goods.getId())) > 0) {
             viewHolder.checked();
-            viewHolder.tvQuantity.setText("" + MainActivity.getGoodsCount(String.valueOf(((Goods) this.list.get(i)).getId())));
+            viewHolder.tvQuantity.setText("" + MainActivity.getGoodsCount(String.valueOf(goods.getId())));
         }
-        viewHolder.count.setText(((Goods) this.list.get(i)).getCount() + "");
-        viewHolder.name.setText(((Goods) this.list.get(i)).getName());
-        if (((Goods) this.list.get(i)).getMoney() != null) {
-            viewHolder.money.setText("￥" + ((Goods) this.list.get(i)).getMoney());
+        viewHolder.count.setText(goods.getCount() + "");
+        viewHolder.name.setText(goods.getName());
+        if (goods.getMoney() != null) {
+            viewHolder.money.setText("￥" + goods.getMoney());
         } else {
             viewHolder.money.setText("￥");
         }
-        Glide.with(this.context).load(((Goods) this.list.get(i)).getGoods_image_url()).placeholder((int) R.mipmap.test).into(viewHolder.ivGoodsGreens);
+        Glide.with(this.context).load(goods.getGoods_image_url()).placeholder(R.mipmap.test).into(viewHolder.ivGoodsGreens);
         viewHolder.cardView.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 int i = 0;
+                Goods goods1 = GoodsAdapter.this.list.get(i);
                 if (MainActivity.selectTAG == 0) {
-                    if (((Goods) GoodsAdapter.this.list.get(i)).getCount().intValue() == 0) {
+                    if (goods1.getCount().intValue() == 0) {
                         Toasts.show(GoodsAdapter.this.context, "该商品已经没货了");
                         return;
-                    } else if (((Goods) GoodsAdapter.this.list.get(i)).getGoods_size() == null) {
+                    } else if (goods1.getGoods_size() == null) {
                         return;
                     }
                 }
-                final List list = (List) JSON.parseObject(((Goods) GoodsAdapter.this.list.get(i)).getGoods_size(), new TypeReference<List<GoodSize>>() {
+                final List<GoodSize> list = JSON.parseObject(goods1.getGoods_size(), new TypeReference<List<GoodSize>>() {
                 }, new Feature[0]);
-                final List list2 = (List) JSON.parseObject(((Goods) GoodsAdapter.this.list.get(i)).getTaste(), new TypeReference<List<GoodTaste>>() {
+                final List<GoodTaste> list2 = JSON.parseObject(goods1.getTaste(), new TypeReference<List<GoodTaste>>() {
                 }, new Feature[0]);
-                List arrayList = new ArrayList();
+                List<GoodSize> arrayList = new ArrayList();
                 if (list.size() > 0) {
                     for (int i2 = 0; i2 < list.size(); i2++) {
                         arrayList.add(list.get(i2));
                     }
                 }
-                List arrayList2 = new ArrayList();
+                List<GoodTaste> arrayList2 = new ArrayList();
                 if (list2.size() > 0) {
                     while (i < list2.size()) {
                         arrayList2.add(list2.get(i));
@@ -152,7 +155,7 @@ public class GoodsAdapter extends BaseAdapter {
                 }
                 final DialogUtils dialogUtils = new DialogUtils((MainActivity) GoodsAdapter.this.context);
                 final OrderGoods orderGoods = new OrderGoods();
-                dialogUtils.showBeiZhu(view, ((Goods) GoodsAdapter.this.list.get(i)).getId(), MainActivity.shoppingCarMap, MainActivity.selectTAG, arrayList, arrayList2, new DialogUtils.OnClickListener() {
+                dialogUtils.showBeiZhu(view, goods1.getId(), MainActivity.shoppingCarMap, MainActivity.selectTAG, arrayList, arrayList2, new DialogUtils.OnClickListener() {
                     public void onClick(Object obj) {
                         dialogUtils.PropertyListener(new PropertyListener() {
                             public void dataTransmission(int i, int i2, int i3, String str) {

@@ -65,18 +65,18 @@ public class MenuAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.menu_item, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.textView.setText(((FoodType) this.list.get(i)).getCatalog());
+        FoodType foodType = list.get(i);
+        viewHolder.textView.setText(foodType.getCatalog());
         viewHolder.reset();
-        if (this.list.get(i) == this.selectFoodType) {
+        if (foodType == this.selectFoodType) {
             viewHolder.checked();
         }
-        LogUtils.e(TAG, i + "getView: false" + this.list.get(i));
+        LogUtils.e(TAG, i + "getView: false" + foodType);
         return view;
     }
 }

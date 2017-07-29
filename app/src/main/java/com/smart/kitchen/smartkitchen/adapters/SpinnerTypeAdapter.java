@@ -70,7 +70,7 @@ public class SpinnerTypeAdapter extends BaseAdapter {
         if (this.select == i) {
             viewHolder.checked();
         }
-        viewHolder.text.setText("" + ((FromType) this.list.get(i)).getName());
+        viewHolder.text.setText("" + (list.get(i)).getName());
         return view;
     }
 }

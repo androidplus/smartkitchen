@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BluetoothDeviceAdapter extends BaseAdapter {
     private Context mContext;
-    private LayoutInflater mInflater = LayoutInflater.from(this.mContext);
+    private LayoutInflater mInflater;
     private List<BluetoothDevice> mList;
 
     private class ViewHolder {
@@ -26,6 +26,7 @@ public class BluetoothDeviceAdapter extends BaseAdapter {
     public BluetoothDeviceAdapter(Context context, List<BluetoothDevice> list) {
         this.mContext = context;
         this.mList = list;
+        mInflater = LayoutInflater.from(this.mContext);
     }
 
     public int getCount() {
@@ -50,11 +51,11 @@ public class BluetoothDeviceAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        BluetoothDevice bluetoothDevice = (BluetoothDevice) this.mList.get(i);
+        BluetoothDevice bluetoothDevice = mList.get(i);
         if (TextUtils.isEmpty(bluetoothDevice.getName())) {
             viewHolder.tvName.setText(bluetoothDevice.getAddress());
         } else {
-            viewHolder.tvName.setText(((BluetoothDevice) this.mList.get(i)).getName());
+            viewHolder.tvName.setText(bluetoothDevice.getName());
         }
         return view;
     }

@@ -96,24 +96,24 @@ public class CheckDialogAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.adapter_checkdialog, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         if (i != 0) {
-            viewHolder.v.setVisibility(0);
+            viewHolder.v.setVisibility(View.VISIBLE);
         }
         viewHolder.hposition = i;
-        viewHolder.etCheck.setVisibility(0);
-        viewHolder.txCheckNew.setVisibility(8);
-        viewHolder.tvCheckStandard.setText(((GoodSize) this.liGoodsize.get(i)).getSpec_name());
-        viewHolder.tvCheckFormer.setText(((GoodSize) this.liGoodsize.get(i)).getCount() + "");
-        if (this.numMap.get(((GoodSize) this.liGoodsize.get(i)).getId() + "") == null) {
+        viewHolder.etCheck.setVisibility(View.VISIBLE);
+        viewHolder.txCheckNew.setVisibility(View.GONE);
+        GoodSize goodSize = liGoodsize.get(i);
+        viewHolder.tvCheckStandard.setText(goodSize.getSpec_name());
+        viewHolder.tvCheckFormer.setText(goodSize.getCount() + "");
+        if (numMap.get(goodSize.getId() + "") == null) {
             viewHolder.etCheck.setText("0");
         } else {
-            viewHolder.etCheck.setText((CharSequence) this.numMap.get(((GoodSize) this.liGoodsize.get(i)).getId() + ""));
+            viewHolder.etCheck.setText( numMap.get(goodSize.getId() + ""));
         }
         return view;
     }

@@ -71,9 +71,10 @@ public class CheckAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.tvCheckName.setText(((Goods) this.list.get(i)).getName() + "");
-        viewHolder.tvCheckPrice.setText(((Goods) this.list.get(i)).getMoney() + "");
-        List list = (List) JSON.parseObject(((Goods) this.list.get(i)).getGoods_size(), new TypeReference<List<GoodSize>>() {
+        Goods goods = this.list.get(i);
+        viewHolder.tvCheckName.setText(goods.getName() + "");
+        viewHolder.tvCheckPrice.setText(goods.getMoney() + "");
+        List list = (List) JSON.parseObject(goods.getGoods_size(), new TypeReference<List<GoodSize>>() {
         }, new Feature[0]);
         if (list.size() > 0) {
             i2 = 0;

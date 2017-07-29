@@ -2,6 +2,7 @@ package com.smart.kitchen.smartkitchen.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -78,52 +79,52 @@ public class TableAdapter extends BaseAdapter {
         return 0;
     }
 
+    @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.table_item, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.tv_table_number.setText(((TableNumber) this.list.get(i)).getTable_name());
-        viewHolder.tv_person_count.setText(((TableNumber) this.list.get(i)).getTable_type_count() + "人");
-        viewHolder.tv_table_type.setText(((TableNumber) this.list.get(i)).getEating_count() + "人桌");
+        TableNumber tableNumber = list.get(i);
+        viewHolder.tv_table_number.setText(tableNumber.getTable_name());
+        viewHolder.tv_person_count.setText(tableNumber.getTable_type_count() + "人");
+        viewHolder.tv_table_type.setText(tableNumber.getEating_count() + "人桌");
         viewHolder.reset();
-        if (((TableNumber) this.list.get(i)).getTable_person().intValue() != 0) {
+        if (tableNumber.getTable_person().intValue() != 0) {
             viewHolder.useing();
         }
         for (int i2 = 0; i2 < SingletonTableNumberList.getInstance().getSelectList().size(); i2++) {
-            if (((TableNumber) SingletonTableNumberList.getInstance().getSelectList().get(i2)).getId().toString().equals(((TableNumber) this.list.get(i)).getId().toString())) {
+            if (( SingletonTableNumberList.getInstance().getSelectList().get(i2)).getId().equals(tableNumber.getId())) {
                 viewHolder.checked();
             }
         }
         viewHolder.cardView.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
-                if ("".equals(TableActivity.getETTablePeople())) {
-                    Toasts.showShort(TableAdapter.this.context, (CharSequence) "请先输入人数");
+                if (TextUtils.isEmpty(TableActivity.getETTablePeople())) {
+                    Toasts.showShort(TableAdapter.this.context, "请先输入人数");
                     return;
                 }
+                TableNumber tableNumber1 = TableAdapter.this.list.get(i);
                 if (SingletonSB.getInstance().isChecked()) {
-                    if (SingletonTableNumberList.getInstance().getSelectList().contains(TableAdapter.this.list.get(i))) {
-                        SingletonTableNumberList.getInstance().getSelectList().remove(TableAdapter.this.list.get(i));
+                    if (SingletonTableNumberList.getInstance().getSelectList().contains(tableNumber1)) {
+                        SingletonTableNumberList.getInstance().getSelectList().remove(tableNumber1);
                     } else if (Integer.valueOf(TableActivity.getETTablePeople()).intValue() > SingletonTableNumberList.getInstance().getSelectList().size()) {
-                        SingletonTableNumberList.getInstance().getSelectList().add(TableAdapter.this.list.get(i));
-                    } else {
-                        return;
+                        SingletonTableNumberList.getInstance().getSelectList().add(tableNumber1);
                     }
-                } else if (((TableNumber) TableAdapter.this.list.get(i)).getTable_person().intValue() == 0) {
-                    if (SingletonTableNumberList.getInstance().getSelectList().contains(TableAdapter.this.list.get(i))) {
-                        SingletonTableNumberList.getInstance().getSelectList().remove(TableAdapter.this.list.get(i));
+                } else if (tableNumber1.getTable_person().intValue() == 0) {
+                    if (SingletonTableNumberList.getInstance().getSelectList().contains(tableNumber1)) {
+                        SingletonTableNumberList.getInstance().getSelectList().remove(tableNumber1);
                     } else {
                         SingletonTableNumberList.getInstance().getSelectList().clear();
-                        SingletonTableNumberList.getInstance().getSelectList().add(TableAdapter.this.list.get(i));
+                        SingletonTableNumberList.getInstance().getSelectList().add(tableNumber1);
                     }
+                    TableActivity.notifyPeopleTable();
+                    TableAdapter.this.notifyDataSetChanged();
                 }
-                TableActivity.notifyPeopleTable();
-                TableAdapter.this.notifyDataSetChanged();
             }
         });
         return view;

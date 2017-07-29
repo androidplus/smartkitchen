@@ -29,7 +29,7 @@ public class ShopAdapter extends BaseAdapter {
 
         public ViewHolder(View view) {
             this.iv_dec = (LinearLayout) view.findViewById(R.id.iv_dec);
-            this.iv_dec.setVisibility(0);
+            this.iv_dec.setVisibility(View.VISIBLE);
             this.shop_money = (TextView) view.findViewById(R.id.shop_money);
             this.shop_name = (TextView) view.findViewById(R.id.shop_name);
             this.shop_count = (TextView) view.findViewById(R.id.shop_count);
@@ -64,15 +64,15 @@ public class ShopAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.item_shop_adapter, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.shop_count.setText("" + ((OrderGoods) this.list.get(i)).getCount());
-        viewHolder.shop_money.setText("" + ((OrderGoods) this.list.get(i)).getGoods().getMoney());
-        viewHolder.shop_name.setText(((OrderGoods) this.list.get(i)).getGoods().getName());
+        OrderGoods orderGoods = this.list.get(i);
+        viewHolder.shop_count.setText("" + orderGoods.getCount());
+        viewHolder.shop_money.setText("" + orderGoods.getGoods().getMoney());
+        viewHolder.shop_name.setText(orderGoods.getGoods().getName());
         viewHolder.iv_dec.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 if (ShopAdapter.this.listener != null) {

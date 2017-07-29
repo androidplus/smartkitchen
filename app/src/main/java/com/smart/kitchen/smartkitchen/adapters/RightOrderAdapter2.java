@@ -48,24 +48,24 @@ public class RightOrderAdapter2 extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.order_right_item2, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        if (TextUtils.isEmpty(((OrderGoods) this.list.get(i)).getMark()) || ((OrderGoods) this.list.get(i)).getMark() == null) {
-            viewHolder.tv_order_right_caipin.setText(((OrderGoods) this.list.get(i)).getGoods().getName());
-        } else if (((OrderGoods) this.list.get(i)).getMark().length() < 10) {
-            viewHolder.tv_order_right_caipin.setText(((OrderGoods) this.list.get(i)).getGoods().getName() + "(" + ((OrderGoods) this.list.get(i)).getMark() + ")");
+        OrderGoods orderGoods = this.list.get(i);
+        if (TextUtils.isEmpty(orderGoods.getMark()) || orderGoods.getMark() == null) {
+            viewHolder.tv_order_right_caipin.setText(orderGoods.getGoods().getName());
+        } else if (orderGoods.getMark().length() < 10) {
+            viewHolder.tv_order_right_caipin.setText(orderGoods.getGoods().getName() + "(" + orderGoods.getMark() + ")");
         } else {
-            viewHolder.tv_order_right_caipin.setText(((OrderGoods) this.list.get(i)).getGoods().getName() + "(" + ((OrderGoods) this.list.get(i)).getMark().substring(0, 10) + "..." + ")");
+            viewHolder.tv_order_right_caipin.setText(orderGoods.getGoods().getName() + "(" + orderGoods.getMark().substring(0, 10) + "..." + ")");
         }
-        viewHolder.tv_order_right_count.setText(((OrderGoods) this.list.get(i)).getCount() + "");
-        if (((OrderGoods) this.list.get(i)).getGoodsize() == null) {
-            viewHolder.tv_order_right_money.setText(String.valueOf(((OrderGoods) this.list.get(i)).getGoods().getMoney()));
+        viewHolder.tv_order_right_count.setText(orderGoods.getCount() + "");
+        if (orderGoods.getGoodsize() == null) {
+            viewHolder.tv_order_right_money.setText(String.valueOf(orderGoods.getGoods().getMoney()));
         } else {
-            viewHolder.tv_order_right_money.setText(String.valueOf(((OrderGoods) this.list.get(i)).getGoodsize().getSale_price()));
+            viewHolder.tv_order_right_money.setText(String.valueOf(orderGoods.getGoodsize().getSale_price()));
         }
         return view;
     }

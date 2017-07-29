@@ -55,6 +55,7 @@ public class MainPresenter implements OnResultListener {
         this.mainModel.search(3, this.context, str, this);
     }
 
+    @Override
     public void onSuccess(int i, String str) {
         switch (i) {
             case 0:

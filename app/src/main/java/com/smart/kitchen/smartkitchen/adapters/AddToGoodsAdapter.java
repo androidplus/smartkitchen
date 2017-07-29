@@ -36,7 +36,7 @@ public class AddToGoodsAdapter extends BaseAdapter {
         void onItemClick(int i);
     }
 
-    private class ViewHolder {
+    private  class ViewHolder {
         CardView cardView;
         TextView count;
         LinearLayout il_quantity_tag;
@@ -102,16 +102,15 @@ public class AddToGoodsAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.item_goods, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.reset();
         int i2 = 0;
         while (i2 < AddToActivity.shoppingAll.size()) {
-            if (i2 < AddToActivity.indexOf && String.valueOf(((OrderGoods) AddToActivity.shoppingAll.get(i2)).getGoods().getId()).equals(String.valueOf(((Goods) this.list.get(i)).getId()))) {
+            if (i2 < AddToActivity.indexOf && String.valueOf( AddToActivity.shoppingAll.get(i2).getGoods().getId()).equals(String.valueOf((list.get(i)).getId()))) {
                 viewHolder.checked();
             }
             i2++;

@@ -25,8 +25,8 @@ public class TableAreaAdapter extends BaseAdapter {
         }
 
         public void reset() {
-            this.textView.setTextColor(TableAreaAdapter.this.context.getResources().getColor(R.color.white));
-            this.textView.setBackgroundColor(TableAreaAdapter.this.context.getResources().getColor(17170445));
+            this.textView.setTextColor(context.getResources().getColor(R.color.white));
+            this.textView.setBackgroundColor(context.getResources().getColor(17170445));
         }
 
         public void checked() {
@@ -39,13 +39,13 @@ public class TableAreaAdapter extends BaseAdapter {
         this.context = context;
         this.list = list;
         if (this.list.size() > 0) {
-            this.selectFoodType = (TableArea) this.list.get(0);
-            LogUtils.e(TAG, "getView: false" + this.selectFoodType);
+            this.selectFoodType = list.get(0);
+            LogUtils.e(TAG, "getView: false" + selectFoodType);
         }
     }
 
     public void setSelectFoodType(int i) {
-        this.selectFoodType = (TableArea) this.list.get(i);
+        selectFoodType = list.get(i);
         notifyDataSetChanged();
     }
 
@@ -65,13 +65,12 @@ public class TableAreaAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.menu_item, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.textView.setText(((TableArea) this.list.get(i)).getArea_name());
+        viewHolder.textView.setText(list.get(i).getArea_name());
         viewHolder.reset();
         if (this.list.get(i) == this.selectFoodType) {
             viewHolder.checked();

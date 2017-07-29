@@ -19,9 +19,6 @@ public class UsbDeviceReceiver extends BroadcastReceiver {
         void onPermissionGranted(UsbDevice usbDevice);
     }
 
-    private UsbDeviceReceiver() {
-    }
-
     public UsbDeviceReceiver(CallBack callBack) {
         this.mCallBack = callBack;
     }

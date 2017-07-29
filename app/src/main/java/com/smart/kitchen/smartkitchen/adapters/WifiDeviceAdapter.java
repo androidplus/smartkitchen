@@ -11,7 +11,7 @@ import java.util.List;
 
 public class WifiDeviceAdapter extends BaseAdapter {
     private Context mContext;
-    private LayoutInflater mInflater = LayoutInflater.from(this.mContext);
+    private LayoutInflater mInflater;
     private List<String> mList;
 
     private class ViewHolder {
@@ -24,6 +24,7 @@ public class WifiDeviceAdapter extends BaseAdapter {
     public WifiDeviceAdapter(Context context, List<String> list) {
         this.mContext = context;
         this.mList = list;
+        mInflater = LayoutInflater.from(this.mContext);
     }
 
     public int getCount() {
@@ -42,14 +43,13 @@ public class WifiDeviceAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = this.mInflater.inflate(R.layout.wifi_device_item, null);
-            ViewHolder viewHolder2 = new ViewHolder();
-            viewHolder2.tvName = (TextView) view.findViewById(R.id.tv_wifi_device_name);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder= new ViewHolder();
+            viewHolder.tvName = (TextView) view.findViewById(R.id.tv_wifi_device_name);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.tvName.setText((CharSequence) this.mList.get(i));
+        viewHolder.tvName.setText(mList.get(i));
         return view;
     }
 }

@@ -72,7 +72,7 @@ public class OrderActivity extends BaseFragmentActivity {
         FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         if (this.orderLeftFragment == null) {
             this.orderLeftFragment = new OrderLeftFragment();
-            beginTransaction.add((int) R.id.left_frag, this.orderLeftFragment);
+            beginTransaction.add(R.id.left_frag, this.orderLeftFragment);
         } else {
             beginTransaction.show(this.orderLeftFragment);
         }

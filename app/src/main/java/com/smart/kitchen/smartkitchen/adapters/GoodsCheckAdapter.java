@@ -92,19 +92,18 @@ public class GoodsCheckAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.item_check, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.reset();
-        if (CheckActivity.get(String.valueOf(((Goods) this.list.get(i)).getId())) != null) {
+        if (CheckActivity.get(String.valueOf( list.get(i).getId())) != null) {
             viewHolder.checked();
         }
-        viewHolder.name.setText(((Goods) this.list.get(i)).getName());
-        viewHolder.count.setText(((Goods) this.list.get(i)).getCount() + "份");
-        Glide.with(this.context).load(((Goods) this.list.get(i)).getGoods_image_url()).placeholder((int) R.mipmap.test).into(viewHolder.iv_goods_greens);
+        viewHolder.name.setText(( this.list.get(i)).getName());
+        viewHolder.count.setText(( this.list.get(i)).getCount() + "份");
+        Glide.with(this.context).load(( this.list.get(i)).getGoods_image_url()).placeholder( R.mipmap.test).into(viewHolder.iv_goods_greens);
         viewHolder.cardView.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 final List list = (List) JSON.parseObject(((Goods) GoodsCheckAdapter.this.list.get(i)).getGoods_size(), new TypeReference<List<GoodSize>>() {
@@ -124,11 +123,11 @@ public class GoodsCheckAdapter extends BaseAdapter {
                                     goodSize.setSpec_name(((GoodSize) list.get(i)).getSpec_name());
                                     arrayList.add(goodSize);
                                 }
-                                Goods goods = (Goods) JSON.parseObject(JSON.toJSONString(GoodsCheckAdapter.this.list.get(i)), new TypeReference<Goods>() {
+                                Goods goods =  JSON.parseObject(JSON.toJSONString(GoodsCheckAdapter.this.list.get(i)), new TypeReference<Goods>() {
                                 }, new Feature[0]);
                                 for (int i2 = 0; i2 < arrayList.size(); i2++) {
                                     if (map.get(((GoodSize) arrayList.get(i2)).getId() + "") != null) {
-                                        ((GoodSize) arrayList.get(i2)).setCount(Integer.valueOf((String) map.get(((GoodSize) arrayList.get(i2)).getId() + "")));
+                                        ((GoodSize) arrayList.get(i2)).setCount(Integer.valueOf(map.get(((GoodSize) arrayList.get(i2)).getId() + "")));
                                     }
                                 }
                                 goods.setGoods_size(JSON.toJSONString(arrayList));

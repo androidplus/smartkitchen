@@ -101,27 +101,27 @@ public class GoodsBreakageAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(this.context).inflate(R.layout.item_goods, null);
-            ViewHolder viewHolder2 = new ViewHolder(view);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.reset();
-        if (BreakageActivity.getGoodsCount(String.valueOf(((Goods) this.list.get(i)).getId())) > 0) {
+        Goods goods = list.get(i);
+        if (BreakageActivity.getGoodsCount(String.valueOf(goods.getId())) > 0) {
             viewHolder.checked();
-            viewHolder.tvQuantity.setText("" + BreakageActivity.getGoodsCount(String.valueOf(((Goods) this.list.get(i)).getId())));
+            viewHolder.tvQuantity.setText("" + BreakageActivity.getGoodsCount(String.valueOf(goods.getId())));
         }
-        viewHolder.count.setText(((Goods) this.list.get(i)).getCount() + "");
-        viewHolder.name.setText(((Goods) this.list.get(i)).getName());
-        viewHolder.money.setText("￥" + ((Goods) this.list.get(i)).getMoney());
-        Glide.with(this.context).load(((Goods) this.list.get(i)).getGoods_image_url()).placeholder((int) R.mipmap.test).into(viewHolder.ivGoodsGreens);
+        viewHolder.count.setText(goods.getCount() + "");
+        viewHolder.name.setText(goods.getName());
+        viewHolder.money.setText("￥" + goods.getMoney());
+        Glide.with(this.context).load(goods.getGoods_image_url()).placeholder( R.mipmap.test).into(viewHolder.ivGoodsGreens);
         viewHolder.cardView.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 int i = 0;
-                final List list = (List) JSON.parseObject(((Goods) GoodsBreakageAdapter.this.list.get(i)).getGoods_size(), new TypeReference<List<GoodSize>>() {
+                final List list = (List) JSON.parseObject(( GoodsBreakageAdapter.this.list.get(i)).getGoods_size(), new TypeReference<List<GoodSize>>() {
                 }, new Feature[0]);
-                final List list2 = (List) JSON.parseObject(((Goods) GoodsBreakageAdapter.this.list.get(i)).getTaste(), new TypeReference<List<GoodTaste>>() {
+                final List list2 = (List) JSON.parseObject((GoodsBreakageAdapter.this.list.get(i)).getTaste(), new TypeReference<List<GoodTaste>>() {
                 }, new Feature[0]);
                 List arrayList = new ArrayList();
                 if (list.size() > 0) {

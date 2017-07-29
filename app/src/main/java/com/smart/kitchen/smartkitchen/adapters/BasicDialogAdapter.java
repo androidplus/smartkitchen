@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BasicDialogAdapter extends BaseAdapter {
     private Context mContext;
-    private LayoutInflater mInflater = LayoutInflater.from(this.mContext);
+    private LayoutInflater mInflater;
     private List<String> mList;
 
     private class ViewHolder {
@@ -24,6 +24,7 @@ public class BasicDialogAdapter extends BaseAdapter {
     public BasicDialogAdapter(Context context, List<String> list) {
         this.mContext = context;
         this.mList = list;
+        mInflater = LayoutInflater.from(this.mContext);
     }
 
     public int getCount() {
@@ -42,14 +43,13 @@ public class BasicDialogAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             view = this.mInflater.inflate(R.layout.basic_dialog_item, null);
-            ViewHolder viewHolder2 = new ViewHolder();
-            viewHolder2.tvText = (TextView) view.findViewById(R.id.tv_basic_dialog_item_text);
-            view.setTag(viewHolder2);
-            viewHolder = viewHolder2;
+            viewHolder = new ViewHolder();
+            viewHolder.tvText = (TextView) view.findViewById(R.id.tv_basic_dialog_item_text);
+            view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.tvText.setText((CharSequence) this.mList.get(i));
+        viewHolder.tvText.setText(mList.get(i));
         return view;
     }
 }

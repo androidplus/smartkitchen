@@ -70,7 +70,7 @@ public class SelectAreaAdapter extends BaseAdapter {
         if (this.select == i) {
             viewHolder.checked();
         }
-        viewHolder.text.setText(((TableArea) this.list.get(i)).getArea_name());
+        viewHolder.text.setText(list.get(i).getArea_name());
         return view;
     }
 }
