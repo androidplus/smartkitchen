@@ -1,0 +1,2 @@
+# smartkitchen
+第一个也是目前唯一一个反编译apk修改到android studio能编译运行的项目，学到很多新知识
